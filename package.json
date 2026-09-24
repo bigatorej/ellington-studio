@@ -5,12 +5,15 @@
   "description": "Ellington Studio. A site in a week. An app in a month. Fixed price.",
   "type": "module",
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "scripts": {
     "test": "node scripts/check-copy.mjs",
     "dev": "vercel dev",
-    "verify": "node scripts/verify-pages.mjs"
+    "verify": "node scripts/verify-pages.mjs",
+    "brand:build": "node scripts/brand-options/build.mjs",
+    "brand:render": "node scripts/brand-options/render.mjs",
+    "brand:verify": "node scripts/verify-brand.mjs"
   },
   "devDependencies": {
     "@types/node": "^20.19.43",

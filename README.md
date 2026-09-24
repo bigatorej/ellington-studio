@@ -61,3 +61,17 @@ npm run verify  # Playwright: no horizontal scroll, links resolve, intake valida
 ## Writing rule
 
 `scripts/check-copy.mjs` fails the build if visible text on any page carries a hyphen, an en dash or an em dash, or writes a date as a digit before a month name. Dates read "September 24th, 2026". Tags, attributes, scripts, code, URLs and file names are exempt.
+
+## Brand options
+
+`brand-options/` holds three complete brand directions built on September 24th, 2026 so Ellington can pick one by looking: A Blueprint, B Greenhouse, C Signal. Each folder has `theme.css` (tokens in one block at the top), `index.html`, `intake.html`, `kit.html`, the kit PDF and `assets/` with icons, screens and the sample photograph. The chooser is `brand-options/index.html`.
+
+All nine pages come from one shared structure. Do not edit the generated HTML by hand. Change the source and rebuild:
+
+```bash
+npm run brand:build    # scripts/brand-options: options.mjs (data and marks), home.tmpl.html, kit.mjs, chooser.mjs
+npm run brand:render   # icons, full page screens and kit PDFs through Playwright
+npm run brand:verify   # every option page at 390 and 1440, contrast ratios, chooser buttons
+```
+
+The live `/` and `/intake.html` do not change until Ellington rules.

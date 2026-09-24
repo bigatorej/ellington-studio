@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" data-option="a-blueprint">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ellington Studio Brand Kit. Option A, Blueprint</title>
+<meta name="description" content="Brand kit for Ellington Studio, Option A, Blueprint: marks, palette, type, components, spacing and photography direction.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="theme.css">
+<style>
+.kit{--kit-max:1120px}
+.kit main{max-width:var(--kit-max);margin:0 auto;padding:0 24px 96px}
+.kit .kit-head{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+.kit .kit-head .eyebrow{font:500 13px/1.4 var(--font-mono, var(--font-text));letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 12px}
+.kit .kit-head h1{margin:0 0 8px}
+.kit .kit-head p{color:var(--ink2);max-width:720px;margin:0}
+.kit section.k{padding:56px 0;border-bottom:1px solid var(--line)}
+.kit section.k>h2{margin:0 0 6px}
+.kit section.k>.sub{color:var(--mute);margin:0 0 28px;max-width:720px}
+.kit .grid{display:grid;gap:20px}
+.kit .grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.kit .grid.three{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.kit .stage{border:1px solid var(--line);padding:36px;display:flex;align-items:center;justify-content:center;min-height:180px;position:relative}
+.kit .stage.light{background:var(--surface);color:var(--ink)}
+.kit .stage.dark{background:var(--dark);color:var(--on-dark);border-color:var(--dark)}
+.kit .stage .cap{position:absolute;left:14px;top:12px;font:500 11px/1.3 var(--font-mono, var(--font-text));letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.kit .stage.dark .cap{color:var(--on-dark-mute)}
+.kit .stage .lockup-inner{display:flex;align-items:center;gap:18px}
+.kit .stage .lockup-inner .mark{width:64px;height:64px}
+.kit .stage .lockup-inner .wordmark{height:36px;width:auto}
+.kit .stage>.mark{width:120px;height:120px}
+.kit .stage>.wordmark{height:40px;width:auto}
+.kit .sizes{display:flex;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.kit .sizes figure{margin:0;text-align:center}
+.kit .sizes figcaption{font:500 12px/1.4 var(--font-mono, var(--font-text));color:var(--mute);margin-top:10px}
+.kit .sizes .mark{display:block;margin:0 auto}
+.kit .clear{position:relative;display:inline-block;padding:32px}
+.kit .clear .mark{width:128px;height:128px;display:block}
+.kit .clear .box{position:absolute;inset:0;border:1px dashed var(--mute)}
+.kit .clear .x{position:absolute;font:500 11px/1 var(--font-mono, var(--font-text));color:var(--mute)}
+.kit .never{border:1px solid var(--line);padding:22px;position:relative}
+.kit .never .demo{height:120px;display:flex;align-items:center;justify-content:center;background:var(--surface);margin-bottom:14px;overflow:hidden}
+.kit .never .demo .mark{width:72px;height:72px}
+.kit .never .demo.stretch .mark{transform:scaleX(1.8)}
+.kit .never .demo.rotate .mark{transform:rotate(20deg)}
+.kit .never .demo.busy{background:repeating-linear-gradient(45deg,var(--line) 0 6px,var(--surface) 6px 12px)}
+.kit .never .demo.recolor .mark{color:#E0286C}
+.kit .never .demo.noframe .mark rect:first-child{display:none}
+.kit .never .demo.fillseal .mark circle:first-of-type{fill:var(--metal)}
+.kit .never .demo.outline .mark rect:first-child{fill:none;stroke:currentColor;stroke-width:3}
+.kit .never .demo.outline .mark path{fill:currentColor}
+.kit .never .demo.round .mark{border-radius:18px}
+.kit .never .demo.twoaccent{background:var(--accent)}
+.kit .never .demo.twoaccent .mark{outline:6px solid var(--accent)}
+.kit .never .demo.gold .mark{color:#B8860B}
+.kit .never .demo.gold .mark circle{stroke:#B8860B}
+.kit .never .demo.cg .mark{filter:blur(0)}
+.kit .never .demo.cg::after{content:"Cormorant";position:absolute;font:italic 700 36px Georgia,serif;color:var(--mute);opacity:.7}
+.kit .never .demo.royal{background:#0021A5}
+.kit .never .demo.royal .mark{color:#FA4616}
+.kit .never .demo.soft .mark{filter:drop-shadow(0 10px 10px rgba(0,0,0,.4));border-radius:16px;overflow:hidden}
+.kit .never h4{margin:0 0 4px;font-size:17px}
+.kit .never p{margin:0;color:var(--mute);font-size:14.5px}
+.kit .never::before{content:"";position:absolute;right:16px;top:16px;width:22px;height:22px;background:linear-gradient(45deg,transparent 45%,var(--danger) 45% 55%,transparent 55%),linear-gradient(-45deg,transparent 45%,var(--danger) 45% 55%,transparent 55%)}
+.kit .icons{display:flex;gap:36px;align-items:flex-end;flex-wrap:wrap}
+.kit .icons figure{margin:0;text-align:center}
+.kit .icons img{display:block;margin:0 auto;image-rendering:auto;border:1px solid var(--line)}
+.kit .icons img.px{image-rendering:pixelated}
+.kit .icons figcaption{font:500 12px/1.4 var(--font-mono, var(--font-text));color:var(--mute);margin-top:10px}
+.kit .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.kit .sw{border:1px solid var(--line);overflow:hidden}
+.kit .sw .chip{height:96px;display:flex;align-items:flex-end;padding:12px 14px;font:600 15px/1.2 var(--font-text)}
+.kit .sw .meta{padding:12px 14px;font-size:13.5px;line-height:1.5;color:var(--ink2)}
+.kit .sw .meta b{display:block;color:var(--ink);font-size:15px}
+.kit .sw .meta code{font:500 12.5px var(--font-mono, monospace);color:var(--ink)}
+.kit .sw .ratio{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);font-size:13px}
+.kit .sw .ratio .pass{color:var(--success);font-weight:600}
+.kit .sw .ratio .fail{color:var(--danger);font-weight:600}
+.kit table.spec{width:100%;border-collapse:collapse;font-size:15px}
+.kit table.spec th{text-align:left;font:500 12px/1.4 var(--font-mono, var(--font-text));letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding:10px 12px 10px 0;border-bottom:1px solid var(--ink)}
+.kit table.spec td{padding:12px 12px 12px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+.kit table.spec td:first-child{color:var(--ink);font-weight:600}
+.kit .specimen{margin-top:32px;border:1px solid var(--line);padding:32px}
+.kit .specimen .display{font-family:var(--font-head);font-weight:var(--head-weight);font-size:clamp(36px,5vw,56px);line-height:1;margin:0 0 18px;letter-spacing:var(--head-tracking)}
+.kit .specimen h3{margin:0 0 12px}
+.kit .specimen p{margin:0 0 12px;max-width:720px}
+.kit .specimen .mono{font:500 13px/1.5 var(--font-mono, var(--font-text));letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.kit .comp{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:start}
+.kit .comp>div{border:1px solid var(--line);padding:24px}
+.kit .comp>div>.cap{font:500 11px/1.3 var(--font-mono, var(--font-text));letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 16px}
+.kit .comp .btns{display:flex;gap:12px;flex-wrap:wrap}
+.kit .comp .card.pkg{max-width:360px}
+.kit .comp .foot-demo{background:var(--dark);color:var(--on-dark-mute);padding:28px;font-size:14px}
+.kit .comp .foot-demo .wordmark{height:22px;width:auto;display:block;margin-bottom:12px;color:var(--on-dark)}
+.kit .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;counter-reset:shot}
+.kit .shots li{list-style:none;border:1px solid var(--line);padding:18px;font-size:15px;color:var(--ink2);counter-increment:shot}
+.kit .shots li::before{content:"Shot 0" counter(shot);display:block;font:500 11px/1.3 var(--font-mono, var(--font-text));letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.kit .shots{padding:0;margin:0 0 24px}
+.kit .sample{border:1px solid var(--line);max-width:840px}
+.kit .sample img{display:block;width:100%;height:auto}
+.kit .sample .cap{padding:12px 16px;font-size:13.5px;color:var(--mute);border-top:1px solid var(--line)}
+.kit .sample.placeholder{aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px;color:var(--mute);background:repeating-linear-gradient(45deg,var(--surface) 0 10px,var(--ground) 10px 20px)}
+.kit .voice{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+.kit .voice .tag-line{font-family:var(--font-head);font-weight:var(--head-weight);letter-spacing:var(--head-tracking);font-size:clamp(30px,4.2vw,48px);line-height:1.05;margin:0;padding:40px;background:var(--dark);color:var(--on-dark)}
+.kit .voice .tag-line em{font-style:normal;color:var(--emph)}
+.kit .voice p{margin:0;color:var(--ink2);font-size:17px}
+@media (max-width:760px){.kit .voice{grid-template-columns:1fr}.kit .stage{padding:24px}}
+</style>
+</head>
+<body class="kit">
+<header class="site-head"><div class="wrap nav"><a class="lockup" href="index.html" aria-label="Ellington Studio"><span class="lockup-inner"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 40" class="wordmark wm-a" role="img" aria-label="Ellington Studio"><text x="0" y="29" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="24" letter-spacing="0.06em" fill="currentColor">ELLINGTON STUDIO</text></svg></span></a><a class="btn secondary small" href="../index.html">All three options</a></div></header>
+<main>
+<div class="kit-head">
+  <p class="eyebrow">Brand kit. Option A, Blueprint. September 24th, 2026</p>
+  <h1>Blueprint</h1>
+  <p>The Studio is a precision shop. The date and the price are drawn before the work starts, like a plan.</p>
+</div>
+
+<section class="k" id="marks">
+  <h2>Marks</h2>
+  <p class="sub">Three pieces: the primary lockup, the monogram and the wordmark. Each is drawn as SVG and shown on the light ground and the dark ground.</p>
+  <div class="grid two">
+    <div class="stage light"><span class="cap">Primary lockup, light</span><span class="lockup-inner"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 40" class="wordmark wm-a" role="img" aria-label="Ellington Studio"><text x="0" y="29" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="24" letter-spacing="0.06em" fill="currentColor">ELLINGTON STUDIO</text></svg></span></div>
+    <div class="stage dark"><span class="cap">Primary lockup, dark</span><span class="lockup-inner"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 40" class="wordmark wm-a" role="img" aria-label="Ellington Studio"><text x="0" y="29" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="24" letter-spacing="0.06em" fill="currentColor">ELLINGTON STUDIO</text></svg></span></div>
+    <div class="stage light"><span class="cap">Monogram, light</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg></div>
+    <div class="stage dark"><span class="cap">Monogram, dark</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg></div>
+    <div class="stage light"><span class="cap">Wordmark, light</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 40" class="wordmark wm-a" role="img" aria-label="Ellington Studio"><text x="0" y="29" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="24" letter-spacing="0.06em" fill="currentColor">ELLINGTON STUDIO</text></svg></div>
+    <div class="stage dark"><span class="cap">Wordmark, dark</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 40" class="wordmark wm-a" role="img" aria-label="Ellington Studio"><text x="0" y="29" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="24" letter-spacing="0.06em" fill="currentColor">ELLINGTON STUDIO</text></svg></div>
+  </div>
+  <div class="grid two" style="margin-top:20px">
+    <div class="stage light" style="flex-direction:column;align-items:flex-start;gap:18px"><span class="cap">Minimum size</span>
+      <div class="sizes">
+        <figure><span style="display:block;width:16px;height:16px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg></span><figcaption>16 px, floor</figcaption></figure>
+        <figure><span style="display:block;width:24px;height:24px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg></span><figcaption>24 px</figcaption></figure>
+        <figure><span style="display:block;width:32px;height:32px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg></span><figcaption>32 px, favicon</figcaption></figure>
+        <figure><span style="display:block;width:48px;height:48px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg></span><figcaption>48 px</figcaption></figure>
+        <figure><span style="display:block;width:96px;height:96px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg></span><figcaption>96 px</figcaption></figure>
+      </div>
+      <p style="margin:0;color:var(--mute);font-size:14px">The monogram is never set below 16 px. The lockup is never set below 120 px wide. Below that, use the monogram alone.</p>
+    </div>
+    <div class="stage light" style="flex-direction:column;align-items:flex-start;gap:18px"><span class="cap">Clear space</span>
+      <div class="clear"><span class="box"></span><span class="x" style="left:8px;top:6px">x</span><span class="x" style="right:8px;bottom:6px">x</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg></div>
+      <p style="margin:0;color:var(--mute);font-size:14px">Clear space on every side equals x, one quarter of the monogram's height. Nothing enters the box.</p>
+    </div>
+  </div>
+  <h3 style="margin:36px 0 14px">Three things never to do</h3>
+  <div class="grid three"><div class="never"><div class="demo royal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg></div><h4>Never a royal blue or a bright orange</h4><p>That is a stadium, not a studio.</p></div>
+<div class="never"><div class="demo soft"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg></div><h4>Never a soft radius or a drop shadow</h4><p>The system is drafted. Edges stay sharp.</p></div>
+<div class="never"><div class="demo noframe"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-a" role="img" aria-label="Ellington Studio">
+<rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+<path d="M6 12h4M8 10v4M54 52h4M56 50v4" stroke="currentColor" stroke-width="1" opacity=".55"/>
+<path d="M11 13h23v8H19v7h14v8H19v7h15v8H11z" fill="currentColor"/>
+<path d="M51 20.5C50 15 45 13 41 13c-5 0-7.5 3.3-7.5 7.2 0 9.4 17 6.6 17 17.3 0 5.7-4.4 9.5-9.5 9.5-4.8 0-8-2.6-9-6.5" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+<rect x="50" y="8" width="6" height="6" fill="var(--signal)"/>
+</svg></div><h4>Never the monogram without its frame</h4><p>The frame is the sheet. Without it the letters float.</p></div></div>
+  <h3 style="margin:36px 0 14px">Favicon and app icon</h3>
+  <div class="icons">
+    <figure><img src="assets/icon-16.png" width="16" height="16" alt="Monogram at 16 pixels"><figcaption>16 px render</figcaption></figure>
+    <figure><img class="px" src="assets/icon-16.png" width="64" height="64" alt="Monogram at 16 pixels, shown 4 times larger"><figcaption>16 px, shown at 4x</figcaption></figure>
+    <figure><img src="assets/icon-32.png" width="32" height="32" alt="Favicon at 32 pixels"><figcaption>32 px favicon PNG</figcaption></figure>
+    <figure><img src="assets/icon-1024.png" width="160" height="160" alt="App icon at 1024 pixels"><figcaption>1024 px app icon PNG, shown at 160</figcaption></figure>
+  </div>
+</section>
+
+<section class="k" id="palette">
+  <h2>Palette</h2>
+  <p class="sub">Every color with its hex, its role and its measured contrast against the text it is paired with. Body text needs 4.5 to 1. Large text needs 3 to 1. The ratios below are computed from the hex values, not asserted.</p>
+  <div class="swatches"><div class="sw"><div class="chip" style="background:#0F1B2D"><span style="color:#F4F6F9">Paper</span></div><div class="meta"><b>Paper</b><code>#F4F6F9</code> as Ground<div class="ratio"><span>On #0F1B2D</span><span class="pass">15.96 to 1, AA body needs 4.5</span></div></div></div>
+<div class="sw"><div class="chip" style="background:#0F1B2D"><span style="color:#FFFFFF">Sheet</span></div><div class="meta"><b>Sheet</b><code>#FFFFFF</code> as Card surface<div class="ratio"><span>On #0F1B2D</span><span class="pass">17.28 to 1, AA body needs 4.5</span></div></div></div>
+<div class="sw"><div class="chip" style="background:#E8EEF5"><span style="color:#0B1626">Midnight</span></div><div class="meta"><b>Midnight</b><code>#0B1626</code> as Dark ground, hero panel, footer<div class="ratio"><span>On #E8EEF5</span><span class="pass">15.53 to 1, AA body needs 4.5</span></div></div></div>
+<div class="sw"><div class="chip" style="background:#F4F6F9"><span style="color:#0F1B2D">Ink</span></div><div class="meta"><b>Ink</b><code>#0F1B2D</code> as Headings and body text<div class="ratio"><span>On #F4F6F9</span><span class="pass">15.96 to 1, AA body needs 4.5</span></div></div></div>
+<div class="sw"><div class="chip" style="background:#F4F6F9"><span style="color:#33415A">Slate</span></div><div class="meta"><b>Slate</b><code>#33415A</code> as Secondary text<div class="ratio"><span>On #F4F6F9</span><span class="pass">9.48 to 1, AA body needs 4.5</span></div></div></div>
+<div class="sw"><div class="chip" style="background:#F4F6F9"><span style="color:#5A6A82">Mute</span></div><div class="meta"><b>Mute</b><code>#5A6A82</code> as Captions and labels<div class="ratio"><span>On #F4F6F9</span><span class="pass">5.07 to 1, AA body needs 4.5</span></div></div></div>
+<div class="sw"><div class="chip" style="background:#1E3A5F"><span style="color:#FFFFFF">Drafting Blue</span></div><div class="meta"><b>Drafting Blue</b><code>#1E3A5F</code> as Accent, primary button, links<div class="ratio"><span>Text #FFFFFF on it</span><span class="pass">11.50 to 1, AA body needs 4.5</span></div></div></div>
+<div class="sw"><div class="chip" style="background:#B8420C"><span style="color:#FFFFFF">Ember</span></div><div class="meta"><b>Ember</b><code>#B8420C</code> as Signal, under 10% of any screen<div class="ratio"><span>Text #FFFFFF on it</span><span class="pass">5.49 to 1, AA body needs 4.5</span></div></div></div>
+<div class="sw"><div class="chip" style="background:#0F1B2D"><span style="color:#DCE3EC">Grid</span></div><div class="meta"><b>Grid</b><code>#DCE3EC</code> as Grid lines and rules<div class="ratio"><span>On #0F1B2D</span><span class="pass">13.36 to 1, AA body needs 4.5</span></div></div></div>
+<div class="sw"><div class="chip" style="background:#1C6B47"><span style="color:#FFFFFF">Success</span></div><div class="meta"><b>Success</b><code>#1C6B47</code> as Success state<div class="ratio"><span>Text #FFFFFF on it</span><span class="pass">6.47 to 1, AA body needs 4.5</span></div></div></div>
+<div class="sw"><div class="chip" style="background:#A32D2D"><span style="color:#FFFFFF">Danger</span></div><div class="meta"><b>Danger</b><code>#A32D2D</code> as Danger state, form errors<div class="ratio"><span>Text #FFFFFF on it</span><span class="pass">7.06 to 1, AA body needs 4.5</span></div></div></div>
+<div class="sw"><div class="chip" style="background:#0B1626"><span style="color:#E8EEF5">Light on Midnight</span></div><div class="meta"><b>Light on Midnight</b><code>#E8EEF5</code> as Text on dark grounds<div class="ratio"><span>On #0B1626</span><span class="pass">15.53 to 1, AA body needs 4.5</span></div></div></div></div>
+</section>
+
+<section class="k" id="type">
+  <h2>Type</h2>
+  <p class="sub">Loaded from Google Fonts. Every face is free under the SIL Open Font License 1.1.</p>
+  <table class="spec"><thead><tr><th>Face</th><th>Role</th><th>Weights</th><th>Source</th><th>License</th></tr></thead><tbody><tr><td>Space Grotesk</td><td>Headings and display</td><td>500, 700</td><td><a href="https://fonts.google.com/specimen/Space+Grotesk" target="_blank" rel="noopener">Google Fonts</a></td><td>SIL Open Font License 1.1</td></tr><tr><td>Manrope</td><td>Text, labels, buttons</td><td>400, 500, 600</td><td><a href="https://fonts.google.com/specimen/Manrope" target="_blank" rel="noopener">Google Fonts</a></td><td>SIL Open Font License 1.1</td></tr><tr><td>IBM Plex Mono</td><td>Figures, dates, technical labels</td><td>400, 500</td><td><a href="https://fonts.google.com/specimen/IBM+Plex+Mono" target="_blank" rel="noopener">Google Fonts</a></td><td>SIL Open Font License 1.1</td></tr></tbody></table>
+  <h3 style="margin:36px 0 14px">Scale</h3>
+  <table class="spec"><thead><tr><th>Step</th><th>Face and weight</th><th>Size / line</th><th>Rule</th></tr></thead><tbody><tr><td>Display</td><td>Space Grotesk 700</td><td>64 / 1.0</td><td>clamp(40px, 6vw, 64px)</td></tr><tr><td>H1</td><td>Space Grotesk 700</td><td>48 / 1.05</td><td>clamp(34px, 4.5vw, 48px)</td></tr><tr><td>H2</td><td>Space Grotesk 700</td><td>32 / 1.15</td><td>32px</td></tr><tr><td>Body</td><td>Manrope 400</td><td>17 / 1.6</td><td>17px</td></tr><tr><td>Small</td><td>Manrope 500</td><td>14 / 1.5</td><td>14px, tracking .02em</td></tr><tr><td>Mono</td><td>IBM Plex Mono 500</td><td>13 / 1.4</td><td>13px, uppercase labels, figures at any size</td></tr></tbody></table>
+  <div class="specimen">
+    <p class="mono">Specimen. Site copy, unchanged</p>
+    <p class="display">A website in a week. A working app in a month. One fixed price.</p>
+    <h3>Three packages. No hourly billing.</h3>
+    <p>Agencies quote $15,000 to $40,000 and 3 to 6 months for a basic app. I build the same thing in 30 days for $7,500, and a five page site in 5 business days for $2,500. You know the price and the date before you say yes.</p>
+    <p style="font-size:14px;color:var(--mute)">Ellington Studio is a venture of Ellington Enterprises LLC. Prices listed on September 24th, 2026.</p>
+  </div>
+</section>
+
+<section class="k" id="components">
+  <h2>Components</h2>
+  <p class="sub">Rendered live from the option's stylesheet. What you see here is what the site uses.</p>
+  <div class="comp">
+    <div><p class="cap">Buttons</p><div class="btns"><a class="btn primary" href="#components">Start a project</a><a class="btn secondary" href="#components">See the packages</a></div></div>
+    <div><p class="cap">Pill tag</p><span class="tag">Learning platform</span> <span class="tag">Media and data</span> <span class="tag">Consumer app, launching</span></div>
+    <div><p class="cap">Form field</p><div class="q"><label class="t" for="k-email">Email</label><input type="email" id="k-email" placeholder="maya@example.com"><div class="err" style="display:block">Enter a working email so I can send the scope</div></div><div class="opts"><label><input type="radio" name="k" checked>Site in a Week, $2,500</label><label><input type="radio" name="k">App in a Month, $7,500</label></div></div>
+    <div><p class="cap">Table row</p><table class="spec"><thead><tr><th>Package</th><th>Price</th><th>Delivered</th></tr></thead><tbody><tr><td>Site in a Week</td><td><span class="num">$2,500</span></td><td>5 business days from the deposit</td></tr><tr><td>App in a Month</td><td><span class="num">$7,500</span></td><td>30 days from the deposit</td></tr></tbody></table></div>
+    <div><p class="cap">Package card</p><article class="card pkg hi"><h3>App in a Month</h3><div class="price"><span class="num">$7,500</span></div><div class="when">Delivered in 30 days</div><ul><li>A web app your customers sign in to, on phone and desktop</li><li>Accounts, payments through Stripe, and one AI feature built in</li><li>30 days of fixes after delivery, included</li></ul><a class="btn primary" href="#components">Start an app</a></article></div>
+    <div><p class="cap">Quote block</p><blockquote class="pull">You get the executive who writes the scope and the builder who delivers it, and they are the same person.<footer>Ellington C. Jones, Founder</footer></blockquote></div>
+    <div style="grid-column:1/-1"><p class="cap">Footer</p><div class="foot-demo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 40" class="wordmark wm-a" role="img" aria-label="Ellington Studio"><text x="0" y="29" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="24" letter-spacing="0.06em" fill="currentColor">ELLINGTON STUDIO</text></svg>Ellington Studio is a venture of Ellington Enterprises LLC. Prices listed on September 24th, 2026. Every project starts with a written scope and ends with you owning the work.</div></div>
+  </div>
+</section>
+
+<section class="k" id="rules">
+  <h2>Spacing, radius and shadow</h2>
+  <table class="spec"><thead><tr><th>Rule</th><th>Value</th></tr></thead><tbody><tr><td>Spacing unit</td><td>8px. Sections 96px, blocks 48px, card padding 28px, gaps 24px</td></tr><tr><td>Radius</td><td>2px on everything. Corners are drafted, not softened</td></tr><tr><td>Shadow</td><td>None. Depth comes from the 1px line and the grid, never a blur</td></tr><tr><td>Rules</td><td>1px lines in Grid. Dimension ticks 6px long at section edges</td></tr></tbody></table>
+</section>
+
+<section class="k" id="photo">
+  <h2>Photography direction</h2>
+  <p class="sub">Six shots that would carry the site, and one generated sample of the direction.</p>
+  <ol class="shots"><li>A birch workbench from above, a steel rule and a mechanical pencil aligned to the edge, morning daylight from the left.</li><li>One human hand, sleeve rolled, setting a drafting square against a sheet of slate blue paper with white grid lines.</li><li>A clean desk with a closed laptop, a paper notebook open to a hand drawn wireframe, a single ember pencil cap.</li><li>A wall of pinned plans, shot straight on, the grid of the paper catching side light, no people.</li><li>A phone on the bench beside a printed scope, the screen showing a plain white page, the rest of the frame in shadow.</li><li>A window sill with a level, a tape measure and a coffee, the light flat and honest, everything square to the frame.</li></ol>
+  <figure class="sample"><img src="assets/sample.jpg" alt="Sample photograph in the Blueprint direction" width="1536" height="1024"><figcaption class="cap">AI generated sample, September 24th, 2026. Birch workbench, drafting square, steel rule, slate blue grid paper, one hand, one ember pencil cap, daylight.</figcaption></figure>
+</section>
+
+<section class="k" id="voice">
+  <h2>Voice note</h2>
+  <p class="sub">The words do not change between options. The presentation does.</p>
+  <div class="voice">
+    <p class="tag-line">A website in a week. A working app in a month. <em>One fixed price.</em></p>
+    <p>Blueprint speaks in measurements. Short declaratives, figures in mono, every promise with a date beside it. It never raises its voice, because the plan already says what will happen.</p>
+  </div>
+</section>
+</main>
+<footer class="site-foot"><div class="wrap foot-grid"><div class="foot-mark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 40" class="wordmark wm-a" role="img" aria-label="Ellington Studio"><text x="0" y="29" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="24" letter-spacing="0.06em" fill="currentColor">ELLINGTON STUDIO</text></svg></div><p>Ellington Studio is a venture of Ellington Enterprises LLC. Brand kit Option A, Blueprint, September 24th, 2026.</p></div></footer>
+</body>
+</html>
