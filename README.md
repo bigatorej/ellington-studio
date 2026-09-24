@@ -64,7 +64,7 @@ npm run verify  # Playwright: no horizontal scroll, links resolve, intake valida
 
 ## Brand options
 
-`brand-options/` holds three complete brand directions built on September 24th, 2026 so Ellington can pick one by looking: A Blueprint, B Greenhouse, C Signal. Each folder has `theme.css` (tokens in one block at the top), `index.html`, `intake.html`, `kit.html`, the kit PDF and `assets/` with icons, screens and the sample photograph. The chooser is `brand-options/index.html`.
+`brand-options/` holds five complete brand directions built on September 24th, 2026 so Ellington can pick one by looking: A Blueprint, B Greenhouse, C Signal, D Maison, E Coastline. Each folder has `theme.css` (tokens in one block at the top), `index.html`, `intake.html`, `kit.html`, the kit PDF and `assets/` with icons, screens and the sample photograph. The chooser is `brand-options/index.html`.
 
 All nine pages come from one shared structure. Do not edit the generated HTML by hand. Change the source and rebuild:
 

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-option="e-coastline">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start a project. Ellington Studio intake</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="theme.css">
+</head>
+<body class="intake">
+<header class="site-head"><div class="wrap nav"><a class="lockup" href="index.html" aria-label="Ellington Studio"><span class="lockup-inner"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-e" role="img" aria-label="Ellington Studio">
+<path d="M12 12v28M12 12h17M12 26h14M12 40h17" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53 18.5c-1.5-3.5-5-5.5-8.5-5.5-4.6 0-7.5 2.6-7.5 6 0 8 16 4.5 16 13 0 4-3.6 6.5-8 6.5-4.3 0-7.6-2-9-5.5" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+<path d="M9 53c7.5-5 15.5-5 23 0s15.5 5 23 0" fill="none" stroke="var(--ocean)" stroke-width="4.5" stroke-linecap="round"/>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 40" class="wordmark wm-e" role="img" aria-label="Ellington Studio"><text x="0" y="29" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="26" letter-spacing="-0.01em" fill="currentColor">ellington studio</text></svg></span></a><span class="nav-note">About 10 minutes</span></div></header>
+<main class="wrap form-wrap">
+<h1>Start a project</h1>
+<p class="lead">Pick an answer beside each question, add words where you want to. When you send it, you get the scope and price within 1 business day.</p>
+<div class="prog"><i id="bar"></i></div>
+
+<form id="f" novalidate>
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label for="company">Company</label><input type="text" id="company" name="company" tabindex="-1" autocomplete="off"></div>
+<fieldset><legend>YOU</legend>
+  <div class="row">
+    <div class="q"><label class="t" for="name">Your name</label><input type="text" id="name" required placeholder="Maya Rodriguez"><div class="err" id="e-name">Enter your name first</div></div>
+    <div class="q"><label class="t" for="biz">Business name</label><input type="text" id="biz" placeholder="Rodriguez Orthopedics"></div>
+    <div class="q"><label class="t" for="email">Email</label><input type="email" id="email" required placeholder="maya@example.com"><div class="err" id="e-email">Enter a working email so I can send the scope</div></div>
+    <div class="q"><label class="t" for="phone">Phone, optional</label><input type="tel" id="phone" placeholder="510 555 0172"></div>
+  </div>
+  <div class="q"><label class="t">What kind of business is it?</label>
+    <div class="opts" data-name="kind">
+      <label><input type="radio" name="kind" value="Physician practice or clinic">Physician practice or clinic</label>
+      <label><input type="radio" name="kind" value="Bar or restaurant">Bar or restaurant</label>
+      <label><input type="radio" name="kind" value="Podcast or media">Podcast or media</label>
+      <label><input type="radio" name="kind" value="Professional services">Professional services</label>
+      <label><input type="radio" name="kind" value="Retail or online store">Retail or online store</label>
+      <label><input type="radio" name="kind" value="Something else">Something else</label>
+    </div>
+    <input type="text" id="kind_t" placeholder="Say more in your own words, optional">
+  </div>
+</fieldset>
+
+<fieldset><legend>THE PROJECT</legend>
+  <div class="q"><label class="t">What do you need?</label>
+    <div class="opts">
+      <label><input type="radio" name="pkg" value="Site in a Week, $2,500">Site in a Week, $2,500</label>
+      <label><input type="radio" name="pkg" value="App in a Month, $7,500">App in a Month, $7,500</label>
+      <label><input type="radio" name="pkg" value="Care Plan only, $250 a month">Care Plan only, $250 a month</label>
+      <label><input type="radio" name="pkg" value="Not sure, help me choose">Not sure, help me choose</label>
+    </div>
+    <textarea id="pkg_t" placeholder="Describe it the way you would to a friend. What should it do?"></textarea>
+  </div>
+  <div class="q"><label class="t">What should it do for you? Pick every one that applies.</label>
+    <div class="opts">
+      <label><input type="checkbox" name="jobs" value="Take bookings or appointments">Take bookings or appointments</label>
+      <label><input type="checkbox" name="jobs" value="Take payments">Take payments</label>
+      <label><input type="checkbox" name="jobs" value="Show a menu or a list of services">Show a menu or services</label>
+      <label><input type="checkbox" name="jobs" value="Sign people up or collect leads">Sign people up</label>
+      <label><input type="checkbox" name="jobs" value="Members only area with accounts">Members area with accounts</label>
+      <label><input type="checkbox" name="jobs" value="An AI feature that answers or recommends">An AI feature</label>
+      <label><input type="checkbox" name="jobs" value="Sell products">Sell products</label>
+      <label><input type="checkbox" name="jobs" value="Show episodes, videos or a portfolio">Show episodes or a portfolio</label>
+    </div>
+    <input type="text" id="jobs_t" placeholder="Anything else it must do, optional">
+  </div>
+  <div class="q"><label class="t">Do you have a site or app today?</label>
+    <div class="opts">
+      <label><input type="radio" name="existing" value="No, starting fresh">No, starting fresh</label>
+      <label><input type="radio" name="existing" value="Yes, keep my domain and replace the site">Yes, keep the domain, replace the site</label>
+      <label><input type="radio" name="existing" value="Yes, and it needs fixing rather than replacing">Yes, it needs fixing</label>
+    </div>
+    <input type="url" id="existing_t" placeholder="Paste the address if there is one, optional">
+  </div>
+</fieldset>
+
+<fieldset><legend>WHAT YOU HAVE</legend>
+  <div class="q"><label class="t">Brand: logo, colors, fonts</label>
+    <div class="opts">
+      <label><input type="radio" name="brand" value="Ready, I have a logo and colors">Ready</label>
+      <label><input type="radio" name="brand" value="Some of it">Some of it</label>
+      <label><input type="radio" name="brand" value="None, build me a simple one">None, build me a simple one</label>
+    </div>
+    <input type="text" id="brand_t" placeholder="Where it lives, or what you like, optional">
+  </div>
+  <div class="q"><label class="t">Words and photos</label>
+    <div class="opts">
+      <label><input type="radio" name="content" value="I have the words and photos">I have them</label>
+      <label><input type="radio" name="content" value="I have some">I have some</label>
+      <label><input type="radio" name="content" value="I need help writing and sourcing">I need help</label>
+    </div>
+    <input type="text" id="content_t" placeholder="Anything I should know, optional">
+  </div>
+  <div class="q"><label class="t">Tools it must connect to. Pick every one that applies.</label>
+    <div class="opts">
+      <label><input type="checkbox" name="tools" value="Stripe">Stripe</label>
+      <label><input type="checkbox" name="tools" value="Square">Square</label>
+      <label><input type="checkbox" name="tools" value="Toast">Toast</label>
+      <label><input type="checkbox" name="tools" value="Calendly or a booking tool">Calendly or booking</label>
+      <label><input type="checkbox" name="tools" value="Google Business Profile">Google Business</label>
+      <label><input type="checkbox" name="tools" value="Instagram">Instagram</label>
+      <label><input type="checkbox" name="tools" value="Mailchimp or email list">Email list</label>
+      <label><input type="checkbox" name="tools" value="None">None</label>
+    </div>
+    <input type="text" id="tools_t" placeholder="Other tools, optional">
+  </div>
+</fieldset>
+
+<fieldset><legend>TIMING AND BUDGET</legend>
+  <div class="q"><label class="t">When do you need it live?</label>
+    <div class="opts">
+      <label><input type="radio" name="when" value="This week">This week</label>
+      <label><input type="radio" name="when" value="This month">This month</label>
+      <label><input type="radio" name="when" value="This quarter">This quarter</label>
+      <label><input type="radio" name="when" value="No fixed date">No fixed date</label>
+    </div>
+    <input type="text" id="when_t" placeholder="A date that matters, an opening, a launch, optional">
+  </div>
+  <div class="q"><label class="t">Budget you have in mind</label>
+    <div class="opts">
+      <label><input type="radio" name="budget" value="$2,500">$2,500</label>
+      <label><input type="radio" name="budget" value="$7,500">$7,500</label>
+      <label><input type="radio" name="budget" value="$10,000 or more, custom scope">$10,000 or more</label>
+      <label><input type="radio" name="budget" value="Not sure yet">Not sure yet</label>
+    </div>
+  </div>
+  <div class="q"><label class="t">How did you hear about the Studio?</label>
+    <div class="opts">
+      <label><input type="radio" name="heard" value="A referral">A referral</label>
+      <label><input type="radio" name="heard" value="LinkedIn">LinkedIn</label>
+      <label><input type="radio" name="heard" value="Saw one of the products">Saw one of the products</label>
+      <label><input type="radio" name="heard" value="Search">Search</label>
+    </div>
+    <input type="text" id="heard_t" placeholder="Who sent you, optional">
+  </div>
+  <div class="q"><label class="t" for="notes">Anything else</label><textarea id="notes" placeholder="Optional"></textarea></div>
+</fieldset>
+
+<div class="actions">
+  <button type="button" onclick="send()">Send my project</button>
+  <span class="note">Scope and price back within 1 business day.</span>
+</div>
+</form>
+
+<div id="out">
+  <h2>Sent. Here is what I received.</h2>
+  <p>Your email app should have opened with this summary. If it did not, copy the block and email it to <a id="mail" href="#">the Studio</a>.</p>
+  <div class="quote" id="quote"></div>
+  <textarea id="summary" readonly></textarea>
+  <div class="actions"><button type="button" class="alt" onclick="copyOut()"><span id="copylbl">Copy summary</span></button></div>
+</div>
+</main>
+
+<script>
+const STUDIO_EMAIL = "bigatorej@gmail.com";
+const ENDPOINT = "/api/intake";
+document.getElementById("mail").href = "mailto:" + STUDIO_EMAIL;
+const f = document.getElementById("f");
+const total = 12;
+function radios(n){const r=f.querySelector(`input[name="${n}"]:checked`);return r?r.value:"";}
+function checks(n){return [...f.querySelectorAll(`input[name="${n}"]:checked`)].map(x=>x.value);}
+function val(id){return (document.getElementById(id).value||"").trim();}
+function progress(){
+  let done=0;
+  if(val("name"))done++; if(val("email"))done++;
+  ["kind","pkg","existing","brand","content","when","budget","heard"].forEach(n=>{if(radios(n))done++;});
+  if(checks("jobs").length)done++; if(checks("tools").length)done++;
+  document.getElementById("bar").style.width=Math.round(100*done/total)+"%";
+}
+f.addEventListener("input",progress); f.addEventListener("change",progress);
+function quoteFor(pkg,jobs){
+  if(pkg.startsWith("Site")) return ["$2,500","Site in a Week. 5 business days from the deposit. Half to start, half on delivery."];
+  if(pkg.startsWith("App")) return ["$7,500","App in a Month. 30 days from the deposit. Half to start, half on delivery."];
+  if(pkg.startsWith("Care")) return ["$250 a month","Care Plan. Starts the month you say go, cancel any month."];
+  const app = jobs.some(j=>/accounts|AI feature|payments|Sell/.test(j));
+  return app?["$7,500","My read: the jobs you picked need accounts or payments, so App in a Month fits. I confirm in the scope."]:["$2,500","My read: Site in a Week covers this. I confirm in the scope."];
+}
+function build(){
+  const jobs=checks("jobs"), tools=checks("tools"), pkg=radios("pkg");
+  const q=quoteFor(pkg,jobs);
+  const L=[];
+  L.push("ELLINGTON STUDIO INTAKE, "+new Date().toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}));
+  L.push("");
+  L.push("Name: "+val("name")); L.push("Business: "+(val("biz")||"not given"));
+  L.push("Email: "+val("email")); L.push("Phone: "+(val("phone")||"not given"));
+  L.push("Kind of business: "+(radios("kind")||"not chosen")+(val("kind_t")?" | "+val("kind_t"):""));
+  L.push("");
+  L.push("Package: "+(pkg||"not chosen")); if(val("pkg_t"))L.push("In their words: "+val("pkg_t"));
+  L.push("Jobs it must do: "+(jobs.length?jobs.join("; "):"none picked")+(val("jobs_t")?" | "+val("jobs_t"):""));
+  L.push("Existing site: "+(radios("existing")||"not chosen")+(val("existing_t")?" | "+val("existing_t"):""));
+  L.push("");
+  L.push("Brand: "+(radios("brand")||"not chosen")+(val("brand_t")?" | "+val("brand_t"):""));
+  L.push("Content: "+(radios("content")||"not chosen")+(val("content_t")?" | "+val("content_t"):""));
+  L.push("Tools: "+(tools.length?tools.join("; "):"none picked")+(val("tools_t")?" | "+val("tools_t"):""));
+  L.push("");
+  L.push("Timing: "+(radios("when")||"not chosen")+(val("when_t")?" | "+val("when_t"):""));
+  L.push("Budget: "+(radios("budget")||"not chosen"));
+  L.push("Heard through: "+(radios("heard")||"not chosen")+(val("heard_t")?" | "+val("heard_t"):""));
+  if(val("notes")){L.push("");L.push("Notes: "+val("notes"));}
+  L.push("");
+  L.push("Studio read: "+q[0]+". "+q[1]);
+  return {text:L.join("\n"), quote:q};
+}
+function validate(){
+  let ok=true;
+  const n=document.getElementById("e-name"), e=document.getElementById("e-email");
+  n.style.display=val("name")?"none":"block"; if(!val("name"))ok=false;
+  const em=val("email"); const good=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em);
+  e.style.display=good?"none":"block"; if(!good)ok=false;
+  return ok;
+}
+["name","email"].forEach(id=>document.getElementById(id).addEventListener("input",()=>{document.getElementById("e-"+id).style.display="none";}));
+async function send(){
+  if(!validate()){document.getElementById(val("name")?"email":"name").focus();return;}
+  const b=build();
+  document.getElementById("quote").innerHTML="<b>"+b.quote[0]+"</b>"+b.quote[1];
+  document.getElementById("summary").value=b.text;
+  document.getElementById("out").style.display="block";
+  let posted=false;
+  try{
+    const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({summary:b.text,name:val("name"),email:val("email"),package:radios("pkg"),quote:b.quote[0],company:val("company")})});
+    posted=r.ok;
+  }catch(err){posted=false;}
+  if(!posted){
+    window.location.href="mailto:"+STUDIO_EMAIL+"?subject="+encodeURIComponent("Studio project: "+val("name")+(val("biz")?", "+val("biz"):""))+"&body="+encodeURIComponent(b.text);
+  }else{
+    document.querySelector("#out p").textContent="Received. The scope and price come to "+val("email")+" within 1 business day. A copy is below for your records.";
+  }
+  document.getElementById("out").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function copyOut(){
+  const t=document.getElementById("summary"); t.select(); t.setSelectionRange(0,999999);
+  let ok=false; try{ok=document.execCommand("copy");}catch(e){}
+  if(navigator.clipboard){navigator.clipboard.writeText(t.value).catch(()=>{});}
+  document.getElementById("copylbl").textContent=(ok||navigator.clipboard)?"Copied":"Select all and copy";
+}
+progress();
+</script>
+</body>
+</html>
