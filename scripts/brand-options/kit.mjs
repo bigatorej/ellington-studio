@@ -21,9 +21,9 @@ const KIT_CSS = `
 .kit .stage.dark{background:var(--dark);color:var(--on-dark);border-color:var(--dark)}
 .kit .stage .cap{position:absolute;left:14px;top:12px;font:500 11px/1.3 var(--font-mono, var(--font-text));letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 .kit .stage.dark .cap{color:var(--on-dark-mute)}
-.kit .stage .lockup-inner{display:flex;align-items:center;gap:18px}
+.kit .stage .lockup-inner{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;max-width:100%}
 .kit .stage .lockup-inner .mark{width:64px;height:64px}
-.kit .stage .lockup-inner .wordmark{height:36px;width:auto}
+.kit .stage .lockup-inner .wordmark{height:36px;width:auto;max-width:100%}
 .kit .stage>.mark{width:120px;height:120px}
 .kit .stage>.wordmark{height:40px;width:auto}
 .kit .sizes{display:flex;align-items:flex-end;gap:32px;flex-wrap:wrap}
@@ -55,6 +55,18 @@ const KIT_CSS = `
 .kit .never .demo.royal{background:#0021A5}
 .kit .never .demo.royal .mark{color:#FA4616}
 .kit .never .demo.soft .mark{filter:drop-shadow(0 10px 10px rgba(0,0,0,.4));border-radius:16px;overflow:hidden}
+.kit .never .demo.goldground{background:#B8860B}
+.kit .never .demo.goldground .mark{color:#FFF8E7}
+.kit .never .demo.allover{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 24'%3E%3Cpath d='M5 4v16M27 4v16' stroke='%236B1F2A' stroke-width='1.6'/%3E%3Cpath d='M9 8c3-4 8-3 8 1s-8 2-8 6 6 5 9 1' fill='none' stroke='%236B1F2A' stroke-width='1.6'/%3E%3C/svg%3E");background-size:32px 24px}
+.kit .never .demo.allover .mark{opacity:.15}
+.kit .never .demo.black{background:#000}
+.kit .never .demo.black .mark{color:#fff}
+.kit .never .demo.black .mark path:last-child{stroke:#fff}
+.kit .never .demo.sharp .mark{outline:3px solid currentColor;outline-offset:6px}
+.kit .never .demo.sharp .mark path{stroke-linecap:butt}
+.kit .never .demo.glossy .mark{filter:drop-shadow(0 14px 14px rgba(0,0,0,.55))}
+.kit .orn-row{display:flex;flex-wrap:wrap;gap:0;justify-content:center;margin:28px 0 8px;color:var(--gold)}
+.kit .orn-row .orn{height:24px;width:32px}
 .kit .never h4{margin:0 0 4px;font-size:17px}
 .kit .never p{margin:0;color:var(--mute);font-size:14.5px}
 .kit .never::before{content:"";position:absolute;right:16px;top:16px;width:22px;height:22px;background:linear-gradient(45deg,transparent 45%,var(--danger) 45% 55%,transparent 55%),linear-gradient(-45deg,transparent 45%,var(--danger) 45% 55%,transparent 55%)}
@@ -100,14 +112,14 @@ const KIT_CSS = `
 .kit .voice .tag-line{font-family:var(--font-head);font-weight:var(--head-weight);letter-spacing:var(--head-tracking);font-size:clamp(30px,4.2vw,48px);line-height:1.05;margin:0;padding:40px;background:var(--dark);color:var(--on-dark)}
 .kit .voice .tag-line em{font-style:normal;color:var(--emph)}
 .kit .voice p{margin:0;color:var(--ink2);font-size:17px}
-@media (max-width:760px){.kit .voice{grid-template-columns:1fr}.kit .stage{padding:24px}}
+@media (max-width:760px){.kit .voice{grid-template-columns:1fr}.kit .stage{padding:24px}.kit table.spec{display:block;overflow-x:auto;max-width:100%}.kit .comp>div{min-width:0;overflow:hidden}}
 `;
 
 export function kitPage(opt, { contrast, lockup, wordmark, hasSample }) {
   const t = opt.tokens;
   const dark = t.midnight || t.forest || t.graphite;
-  const second = t.signal ? "var(--signal)" : t.metal ? "var(--metal)" : "var(--ground)";
-  const secondDark = t.signal ? "var(--signal)" : t.metal ? "var(--metal-light)" : "var(--dark)";
+  const second = opt.kitSecond?.light ?? (t.signal ? "var(--signal)" : t.metal ? "var(--metal)" : t.burgundy ? "var(--burgundy)" : t.ocean ? "var(--ocean)" : "var(--ground)");
+  const secondDark = opt.kitSecond?.dark ?? (t.signal ? "var(--signal)" : t.metal ? "var(--metal-light)" : t.gold ? "var(--gold)" : t.seaglass ? "var(--seaglass)" : "var(--dark)");
 
   const swatches = opt.swatches.map((s) => {
     const hex = t[s.token];
@@ -122,7 +134,7 @@ export function kitPage(opt, { contrast, lockup, wordmark, hasSample }) {
     return `<div class="sw"><div class="chip" style="background:${bg}">${chipText}</div><div class="meta"><b>${esc(s.name)}</b><code>${hex}</code> as ${esc(s.role)}<div class="ratio"><span>${s.textOnIt ? `Text ${pair} on it` : `On ${pair}`}</span><span class="${pass ? "pass" : "fail"}">${fmt(ratio)} to 1, AA ${s.size === "large" ? "large" : "body"} needs ${need}</span></div></div></div>`;
   }).join("\n");
 
-  const neverDemos = { a: ["royal", "soft", "noframe"], b: ["gold", "cg", "fillseal"], c: ["twoaccent", "round", "outline"] }[opt.letter.toLowerCase()];
+  const neverDemos = opt.neverDemos;
   const never = opt.never.map((n, i) => `<div class="never"><div class="demo ${neverDemos[i]}">${opt.monogram()}</div><h4>${esc(n.title)}</h4><p>${esc(n.note)}</p></div>`).join("\n");
 
   const faces = opt.fonts.faces.map((f) => `<tr><td>${esc(f.name)}</td><td>${esc(f.role)}</td><td>${esc(f.weights)}</td><td><a href="${f.source}" target="_blank" rel="noopener">Google Fonts</a></td><td>${esc(f.license)}</td></tr>`).join("");
@@ -149,7 +161,7 @@ export function kitPage(opt, { contrast, lockup, wordmark, hasSample }) {
 <style>${KIT_CSS}</style>
 </head>
 <body class="kit">
-<header class="site-head"><div class="wrap nav"><a class="lockup" href="index.html" aria-label="Ellington Studio">${lockup(opt)}</a><a class="btn secondary small" href="../index.html">All three options</a></div></header>
+<header class="site-head"><div class="wrap nav"><a class="lockup" href="index.html" aria-label="Ellington Studio">${lockup(opt)}</a><a class="btn secondary small" href="../index.html">All five options</a></div></header>
 <main>
 <div class="kit-head">
   <p class="eyebrow">Brand kit. ${esc(opt.title)}. September 24th, 2026</p>
@@ -184,6 +196,7 @@ export function kitPage(opt, { contrast, lockup, wordmark, hasSample }) {
       <p style="margin:0;color:var(--mute);font-size:14px">Clear space on every side equals x, one quarter of the monogram's height. Nothing enters the box.</p>
     </div>
   </div>
+  ${opt.ornament ? `<h3 style="margin:36px 0 6px">Ornament</h3><p class="sub" style="margin-bottom:0">A repeating motif built from the E stems and the S curve. It is a divider, used once per page on a hairline, never a tiled ground.</p><div class="orn-row">${Array.from({ length: 12 }, () => opt.ornament()).join("")}</div>` : ""}
   <h3 style="margin:36px 0 14px">Three things never to do</h3>
   <div class="grid three">${never}</div>
   <h3 style="margin:36px 0 14px">Favicon and app icon</h3>

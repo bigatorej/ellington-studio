@@ -31,6 +31,29 @@ const cMonogram = (fg = "currentColor", ground = "var(--ground)") => `${svgOpen(
 <path d="M35 13h19v7H43v6.5h11V47H35v-7h11v-6.5H35z" fill="${ground}"/>
 </svg>`;
 
+
+// ---------- Option D: Maison ----------
+// A serif E and S drawn as shapes: bracketed serifs on the E, a high contrast S with beaked terminals.
+// A small lozenge sits between them. No frame, no interlock.
+const dMonogram = (fg = "currentColor", second = "var(--burgundy)") => `${svgOpen("0 0 64 64", "mono-d")}
+<path d="M8 13h22.5v6.5H16.5v8.6h12v6.2h-12v9.7H31V51H8v-4.5l3.2-.8V19.6L8 18.6z" fill="${fg}"/>
+<path d="M6 13h4.5v2.2H6zM6 48.8h4.5V51H6zM26 13h4.5v2.2H26zM26.5 48.8H31V51h-4.5z" fill="${fg}"/>
+<path d="M56.5 20.5c-1.2-4.6-4.6-6.9-8.6-6.9-4.7 0-7.7 2.6-7.7 6.3 0 9 17.4 5.7 17.4 17.5 0 6.3-4.9 10.5-11.4 10.5-5.6 0-9.4-2.9-10.8-7.9" fill="none" stroke="${fg}" stroke-width="6"/>
+<path d="M54.2 16.4l3.4-3.6 1.6 1.6-3.4 3.6zM37.2 43.5l-3.4 3.6 1.6 1.6 3.4-3.6z" fill="${fg}"/>
+<path d="M33.2 31.5l3.3-3.3 3.3 3.3-3.3 3.3z" fill="${second}"/>
+</svg>`;
+
+// Repeating ornament built from the E stems and the S curve. Used as a hairline divider, never all over.
+const dOrnamentTile = (fg = "currentColor") => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 24" class="orn" aria-hidden="true"><path d="M5 4v16M27 4v16" stroke="${fg}" stroke-width="1.6"/><path d="M9 8c3-4 8-3 8 1s-8 2-8 6 6 5 9 1" fill="none" stroke="${fg}" stroke-width="1.6"/><path d="M16 1l2 2-2 2-2-2z" fill="${fg}"/></svg>`;
+
+// ---------- Option E: Coastline ----------
+// Rounded strokes. The E's bottom bar and the S share one soft horizon curve underneath.
+const eMonogram = (fg = "currentColor", second = "var(--ocean)") => `${svgOpen("0 0 64 64", "mono-e")}
+<path d="M12 12v28M12 12h17M12 26h14M12 40h17" fill="none" stroke="${fg}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53 18.5c-1.5-3.5-5-5.5-8.5-5.5-4.6 0-7.5 2.6-7.5 6 0 8 16 4.5 16 13 0 4-3.6 6.5-8 6.5-4.3 0-7.6-2-9-5.5" fill="none" stroke="${fg}" stroke-width="7" stroke-linecap="round"/>
+<path d="M9 53c7.5-5 15.5-5 23 0s15.5 5 23 0" fill="none" stroke="${second}" stroke-width="4.5" stroke-linecap="round"/>
+</svg>`;
+
 export const OPTIONS = {
   a: {
     slug: "a-blueprint",
@@ -42,7 +65,7 @@ export const OPTIONS = {
     risk: "Blue and orange sits one step from SwampCast. The ember signal must stay under 10% of any screen or it drifts into sports.",
     furthest: "Bar Ellington. No gold, no serif, no cream, no glassware.",
     recommend: true,
-    reason: "It is the pair Ellington already loves, it sells exactly what the Studio sells, and the engineered blues plus a burnt ember keep it a full step from SwampCast.",
+    reason: "Of the five it is the only one whose design makes the Studio's actual promise, precision on a date, and it is the pair Ellington already loves, kept a full step from SwampCast by the engineered blues and the ember under 10%.",
     fonts: {
       url: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap",
       faces: [
@@ -101,6 +124,10 @@ export const OPTIONS = {
     ],
     monogram: aMonogram,
     heroArt: (m) => `<div class="draft-sheet">${m}<span class="dim dim-w"></span><span class="dim dim-h"></span></div>`,
+    wm: { fam: "'Space Grotesk', sans-serif", weight: 700, spacing: "0.06em", text: "ELLINGTON STUDIO", size: 24, width: 270 },
+    show: { head: "'Space Grotesk', sans-serif", text: "'Manrope', sans-serif", weight: 700, tracking: "-0.01em", primaryBg: "#1E3A5F", primaryFg: "#FFFFFF", second: "#B8420C" },
+    icon: { bg: "#0B1626", fg: "#E8EEF5", second: "#B8420C" },
+    neverDemos: ["royal", "soft", "noframe"],
   },
 
   b: {
@@ -170,6 +197,10 @@ export const OPTIONS = {
     ],
     monogram: bMonogram,
     heroArt: (m) => `<div class="seal-stage">${m}</div>`,
+    wm: { fam: "'Fraunces', serif", weight: 400, spacing: "0.22em", text: "ELLINGTON STUDIO", size: 22, width: 330 },
+    show: { head: "'Fraunces', serif", text: "'Source Sans 3', sans-serif", weight: 400, tracking: "0", primaryBg: "#0F2E23", primaryFg: "#F4ECDD", second: "#8A4E1E" },
+    icon: { bg: "#0F2E23", fg: "#F4ECDD", second: "#D9A268" },
+    neverDemos: ["gold", "cg", "fillseal"],
   },
 
   c: {
@@ -240,18 +271,168 @@ export const OPTIONS = {
     ],
     monogram: cMonogram,
     heroArt: (m) => `<div class="signal-block">${m}</div>`,
+    wm: { fam: "'Inter Tight', sans-serif", weight: 800, spacing: "-0.02em", text: "Ellington Studio", size: 30, width: 250 },
+    show: { head: "'Inter Tight', sans-serif", text: "'Inter', sans-serif", weight: 800, tracking: "-0.03em", primaryBg: "#C6F135", primaryFg: "#0B0B0B", second: "#141414" },
+    icon: { bg: "#141414", fg: "#0B0B0B", second: "#F5F5F2", block: true },
+    neverDemos: ["twoaccent", "round", "outline"],
+  },
+
+  d: {
+    slug: "d-maison",
+    letter: "D",
+    name: "Maison",
+    title: "Option D, Maison",
+    feeling: "Rich, confident, theatrical, storied, precise",
+    says: "The Studio is a house with standards. Every project is composed, not assembled, and the price is part of the composition.",
+    risk: "Jewel tones and a high contrast serif can tip into fashion. If the layout loosens or a gold ground creeps in, it stops being a software studio and starts being a boutique.",
+    furthest: "The Quadrant Company. No orange, no Helvetica, no boxed mark, nothing corporate.",
+    recommend: false,
+    reason: "The most memorable of the five and the best for a founder led brand, but the theatre asks the client to buy taste before they buy a delivery date.",
+    originality: "Not borrowed: no interlocking letters, no double letter monogram, no stripe of any color pair, no all over monogram print, no flora, no house tagline, no gold ground. Built instead: an emerald and burgundy pair on warm off white, a Bodoni serif with Instrument Sans, a drawn serif E and S with a lozenge between them, and a hairline divider made from the E stems and the S curve.",
+    fonts: {
+      url: "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Instrument+Sans:wght@400;500;600&display=swap",
+      faces: [
+        { name: "Bodoni Moda", role: "Display, headings, the tagline", weights: "400, 600, italic 400", source: "https://fonts.google.com/specimen/Bodoni+Moda", license: "SIL Open Font License 1.1" },
+        { name: "Instrument Sans", role: "Text, labels, buttons, forms", weights: "400, 500, 600", source: "https://fonts.google.com/specimen/Instrument+Sans", license: "SIL Open Font License 1.1" },
+      ],
+    },
+    tokens: {
+      ground: "#F7F2EA", surface: "#FFFBF5", emerald: "#0E4D3A", emerald2: "#0A3A2C", burgundy: "#6B1F2A", ink: "#221C1C", ink2: "#4A4141", mute: "#6E6560",
+      line: "#E2D8CA", gold: "#B08D57", success: "#2E6B3F", danger: "#9B2335", onDark: "#F7F2EA", onDarkMute: "#C9C0B3",
+    },
+    swatches: [
+      { name: "Off White", token: "ground", role: "Ground, warm paper", pairText: "ink", size: "body" },
+      { name: "Card", token: "surface", role: "Card surface", pairText: "ink", size: "body" },
+      { name: "Emerald", token: "emerald", role: "First jewel. Hero cover, footer, primary button", pairText: "onDark", size: "body" },
+      { name: "Deep Emerald", token: "emerald2", role: "Raised panel on Emerald", pairText: "onDark", size: "body" },
+      { name: "Burgundy", token: "burgundy", role: "Second jewel. Labels, the lozenge, links", pairText: "ground", size: "body" },
+      { name: "Ink", token: "ink", role: "Headings and body text", pairText: "ground", size: "body" },
+      { name: "Ink 2", token: "ink2", role: "Secondary text", pairText: "ground", size: "body" },
+      { name: "Mute", token: "mute", role: "Captions", pairText: "ground", size: "body" },
+      { name: "Gold Hairline", token: "gold", role: "Hairline rules and one foil moment only. Never a ground, never text", pairText: "emerald2", size: "large" },
+      { name: "Success", token: "success", role: "Success state", pairText: "surface", size: "body", textOnIt: true },
+      { name: "Danger", token: "danger", role: "Danger state, form errors", pairText: "surface", size: "body", textOnIt: true },
+      { name: "Off White on Emerald", token: "onDark", role: "Text on dark grounds", pairText: "emerald", size: "body" },
+    ],
+    scale: [
+      ["Display", "Bodoni Moda 400, optical size 96", "84 / 0.95", "clamp(48px, 7.5vw, 84px), tight leading"],
+      ["H1", "Bodoni Moda 400", "64 / 1.0", "clamp(40px, 5.6vw, 64px)"],
+      ["H2", "Bodoni Moda 600", "38 / 1.1", "38px"],
+      ["Body", "Instrument Sans 400", "17 / 1.6", "17px"],
+      ["Small", "Instrument Sans 600", "12 / 1.5", "12px, uppercase, tracking .2em"],
+      ["Mono", "none", "", "No mono. Figures set in Bodoni Moda"],
+    ],
+    rules: [
+      ["Spacing unit", "8px. Sections 120px, blocks 64px, card padding 36px, margins generous"],
+      ["Radius", "0. Every corner is cut square"],
+      ["Shadow", "One deep shadow on the cover image only: 0 40px 80px rgba(14,77,58,.25)"],
+      ["Rules", "1px Gold hairlines. The ornament row sits on a hairline as a section divider, once per page"],
+    ],
+    shots: [
+      "An oxblood leather notebook closed on an emerald lacquered desk, one hard light from the right, one long shadow.",
+      "A black fountain pen laid diagonally on burgundy velvet, the nib catching the light, everything else soft.",
+      "A stack of three warm white cards on a lacquered surface, the top card blank, a deep green wall behind.",
+      "A brass desk clock face down on velvet, the shadow doing the work, no reflection of the room.",
+      "A laptop closed on a marble ledge, a single leaf of paper beneath its edge, the backdrop a burgundy curtain.",
+      "A leather portfolio open to a blank page, shot from above, the lacquer around it reflecting one light.",
+    ],
+    sample: { prompt: "Emerald lacquered desk, burgundy velvet backdrop, oxblood notebook, black fountain pen, one dramatic shadow." },
+    voice: "Maison speaks in complete, composed sentences and pauses between them. A large serif line, a hairline, then the detail in a small sans. It never hurries, and it never repeats itself.",
+    never: [
+      { title: "Never gold as a ground", note: "Gold on cream is Bar Ellington. Gold here is a hairline, nothing more." },
+      { title: "Never Cormorant Garamond", note: "Two siblings own it. Bodoni Moda is the serif here." },
+      { title: "Never the ornament all over", note: "One divider row per page. Tiled, it reads as a monogram print, which is someone else's idea." },
+    ],
+    monogram: dMonogram,
+    ornament: dOrnamentTile,
+    heroArt: (m) => `<figure class="cover"><img src="assets/sample.jpg" alt="" width="1536" height="1024"><span class="cover-mark">${m}</span></figure>`,
+    wm: { fam: "'Bodoni Moda', serif", weight: 400, spacing: "0.3em", text: "Ellington Studio", size: 24, width: 360, smallCaps: true },
+    show: { head: "'Bodoni Moda', serif", text: "'Instrument Sans', sans-serif", weight: 400, tracking: "-0.01em", primaryBg: "#0E4D3A", primaryFg: "#F7F2EA", second: "#B08D57" },
+    icon: { bg: "#0E4D3A", fg: "#F7F2EA", second: "#B08D57" },
+    neverDemos: ["goldground", "cg", "allover"],
+  },
+
+  e: {
+    slug: "e-coastline",
+    letter: "E",
+    name: "Coastline",
+    title: "Option E, Coastline",
+    feeling: "Calm, sun washed, open, unhurried, kind",
+    says: "The Studio is easy to work with. The process is as clear as the price, and nothing about it will stress you.",
+    risk: "Low saturation and soft corners can read as wellness or lifestyle rather than engineering. It needs the figures and the dates to stay crisp or it drifts into a mood board.",
+    furthest: "SwampCast and The Quadrant Company together. No bright color, no black, no hard edge, no broadcast energy.",
+    recommend: false,
+    reason: "The most welcoming of the five and the clearest break from the current site, but the calm hides the precision that is the Studio's actual promise.",
+    originality: "Not borrowed: no mountain or wave device, no stitched or embroidered feel, no athletic or performance vocabulary, no product photography of clothing or bodies, no tagline about movement. Built instead: a warm white and sand ground with sage, eucalyptus, sea glass and a muted ocean blue, one humanist sans at two weights, a rounded E and S with one horizon curve beneath them, and a lowercase wordmark.",
+    fonts: {
+      url: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap",
+      faces: [
+        { name: "Plus Jakarta Sans", role: "Everything. Headings at 600, text at 400", weights: "400, 600", source: "https://fonts.google.com/specimen/Plus+Jakarta+Sans", license: "SIL Open Font License 1.1" },
+      ],
+    },
+    tokens: {
+      ground: "#FBF8F3", sand: "#F1EBE1", charcoal: "#3A3935", ink: "#3A3935", ink2: "#5B5953", mute: "#6B6860",
+      line: "#E4DDD1", sage: "#8A9A7B", eucalyptus: "#4F6A5B", seaglass: "#C5DCD5", driftwood: "#C8B79F", ocean: "#4A6B7C",
+      success: "#47754F", danger: "#A6524A", onDark: "#FBF8F3", onDarkMute: "#C9C4BA",
+    },
+    swatches: [
+      { name: "Warm White", token: "ground", role: "Ground", pairText: "ink", size: "body" },
+      { name: "Sand", token: "sand", role: "Soft panels, cards, form fields", pairText: "ink", size: "body" },
+      { name: "Charcoal", token: "charcoal", role: "The darkest ink. Text, footer ground. Never pure black", pairText: "ground", size: "body" },
+      { name: "Ink 2", token: "ink2", role: "Secondary text", pairText: "ground", size: "body" },
+      { name: "Mute", token: "mute", role: "Captions and labels", pairText: "ground", size: "body" },
+      { name: "Ocean", token: "ocean", role: "Primary button, links, the horizon curve", pairText: "ground", size: "body", textOnIt: true },
+      { name: "Eucalyptus", token: "eucalyptus", role: "Labels, step numbers, secondary accent", pairText: "ground", size: "body" },
+      { name: "Sage", token: "sage", role: "Large text and rules on Sand only", pairText: "charcoal", size: "large" },
+      { name: "Sea Glass", token: "seaglass", role: "Tint panels behind Charcoal text", pairText: "charcoal", size: "body" },
+      { name: "Driftwood", token: "driftwood", role: "Tags and hairline accents beside Charcoal", pairText: "charcoal", size: "body" },
+      { name: "Success", token: "success", role: "Success state", pairText: "ground", size: "body", textOnIt: true },
+      { name: "Danger", token: "danger", role: "Danger state, form errors", pairText: "ground", size: "body", textOnIt: true },
+      { name: "Warm White on Charcoal", token: "onDark", role: "Text on the footer", pairText: "charcoal", size: "body" },
+    ],
+    scale: [
+      ["Display", "Plus Jakarta Sans 600", "60 / 1.08", "clamp(36px, 4.8vw, 60px), tracking .02em negative"],
+      ["H1", "Plus Jakarta Sans 600", "52 / 1.1", "clamp(34px, 4.2vw, 52px)"],
+      ["H2", "Plus Jakarta Sans 600", "32 / 1.2", "32px"],
+      ["Body", "Plus Jakarta Sans 400", "17 / 1.75", "17px, wide line height, airy paragraphs"],
+      ["Small", "Plus Jakarta Sans 600", "13 / 1.6", "13px, tracking .04em"],
+      ["Mono", "none", "", "No mono. Figures set in Plus Jakarta Sans 600"],
+    ],
+    rules: [
+      ["Spacing unit", "8px. Sections 112px, blocks 56px, card padding 32px, paragraphs max 60 characters"],
+      ["Radius", "16px on cards and fields, 999px on buttons and tags"],
+      ["Shadow", "Almost invisible: 0 2px 12px rgba(58,57,53,.06)"],
+      ["Rules", "1px Line. Sections separate with space first, a rule second"],
+    ],
+    shots: [
+      "A closed laptop on a pale wood porch table, morning haze, the ocean far behind and out of focus.",
+      "A linen cloth, a ceramic mug and a paper notebook in soft side light, nothing glossy in the frame.",
+      "A sage plant on a windowsill, the window fogged at the edges, the light warm and low.",
+      "A phone face up on driftwood, the screen a plain pale page, sand in the background.",
+      "A founder's hands on a keyboard at an outdoor table, sleeves pushed up, the frame cropped at the wrists.",
+      "An empty chair on a porch at dawn, a laptop bag beside it, sea glass blue in the far distance.",
+    ],
+    sample: { prompt: "Pale wood porch table, closed laptop, linen, ceramic mug, morning haze, the Pacific out of focus, sage at the edge." },
+    voice: "Coastline speaks the way a good host does. Short, warm sentences with room around them, no pressure, and the price said once and plainly. It exhales, and lets you exhale too.",
+    never: [
+      { title: "Never pure black", note: "The darkest ink is Charcoal. Black closes the page." },
+      { title: "Never a square corner", note: "Cards at 16px, buttons at full pill. A sharp edge breaks the calm." },
+      { title: "Never a glossy shadow", note: "Depth comes from Sand on Warm White, never from a drop shadow you can see." },
+    ],
+    monogram: eMonogram,
+    heroArt: (m) => `<figure class="shore"><img src="assets/sample.jpg" alt="" width="1536" height="1024"></figure>`,
+    wm: { fam: "'Plus Jakarta Sans', sans-serif", weight: 600, spacing: "-0.01em", text: "ellington studio", size: 26, width: 230 },
+    show: { head: "'Plus Jakarta Sans', sans-serif", text: "'Plus Jakarta Sans', sans-serif", weight: 600, tracking: "-0.02em", primaryBg: "#4A6B7C", primaryFg: "#FBF8F3", second: "#4A6B7C" },
+    icon: { bg: "#F1EBE1", fg: "#3A3935", second: "#4A6B7C" },
+    neverDemos: ["black", "sharp", "glossy"],
   },
 };
 
 // Wordmark as SVG text in the option's heading face. The lockup pairs it with the monogram.
 export function wordmark(opt, fg = "currentColor") {
-  const fam = { a: "'Space Grotesk', sans-serif", b: "'Fraunces', serif", c: "'Inter Tight', sans-serif" }[opt.letter.toLowerCase()];
-  const weight = { a: 700, b: 400, c: 800 }[opt.letter.toLowerCase()];
-  const spacing = { a: "0.06em", b: "0.22em", c: "-0.02em" }[opt.letter.toLowerCase()];
-  const text = opt.letter === "B" ? "ELLINGTON STUDIO" : opt.letter === "C" ? "Ellington Studio" : "ELLINGTON STUDIO";
-  const size = opt.letter === "B" ? 22 : opt.letter === "C" ? 30 : 24;
-  const w = opt.letter === "B" ? 330 : opt.letter === "C" ? 250 : 270;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} 40" class="wordmark wm-${opt.letter.toLowerCase()}" role="img" aria-label="Ellington Studio"><text x="0" y="29" font-family="${fam}" font-weight="${weight}" font-size="${size}" letter-spacing="${spacing}" fill="${fg}">${text}</text></svg>`;
+  const w = opt.wm;
+  const sc = w.smallCaps ? ' style="font-variant:small-caps"' : "";
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w.width} 40" class="wordmark wm-${opt.letter.toLowerCase()}" role="img" aria-label="Ellington Studio"><text x="0" y="29" font-family="${w.fam}" font-weight="${w.weight}" font-size="${w.size}" letter-spacing="${w.spacing}" fill="${fg}"${sc}>${w.text}</text></svg>`;
 }
 
 export function lockup(opt, fg = "currentColor", second) {

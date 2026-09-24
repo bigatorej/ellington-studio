@@ -3,64 +3,68 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ellington Studio. Three brand options</title>
-<meta name="description" content="Three complete brand directions for Ellington Studio, each with a kit, a home page and an intake page. Pick one by looking.">
+<title>Ellington Studio. Five brand options</title>
+<meta name="description" content="Five complete brand directions for Ellington Studio, each with a kit, a home page and an intake page. Pick one by looking.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap">
 <style>
 :root{--ink:#14161a;--ink2:#3d434c;--mute:#6b7280;--line:#e2e4e8;--paper:#fff;--wash:#f4f4f2}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5}
 a{color:inherit}
-.wrap{max-width:1360px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1400px;margin:0 auto;padding:0 20px}
 header{padding:48px 0 24px;border-bottom:1px solid var(--line)}
 header h1{font-size:34px;margin:0 0 8px;letter-spacing:-.01em}
 header p{margin:0;color:var(--ink2);max-width:760px;font-size:18px}
 header .date{display:block;margin-top:10px;font-size:13px;color:var(--mute);letter-spacing:.08em;text-transform:uppercase}
-.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:36px 0}
+.cols{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;padding:36px 0}
 .col{border:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
-.col .stage{height:170px;display:flex;align-items:center;justify-content:center;position:relative}
-.col .stage .letter{position:absolute;left:16px;top:10px;font-size:14px;letter-spacing:.1em;opacity:.7}
-.col .stage .lk .lockup-inner{display:flex;align-items:center;gap:14px}
-.col .stage .mark{width:56px;height:56px}
-.col .stage .wordmark{height:30px;width:auto}
-.col h2{margin:22px 22px 4px;font-size:30px;line-height:1}
-.col .feel{margin:0 22px 16px;color:var(--mute);font-size:15px}
-.col .strip{display:flex;height:34px;margin:0 22px 16px;border:1px solid var(--line)}
+.col .stage{height:150px;display:flex;align-items:center;justify-content:center;position:relative;padding:0 12px}
+.col .stage .letter{position:absolute;left:14px;top:10px;font-size:14px;letter-spacing:.1em;opacity:.7}
+.col .stage .lk .lockup-inner{display:flex;align-items:center;gap:10px}
+.col .stage .mark{width:44px;height:44px;flex:none}
+.col .stage .wordmark{height:22px;width:auto;max-width:150px}
+.col h2{margin:18px 16px 4px;font-size:26px;line-height:1}
+.col .feel{margin:0 16px 14px;color:var(--mute);font-size:13.5px}
+.col .strip{display:flex;height:28px;margin:0 16px 14px;border:1px solid var(--line)}
 .col .strip i{flex:1}
-.col .type{margin:0 22px 16px;padding:22px;border:1px solid var(--line)}
-.col .type .th{font-size:28px;line-height:1.05;margin-bottom:8px}
-.col .type p{margin:0 0 14px;font-size:15px;opacity:.85}
-.col .type .cta{display:inline-block;padding:10px 16px;font-size:14px;font-weight:600;text-decoration:none}
-.col .shot{display:block;margin:0 22px;border:1px solid var(--line);overflow:hidden;background:var(--wash);aspect-ratio:1440/1300}
+.col .type{margin:0 16px 14px;padding:16px;border:1px solid var(--line)}
+.col .type .th{font-size:22px;line-height:1.05;margin-bottom:8px}
+.col .type p{margin:0 0 12px;font-size:13.5px;opacity:.85}
+.col .type .cta{display:inline-block;padding:9px 14px;font-size:13px;font-weight:600;text-decoration:none}
+.col .shot{display:block;margin:0 16px;border:1px solid var(--line);overflow:hidden;background:var(--wash);aspect-ratio:1440/1300}
 .col .shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
-.col .links{display:flex;gap:6px;flex-wrap:wrap;padding:16px 22px 22px;margin-top:auto}
-.col .links a{font-size:13.5px;font-weight:600;text-decoration:none;border:1px solid var(--line);padding:7px 11px;border-radius:999px;color:var(--ink)}
+.col .links{display:flex;gap:5px;flex-wrap:wrap;padding:14px 16px 18px;margin-top:auto}
+.col .links a{font-size:12.5px;font-weight:600;text-decoration:none;border:1px solid var(--line);padding:6px 9px;border-radius:999px;color:var(--ink)}
 .col .links a:hover{background:var(--wash)}
-.cmp{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 36px}
-.cmp th,.cmp td{text-align:left;vertical-align:top;padding:14px 16px 14px 0;border-bottom:1px solid var(--line)}
-.cmp thead th{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
-.cmp tbody th{width:200px;font-weight:600;color:var(--ink)}
-.cmp td{color:var(--ink2);width:calc((100% - 200px)/3)}
+.cmp{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0 36px}
+.cmp th,.cmp td{text-align:left;vertical-align:top;padding:14px 14px 14px 0;border-bottom:1px solid var(--line)}
+.cmp thead th{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.cmp tbody th{width:150px;font-weight:600;color:var(--ink)}
+.cmp td{color:var(--ink2);width:calc((100% - 150px)/5)}
 .cmp .rec{color:#0f6b3a}
-.choose-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;padding:8px 0 64px}
-.choose{font:inherit;font-weight:700;font-size:16px;padding:14px 26px;border:2px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;border-radius:6px}
-.choose.opt-b{background:#0F2E23;border-color:#0F2E23}
-.choose.opt-c{background:#C6F135;border-color:#C6F135;color:#0B0B0B}
+.cmp .orig td{background:var(--wash)}
+.cmp .orig .na{color:var(--mute);font-style:italic}
+.choose-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding:8px 0 64px}
+.choose{font:inherit;font-weight:700;font-size:16px;padding:14px 24px;border:2px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;border-radius:6px}
 .choose:focus-visible{outline:3px solid #b8860b;outline-offset:2px}
-#ruled{color:var(--mute);font-size:14.5px;min-height:1.4em}
+#ruled{color:var(--mute);font-size:14.5px;min-height:1.4em;flex-basis:100%}
 h2.sec{font-size:24px;margin:16px 0 10px}
-@media (max-width:1000px){.cols{grid-template-columns:1fr}.cmp{display:block;overflow-x:auto}.cmp tbody th{width:150px}}
+@media (max-width:1180px){.cols{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:1000px){.cmp{display:block;overflow-x:auto}.cmp tbody th{width:150px;min-width:150px}.cmp td{min-width:220px}}
+@media (max-width:760px){.cols{grid-template-columns:1fr}.col .stage .wordmark{max-width:200px}}
 </style>
 </head>
 <body>
 <header><div class="wrap">
-  <h1>Ellington Studio. Three brand options.</h1>
-  <p>Three complete directions, same words in each. Open the home pages side by side, look, and choose. Each column links to the live home page, the intake page and the brand kit built in that system.</p>
+  <h1>Ellington Studio. Five brand options.</h1>
+  <p>Five complete directions, same words in each. Open the home pages side by side, look, and choose. Each column links to the live home page, the intake page and the brand kit built in that system.</p>
   <span class="date">September 24th, 2026</span>
 </div></header>
 <main class="wrap">
@@ -82,7 +86,7 @@ h2.sec{font-size:24px;margin:16px 0 10px}
   <div class="type" style="font-family:'Manrope', sans-serif;color:#0F1B2D;background:#F4F6F9">
     <div class="th" style="font-family:'Space Grotesk', sans-serif;font-weight:700;letter-spacing:-0.01em">A website in a week.</div>
     <p>You know the price and the date before you say yes.</p>
-    <a class="cta" style="background:#1E3A5F;color:#E8EEF5;font-family:'Manrope', sans-serif">Start a project</a>
+    <a class="cta" style="background:#1E3A5F;color:#FFFFFF;font-family:'Manrope', sans-serif">Start a project</a>
   </div>
   <a class="shot" href="a-blueprint/index.html"><img src="a-blueprint/assets/home-1440.png" alt="Option A, Blueprint home page at 1440 pixels" loading="lazy"></a>
   <nav class="links">
@@ -144,29 +148,83 @@ h2.sec{font-size:24px;margin:16px 0 10px}
     <a href="c-signal/Ellington Studio Brand Kit Option C 2026.09.24.pdf">Kit PDF</a>
   </nav>
 </article>
+<article class="col opt-d">
+  <div class="stage" style="background:#0E4D3A;color:#F7F2EA">
+    <span class="letter" style="font-family:'Bodoni Moda', serif">D</span>
+    <span class="lk"><span class="lockup-inner"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-d" role="img" aria-label="Ellington Studio">
+<path d="M8 13h22.5v6.5H16.5v8.6h12v6.2h-12v9.7H31V51H8v-4.5l3.2-.8V19.6L8 18.6z" fill="currentColor"/>
+<path d="M6 13h4.5v2.2H6zM6 48.8h4.5V51H6zM26 13h4.5v2.2H26zM26.5 48.8H31V51h-4.5z" fill="currentColor"/>
+<path d="M56.5 20.5c-1.2-4.6-4.6-6.9-8.6-6.9-4.7 0-7.7 2.6-7.7 6.3 0 9 17.4 5.7 17.4 17.5 0 6.3-4.9 10.5-11.4 10.5-5.6 0-9.4-2.9-10.8-7.9" fill="none" stroke="currentColor" stroke-width="6"/>
+<path d="M54.2 16.4l3.4-3.6 1.6 1.6-3.4 3.6zM37.2 43.5l-3.4 3.6 1.6 1.6 3.4-3.6z" fill="currentColor"/>
+<path d="M33.2 31.5l3.3-3.3 3.3 3.3-3.3 3.3z" fill="#B08D57"/>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 40" class="wordmark wm-d" role="img" aria-label="Ellington Studio"><text x="0" y="29" font-family="'Bodoni Moda', serif" font-weight="400" font-size="24" letter-spacing="0.3em" fill="currentColor" style="font-variant:small-caps">Ellington Studio</text></svg></span></span>
+  </div>
+  <h2 style="font-family:'Bodoni Moda', serif;font-weight:400;letter-spacing:-0.01em">Maison</h2>
+  <p class="feel" style="font-family:'Instrument Sans', sans-serif">Rich, confident, theatrical, storied, precise</p>
+  <div class="strip"><i title="ground #F7F2EA" style="background:#F7F2EA"></i><i title="surface #FFFBF5" style="background:#FFFBF5"></i><i title="emerald #0E4D3A" style="background:#0E4D3A"></i><i title="emerald2 #0A3A2C" style="background:#0A3A2C"></i><i title="burgundy #6B1F2A" style="background:#6B1F2A"></i><i title="ink #221C1C" style="background:#221C1C"></i><i title="ink2 #4A4141" style="background:#4A4141"></i><i title="mute #6E6560" style="background:#6E6560"></i><i title="line #E2D8CA" style="background:#E2D8CA"></i><i title="gold #B08D57" style="background:#B08D57"></i><i title="success #2E6B3F" style="background:#2E6B3F"></i><i title="danger #9B2335" style="background:#9B2335"></i></div>
+  <div class="type" style="font-family:'Instrument Sans', sans-serif;color:#221C1C;background:#F7F2EA">
+    <div class="th" style="font-family:'Bodoni Moda', serif;font-weight:400;letter-spacing:-0.01em">A website in a week.</div>
+    <p>You know the price and the date before you say yes.</p>
+    <a class="cta" style="background:#0E4D3A;color:#F7F2EA;font-family:'Instrument Sans', sans-serif">Start a project</a>
+  </div>
+  <a class="shot" href="d-maison/index.html"><img src="d-maison/assets/home-1440.png" alt="Option D, Maison home page at 1440 pixels" loading="lazy"></a>
+  <nav class="links">
+    <a href="d-maison/index.html">Home</a>
+    <a href="d-maison/intake.html">Intake</a>
+    <a href="d-maison/kit.html">Brand kit</a>
+    <a href="d-maison/Ellington Studio Brand Kit Option D 2026.09.24.pdf">Kit PDF</a>
+  </nav>
+</article>
+<article class="col opt-e">
+  <div class="stage" style="background:#3A3935;color:#FBF8F3">
+    <span class="letter" style="font-family:'Plus Jakarta Sans', sans-serif">E</span>
+    <span class="lk"><span class="lockup-inner"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark mono-e" role="img" aria-label="Ellington Studio">
+<path d="M12 12v28M12 12h17M12 26h14M12 40h17" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53 18.5c-1.5-3.5-5-5.5-8.5-5.5-4.6 0-7.5 2.6-7.5 6 0 8 16 4.5 16 13 0 4-3.6 6.5-8 6.5-4.3 0-7.6-2-9-5.5" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+<path d="M9 53c7.5-5 15.5-5 23 0s15.5 5 23 0" fill="none" stroke="#4A6B7C" stroke-width="4.5" stroke-linecap="round"/>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 40" class="wordmark wm-e" role="img" aria-label="Ellington Studio"><text x="0" y="29" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="26" letter-spacing="-0.01em" fill="currentColor">ellington studio</text></svg></span></span>
+  </div>
+  <h2 style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:600;letter-spacing:-0.02em">Coastline</h2>
+  <p class="feel" style="font-family:'Plus Jakarta Sans', sans-serif">Calm, sun washed, open, unhurried, kind</p>
+  <div class="strip"><i title="ground #FBF8F3" style="background:#FBF8F3"></i><i title="sand #F1EBE1" style="background:#F1EBE1"></i><i title="charcoal #3A3935" style="background:#3A3935"></i><i title="ink #3A3935" style="background:#3A3935"></i><i title="ink2 #5B5953" style="background:#5B5953"></i><i title="mute #6B6860" style="background:#6B6860"></i><i title="line #E4DDD1" style="background:#E4DDD1"></i><i title="sage #8A9A7B" style="background:#8A9A7B"></i><i title="eucalyptus #4F6A5B" style="background:#4F6A5B"></i><i title="seaglass #C5DCD5" style="background:#C5DCD5"></i><i title="driftwood #C8B79F" style="background:#C8B79F"></i><i title="ocean #4A6B7C" style="background:#4A6B7C"></i><i title="success #47754F" style="background:#47754F"></i><i title="danger #A6524A" style="background:#A6524A"></i></div>
+  <div class="type" style="font-family:'Plus Jakarta Sans', sans-serif;color:#3A3935;background:#FBF8F3">
+    <div class="th" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:600;letter-spacing:-0.02em">A website in a week.</div>
+    <p>You know the price and the date before you say yes.</p>
+    <a class="cta" style="background:#4A6B7C;color:#FBF8F3;font-family:'Plus Jakarta Sans', sans-serif">Start a project</a>
+  </div>
+  <a class="shot" href="e-coastline/index.html"><img src="e-coastline/assets/home-1440.png" alt="Option E, Coastline home page at 1440 pixels" loading="lazy"></a>
+  <nav class="links">
+    <a href="e-coastline/index.html">Home</a>
+    <a href="e-coastline/intake.html">Intake</a>
+    <a href="e-coastline/kit.html">Brand kit</a>
+    <a href="e-coastline/Ellington Studio Brand Kit Option E 2026.09.24.pdf">Kit PDF</a>
+  </nav>
+</article>
   </div>
   <h2 class="sec">Side by side</h2>
   <table class="cmp">
-<thead><tr><th></th><th>Option A, Blueprint</th><th>Option B, Greenhouse</th><th>Option C, Signal</th></tr></thead>
+<thead><tr><th></th><th>Option A, Blueprint</th><th>Option B, Greenhouse</th><th>Option C, Signal</th><th>Option D, Maison</th><th>Option E, Coastline</th></tr></thead>
 <tbody>
-<tr><th>The feeling in 5 words</th><td>Engineered, exact, calm, blue, trusted</td><td>Quiet money, warm, trusted, crafted, private</td><td>Bold, modern, confident, direct, fast</td></tr>
-<tr><th>What it says about the Studio</th><td>The Studio is a precision shop. The date and the price are drawn before the work starts, like a plan.</td><td>The Studio is a craftsman you were referred to. You are paying for judgment and a finished object, not hours.</td><td>The Studio is a software company that ships. Big type, hard edges, one bright signal that tells you where to press.</td></tr>
-<tr><th>The risk</th><td>Blue and orange sits one step from SwampCast. The ember signal must stay under 10% of any screen or it drifts into sports.</td><td>Warm cream plus a metal sits nearest Bar Ellington. Copper has to stay copper, never gold, and the serif has to stay modern.</td><td>Black and white with one loud accent is the default of a thousand software studios. It leans on the mark and the type to stay Ellington's.</td></tr>
-<tr><th>Sibling brand it stands furthest from</th><td>Bar Ellington. No gold, no serif, no cream, no glassware.</td><td>SwampCast. Nothing in it moves fast or shouts.</td><td>Bar Ellington and the fashion house together. No warmth, no serif, no metal, no editorial softness.</td></tr>
-<tr><th>Recommendation</th><td><b class="rec">Recommended.</b> It is the pair Ellington already loves, it sells exactly what the Studio sells, and the engineered blues plus a burnt ember keep it a full step from SwampCast.</td><td>Beautiful and the most expensive looking of the three, but it reads as advisory and hospitality, and physicians and creators may not see software in it.</td><td>The strongest single impression of the three and the easiest to build on, but it says software studio before it says one experienced person, and the founder is the product.</td></tr>
+<tr class=""><th>The feeling in 5 words</th><td>Engineered, exact, calm, blue, trusted</td><td>Quiet money, warm, trusted, crafted, private</td><td>Bold, modern, confident, direct, fast</td><td>Rich, confident, theatrical, storied, precise</td><td>Calm, sun washed, open, unhurried, kind</td></tr>
+<tr class=""><th>What it says about the Studio</th><td>The Studio is a precision shop. The date and the price are drawn before the work starts, like a plan.</td><td>The Studio is a craftsman you were referred to. You are paying for judgment and a finished object, not hours.</td><td>The Studio is a software company that ships. Big type, hard edges, one bright signal that tells you where to press.</td><td>The Studio is a house with standards. Every project is composed, not assembled, and the price is part of the composition.</td><td>The Studio is easy to work with. The process is as clear as the price, and nothing about it will stress you.</td></tr>
+<tr class=""><th>The risk</th><td>Blue and orange sits one step from SwampCast. The ember signal must stay under 10% of any screen or it drifts into sports.</td><td>Warm cream plus a metal sits nearest Bar Ellington. Copper has to stay copper, never gold, and the serif has to stay modern.</td><td>Black and white with one loud accent is the default of a thousand software studios. It leans on the mark and the type to stay Ellington's.</td><td>Jewel tones and a high contrast serif can tip into fashion. If the layout loosens or a gold ground creeps in, it stops being a software studio and starts being a boutique.</td><td>Low saturation and soft corners can read as wellness or lifestyle rather than engineering. It needs the figures and the dates to stay crisp or it drifts into a mood board.</td></tr>
+<tr class=""><th>Sibling brand it stands furthest from</th><td>Bar Ellington. No gold, no serif, no cream, no glassware.</td><td>SwampCast. Nothing in it moves fast or shouts.</td><td>Bar Ellington and the fashion house together. No warmth, no serif, no metal, no editorial softness.</td><td>The Quadrant Company. No orange, no Helvetica, no boxed mark, nothing corporate.</td><td>SwampCast and The Quadrant Company together. No bright color, no black, no hard edge, no broadcast energy.</td></tr>
+<tr class=""><th>Recommendation</th><td><b class="rec">Overall pick.</b> Of the five it is the only one whose design makes the Studio's actual promise, precision on a date, and it is the pair Ellington already loves, kept a full step from SwampCast by the engineered blues and the ember under 10%.</td><td>Beautiful and the most expensive looking of the three, but it reads as advisory and hospitality, and physicians and creators may not see software in it.</td><td>The strongest single impression of the three and the easiest to build on, but it says software studio before it says one experienced person, and the founder is the product.</td><td>The most memorable of the five and the best for a founder led brand, but the theatre asks the client to buy taste before they buy a delivery date.</td><td>The most welcoming of the five and the clearest break from the current site, but the calm hides the precision that is the Studio's actual promise.</td></tr>
+<tr class="orig"><th>Originality check</th><td><span class="na">Built from a brief, not a reference brand.</span></td><td><span class="na">Built from a brief, not a reference brand.</span></td><td><span class="na">Built from a brief, not a reference brand.</span></td><td>Not borrowed: no interlocking letters, no double letter monogram, no stripe of any color pair, no all over monogram print, no flora, no house tagline, no gold ground. Built instead: an emerald and burgundy pair on warm off white, a Bodoni serif with Instrument Sans, a drawn serif E and S with a lozenge between them, and a hairline divider made from the E stems and the S curve.</td><td>Not borrowed: no mountain or wave device, no stitched or embroidered feel, no athletic or performance vocabulary, no product photography of clothing or bodies, no tagline about movement. Built instead: a warm white and sand ground with sage, eucalyptus, sea glass and a muted ocean blue, one humanist sans at two weights, a rounded E and S with one horizon curve beneath them, and a lowercase wordmark.</td></tr>
 </tbody></table>
   <h2 class="sec">Make the call</h2>
   <p style="color:var(--ink2);margin:0 0 16px">Each button copies a one line ruling to the clipboard. Paste it into chat and the Studio adopts that option.</p>
   <div class="choose-row">
-<button type="button" class="choose" data-ruling="Ruling: Ellington Studio adopts Option A, Blueprint">Choose A</button>
-<button type="button" class="choose" data-ruling="Ruling: Ellington Studio adopts Option B, Greenhouse">Choose B</button>
-<button type="button" class="choose" data-ruling="Ruling: Ellington Studio adopts Option C, Signal">Choose C</button>
+<button type="button" class="choose opt-a" data-ruling="Ruling: Ellington Studio adopts Option A, Blueprint" style="background:#1E3A5F;border-color:#1E3A5F;color:#FFFFFF">Choose A</button>
+<button type="button" class="choose opt-b" data-ruling="Ruling: Ellington Studio adopts Option B, Greenhouse" style="background:#0F2E23;border-color:#0F2E23;color:#F4ECDD">Choose B</button>
+<button type="button" class="choose opt-c" data-ruling="Ruling: Ellington Studio adopts Option C, Signal" style="background:#C6F135;border-color:#C6F135;color:#0B0B0B">Choose C</button>
+<button type="button" class="choose opt-d" data-ruling="Ruling: Ellington Studio adopts Option D, Maison" style="background:#0E4D3A;border-color:#0E4D3A;color:#F7F2EA">Choose D</button>
+<button type="button" class="choose opt-e" data-ruling="Ruling: Ellington Studio adopts Option E, Coastline" style="background:#4A6B7C;border-color:#4A6B7C;color:#FBF8F3">Choose E</button>
     <span id="ruled" aria-live="polite"></span>
   </div>
 </main>
 <script>
-document.querySelectorAll(".choose").forEach((b, i) => {
-  b.classList.add(["opt-a","opt-b","opt-c"][i]);
+document.querySelectorAll(".choose").forEach((b) => {
   b.addEventListener("click", async () => {
     const text = b.dataset.ruling;
     let ok = false;

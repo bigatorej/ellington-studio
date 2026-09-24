@@ -8,7 +8,7 @@ import { readFile, stat } from "node:fs/promises";
 import { join, extname } from "node:path";
 
 const REPO = new URL("..", import.meta.url).pathname;
-const OPTS = ["a-blueprint", "b-greenhouse", "c-signal"];
+const OPTS = ["a-blueprint", "b-greenhouse", "c-signal", "d-maison", "e-coastline"];
 const fails = [];
 const ok = (c, m) => { console.log(`${c ? "PASS" : "FAIL"}  ${m}`); if (!c) fails.push(m); };
 
@@ -39,16 +39,18 @@ const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, p
 const pg = await ctx.newPage();
 await pg.goto(`${base}/brand-options/index.html`, { waitUntil: "networkidle" });
 const imgs = await pg.$$eval("img.shot, .shot img", (els) => els.map((e) => ({ src: e.getAttribute("src"), w: e.naturalWidth })));
-ok(imgs.length === 3 && imgs.every((i) => i.w > 0), `chooser shows 3 home screenshots (${imgs.map((i) => i.w).join(", ")})`);
-for (const [i, L] of ["A", "B", "C"].entries()) {
+ok(imgs.length === 5 && imgs.every((i) => i.w > 0), `chooser shows 5 home screenshots (${imgs.map((i) => i.w).join(", ")})`);
+for (const [i, L] of ["A", "B", "C", "D", "E"].entries()) {
   await pg.click(`.choose >> nth=${i}`);
   await pg.waitForTimeout(150);
   const clip = await pg.evaluate(() => navigator.clipboard.readText());
   const shown = await pg.textContent("#ruled");
-  const name = { A: "Blueprint", B: "Greenhouse", C: "Signal" }[L];
+  const name = { A: "Blueprint", B: "Greenhouse", C: "Signal", D: "Maison", E: "Coastline" }[L];
   ok(clip === `Ruling: Ellington Studio adopts Option ${L}, ${name}`, `Choose ${L} copies the ruling (${clip})`);
   ok(shown.startsWith("Copied:"), `Choose ${L} confirms on screen`);
 }
+const origCells = await pg.$$eval("tr.orig td", (tds) => tds.map((t) => t.textContent.trim()));
+ok(origCells.length === 5 && origCells[3].startsWith("Not borrowed") && origCells[4].startsWith("Not borrowed"), "originality row present with D and E entries");
 for (const o of OPTS) {
   const L = o[0].toUpperCase();
   const s = (await fetch(`${base}/brand-options/${o}/Ellington%20Studio%20Brand%20Kit%20Option%20${L}%202026.09.24.pdf`)).status;

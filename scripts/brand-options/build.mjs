@@ -40,7 +40,7 @@ function intakePage(opt, marks) {
   return s;
 }
 
-for (const key of ["a", "b", "c"]) {
+for (const key of Object.keys(OPTIONS)) {
   const opt = OPTIONS[key];
   const dir = join(OUT, opt.slug);
   mkdirSync(join(dir, "assets"), { recursive: true });

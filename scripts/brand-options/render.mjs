@@ -23,25 +23,23 @@ const base = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch();
 
 const only = process.argv[2];
-for (const key of ["a", "b", "c"]) {
+for (const key of Object.keys(OPTIONS)) {
   const opt = OPTIONS[key];
   if (only && only !== key) continue;
   const dir = join(REPO, "brand-options", opt.slug);
   const assets = join(dir, "assets");
   const t = opt.tokens;
-  const second = t.signal || t.metalLight || t.ground;
-  const bg = key === "c" ? t.graphite : key === "b" ? t.forest : t.midnight;
-  const fg = key === "c" ? t.graphite : t.onDark;
+  const second = opt.icon.second;
+  const bg = opt.icon.bg;
+  const fg = opt.icon.fg;
 
   // Icons: monogram on the option's dark ground (C is a solid block already).
   for (const size of [16, 32, 1024]) {
     const ctx = await browser.newContext({ viewport: { width: size, height: size }, deviceScaleFactor: 1 });
     const pg = await ctx.newPage();
-    const pad = key === "c" ? 0 : Math.round(size * 0.12);
+    const pad = opt.icon.block ? 0 : Math.round(size * 0.12);
     const inner = size - pad * 2;
-    const svg = key === "c"
-      ? opt.monogram(t.ink, t.onDark)
-      : opt.monogram(fg, second);
+    const svg = opt.icon.block ? opt.monogram(fg, second) : opt.monogram(fg, second);
     await pg.setContent(`<html><body style="margin:0;background:${bg};width:${size}px;height:${size}px;display:flex;align-items:center;justify-content:center"><div style="width:${inner}px;height:${inner}px;color:${fg}">${svg.replace("<svg ", '<svg style="width:100%;height:100%;display:block" ')}</div></body></html>`);
     await pg.waitForTimeout(100);
     await pg.screenshot({ path: join(assets, `icon-${size}.png`), clip: { x: 0, y: 0, width: size, height: size }, omitBackground: false });
