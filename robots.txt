@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /brand-options/
+
+Sitemap: https://ellington-studio.vercel.app/sitemap.xml
