@@ -11,6 +11,8 @@ type Body = {
 };
 
 const PACKAGES = ["Site in a Week", "App in a Month", "Care Plan only", "Not sure"] as const;
+// Where the one intake notification goes. STUDIO_NOTIFY_EMAIL overrides it.
+const NOTIFY_EMAIL = "hello@ellingtonenterprises.co";
 const LIMIT = 5;
 const WINDOW_MS = 60_000;
 const hits = new Map<string, number[]>();
@@ -104,8 +106,9 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
   if (req.method !== "POST") return send(res, 405, { ok: false, error: "POST only" });
 
   const notionKey = process.env.NOTION_API_KEY;
-  const resendKey = process.env.RESEND_API_KEY;
-  const notify = process.env.STUDIO_NOTIFY_EMAIL;
+  // Email is best effort. An empty RESEND_API_KEY skips every email and never fails the form.
+  const resendKey = (process.env.RESEND_API_KEY || "").trim();
+  const notify = (process.env.STUDIO_NOTIFY_EMAIL || "").trim() || NOTIFY_EMAIL;
   if (!notionKey) return send(res, 503, { ok: false, error: "Intake is not configured yet. Use the email fallback." });
 
   if (limited(ipOf(req))) return send(res, 429, { ok: false, error: "Too many requests. Try again in a minute." });
@@ -138,9 +141,17 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
 
   // Notion succeeded, so the intake counts as received. Email is best effort from here.
   const from = process.env.STUDIO_FROM_EMAIL || "Ellington Studio <studio@thequadco.ai>";
-  if (resendKey && notify) {
+  if (resendKey) {
+    const chosen = packageName(pkg);
     try {
-      await sendMail(resendKey, from, notify, `Studio intake: ${name}`, summary, email);
+      await sendMail(
+        resendKey,
+        from,
+        notify,
+        `Studio intake: ${name}, ${chosen}`,
+        `Name: ${name}\nEmail: ${email}\nPackage: ${chosen}\n\n${summary}`,
+        email,
+      );
     } catch (e) {
       console.error("intake: notify email failed", (e as Error).message);
     }

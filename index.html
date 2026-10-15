@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ellington Studio. A site in a week. An app in a month. Fixed price.</title>
 <meta name="description" content="Ellington Studio builds websites in a week and working apps in a month at a fixed price, for practices, bars, podcasters and small businesses.">
+<link rel="canonical" href="https://ellington-studio.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ellington Studio">
+<meta property="og:title" content="Ellington Studio. A site in a week. An app in a month. Fixed price.">
+<meta property="og:description" content="Ellington Studio builds websites in a week and working apps in a month at a fixed price, for practices, bars, podcasters and small businesses.">
+<meta property="og:url" content="https://ellington-studio.vercel.app/">
+<meta property="og:image" content="https://ellington-studio.vercel.app/og/studio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ellington Studio. Site in a Week $2,500. App in a Month $7,500. Care Plan $250 a month.">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 :root{--ink:#14161a;--ink2:#3d434c;--mute:#6b7280;--line:#e2e4e8;--paper:#ffffff;--wash:#f6f5f1;--acc:#0b3d5c;--acc2:#b8860b}
 *{box-sizing:border-box}
@@ -39,6 +50,9 @@ h2{font-size:34px;letter-spacing:-.01em;margin:0 0 12px}
 .card li{margin:0 0 7px}
 .card a{margin-top:auto;text-align:center;background:var(--wash);border:1px solid var(--line);padding:11px;border-radius:6px;font-weight:600}
 .card.hi a{background:var(--acc);color:#fff;border-color:var(--acc)}
+.card a.pay{margin-top:10px;background:#fff;color:var(--acc);border:1.5px solid var(--acc)}
+.card .pay-note{margin:8px 0 0;font-size:13px;color:var(--mute);text-align:center}
+[hidden]{display:none!important}
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
 .step b{display:block;font-size:13px;color:var(--acc2);letter-spacing:.12em;margin-bottom:6px}
 .step h3{margin:0 0 6px;font-size:19px}
@@ -98,6 +112,8 @@ footer{padding:36px 0;color:var(--mute);font-size:14px;border-top:1px solid var(
         <li>2 rounds of changes inside the week</li>
       </ul>
       <a href="intake.html">Start a site</a>
+      <a class="pay" data-pay="site" hidden>Pay the deposit, $1,250</a>
+      <p class="pay-note" data-pay-note="site" hidden>Half to start, half on delivery. A written scope comes first.</p>
     </div>
     <div class="card hi">
       <h3>App in a Month</h3>
@@ -111,6 +127,8 @@ footer{padding:36px 0;color:var(--mute);font-size:14px;border-top:1px solid var(
         <li>30 days of fixes after delivery, included</li>
       </ul>
       <a href="intake.html">Start an app</a>
+      <a class="pay" data-pay="app" hidden>Pay the deposit, $3,750</a>
+      <p class="pay-note" data-pay-note="app" hidden>Half to start, half on delivery. A written scope comes first.</p>
     </div>
     <div class="card">
       <h3>Care Plan</h3>
@@ -123,6 +141,8 @@ footer{padding:36px 0;color:var(--mute);font-size:14px;border-top:1px solid var(
         <li>Priority when something breaks</li>
       </ul>
       <a href="intake.html">Add care</a>
+      <a class="pay" data-pay="care" hidden>Subscribe, $250 a month</a>
+      <p class="pay-note" data-pay-note="care" hidden>Half to start, half on delivery. A written scope comes first.</p>
     </div>
   </div>
 </div></section>
@@ -180,6 +200,19 @@ footer{padding:36px 0;color:var(--mute);font-size:14px;border-top:1px solid var(
 </div></section>
 </main>
 
-<footer><div class="wrap">Ellington Studio is a venture of Ellington Enterprises LLC. Prices listed on September 24th, 2026. Every project starts with a written scope and ends with you owning the work.</div></footer>
+<footer><div class="wrap">Ellington Studio is a venture of Ellington Enterprises LLC. Prices listed on September 24th, 2026. Every project starts with a written scope and ends with you owning the work. <a href="privacy.html">Privacy</a>.</div></footer>
+<script>
+// Payment links arrive by environment variable through /api/config. A button stays hidden until its link exists.
+fetch("/api/config",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(c=>{
+  const pay=(c&&c.pay)||{};
+  for(const k of ["site","app","care"]){
+    const u=pay[k]; if(typeof u!=="string"||!/^https:\/\//.test(u)) continue;
+    const a=document.querySelector('a[data-pay="'+k+'"]'), n=document.querySelector('p[data-pay-note="'+k+'"]');
+    if(!a||!n) continue;
+    a.href=u; a.target="_blank"; a.rel="noopener"; a.hidden=false; n.hidden=false;
+  }
+}).catch(()=>{});
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

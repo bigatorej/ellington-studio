@@ -7,7 +7,7 @@ import { readFile, stat } from "node:fs/promises";
 import { join, extname, resolve } from "node:path";
 
 const ROOT = resolve(process.argv[2] || new URL("..", import.meta.url).pathname);
-const PAGES = (process.env.PAGES || "index.html,intake.html,404.html").split(",");
+const PAGES = (process.env.PAGES || "index.html,intake.html,privacy.html,404.html").split(",");
 const INTAKES = (process.env.INTAKES || "intake.html").split(",");
 const MIME = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".mjs": "text/javascript", ".png": "image/png", ".svg": "image/svg+xml", ".pdf": "application/pdf", ".woff2": "font/woff2" };
 

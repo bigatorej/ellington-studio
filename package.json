@@ -8,12 +8,13 @@
     "node": "24.x"
   },
   "scripts": {
-    "test": "node scripts/check-copy.mjs",
+    "test": "node scripts/check-copy.mjs && node scripts/test-intake.mjs",
     "dev": "vercel dev",
     "verify": "node scripts/verify-pages.mjs",
     "brand:build": "node scripts/brand-options/build.mjs",
     "brand:render": "node scripts/brand-options/render.mjs",
-    "brand:verify": "node scripts/verify-brand.mjs"
+    "brand:verify": "node scripts/verify-brand.mjs",
+    "og": "node scripts/og/render.mjs"
   },
   "devDependencies": {
     "@types/node": "^20.19.43",
