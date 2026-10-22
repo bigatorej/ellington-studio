@@ -1,0 +1,1269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Keep. The friend who remembers</title>
+<meta name="description" content="Keep remembers the birthdays, anniversaries and special occasions of the people who matter to you, reminds you early, and drafts the message.">
+<meta name="theme-color" content="#FFF9F3">
+<meta property="og:title" content="Keep. The friend who remembers">
+<meta property="og:description" content="Keep remembers the birthdays, anniversaries and special occasions of the people who matter to you, reminds you early, and drafts the message.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Ccircle cx='14' cy='16' r='9' fill='none' stroke='%234A2545' stroke-width='2.6'/%3E%3Ccircle cx='14' cy='7' r='2.6' fill='%234A2545'/%3E%3Cpath d='M12.2 5.4L9.5 2.4M15.8 5.4L18.5 2.4' stroke='%234A2545' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='14' cy='16' r='3' fill='%23E89B2E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#4A2545; --ink:#23161F; --cream:#FFF9F3; --white:#FFFFFF; --blush:#F6E3E0; --petal:#E8C9C4;
+  --marigold:#E89B2E; --moss:#4C7A5A; --rose:#B23A48; --muted:#6B5A63; --soft:#F3E9E6;
+  --serif:"DM Serif Display",Georgia,"Times New Roman",serif;
+  --sans:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --r-card:20px; --r-btn:14px; --shadow:0 1px 2px rgba(35,22,31,.04),0 6px 20px rgba(74,37,69,.07);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%}
+html{overflow-x:hidden}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none;padding:0;text-align:inherit}
+a{color:var(--plum)}
+:focus{outline:none}
+:focus-visible{outline:3px solid var(--plum);outline-offset:2px;border-radius:8px}
+.backdrop{min-height:100%;display:flex;justify-content:center;align-items:stretch}
+.shell{position:relative;width:100%;height:100vh;height:100dvh;display:flex;flex-direction:column;background:var(--cream);overflow:hidden}
+@media (min-width:768px){
+  body{background:linear-gradient(165deg,#F2E6E3 0%,#EADADA 55%,#E3D1D6 100%);}
+  .backdrop{align-items:center;padding:24px 16px}
+  .shell{width:430px;max-width:100%;height:min(900px,calc(100vh - 48px));border-radius:44px;box-shadow:0 30px 80px rgba(74,37,69,.22),0 0 0 10px #2a1a26,0 0 0 12px #3c2a37}
+}
+.top{height:60px;flex:0 0 60px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--petal);background:var(--cream)}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-name{font-family:var(--serif);font-size:26px;color:var(--plum);letter-spacing:.2px;line-height:1}
+.ctx{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px 0 10px;border-radius:999px;background:var(--blush);color:var(--plum);font-weight:600;font-size:14px}
+.ctx svg{width:18px;height:18px}
+#view{flex:1 1 auto;overflow-y:auto;overflow-x:hidden;padding:18px 20px 28px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.view{min-height:100%}
+.h1{font-family:var(--serif);font-weight:400;font-size:32px;line-height:1.1;margin:4px 0 6px;color:var(--plum)}
+.h2{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.2;margin:22px 0 10px;color:var(--plum)}
+.h3{font-weight:600;font-size:15px;margin:0 0 8px;color:var(--ink)}
+.sub{color:var(--muted);margin:0 0 18px;font-size:15px}
+.card{background:var(--white);border:1px solid var(--petal);border-radius:var(--r-card);padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.card p{margin:0 0 8px}
+.card p:last-child{margin-bottom:0}
+.group{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:18px 4px 8px}
+.group:first-of-type{margin-top:0}
+.group .dot{width:10px;height:10px;border-radius:50%;background:var(--marigold);display:inline-block}
+.item{width:100%;display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--petal);border-radius:var(--r-card);padding:14px;margin-bottom:10px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.item.today::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--marigold)}
+.item:active{transform:scale(.995)}
+.item-body{flex:1;min-width:0}
+.item-name{font-weight:600;font-size:16px;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item-occ{color:var(--plum);font-size:14px;margin-top:1px}
+.item-date{color:var(--muted);font-size:13px;margin-top:2px}
+.item .side{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.item .side .when{font-size:12.5px;color:var(--muted);white-space:nowrap}
+.avatar{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:18px;flex:0 0 44px;letter-spacing:.5px}
+.avatar-lg{width:64px;height:64px;flex-basis:64px;font-size:26px}
+.avatar-sm{width:30px;height:30px;flex-basis:30px;font-size:13px}
+.avatars{display:inline-flex;flex:0 0 44px;position:relative;width:44px;height:44px}
+.avatars .avatar-sm{position:absolute;border:2px solid #fff}
+.avatars .avatar-sm:first-child{left:0;top:0}
+.avatars .avatar-sm:last-child{right:0;bottom:0}
+.chip{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;font-size:12.5px;font-weight:600;background:var(--blush);color:var(--plum);white-space:nowrap}
+.chip-write{background:var(--plum);color:#fff}
+.chip-send{background:var(--marigold);color:var(--ink)}
+.chip-coming{background:transparent;border:1px solid var(--petal);color:var(--muted)}
+.chip-done{background:#E4EFE7;color:var(--moss)}
+.chip-missed{background:#F8E4E6;color:var(--rose)}
+.chip-snoozed{background:var(--soft);color:var(--muted)}
+.chip-idea{background:var(--blush);color:var(--plum)}
+.chip-bought{background:#FBEBD3;color:#7A4A05}
+.chip-given{background:#E4EFE7;color:var(--moss)}
+.pg{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:6px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;background:var(--soft);color:var(--muted);border:1px solid var(--petal)}
+.row{display:flex;align-items:center;gap:12px}
+.row .grow{flex:1;min-width:0}
+.btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 18px;border-radius:var(--r-btn);font-weight:600;font-size:15px;transition:transform .08s ease,background .15s ease;white-space:nowrap}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--marigold);color:var(--ink)}
+.btn-primary:hover{background:#DF9124}
+.btn-secondary{background:var(--blush);color:var(--plum)}
+.btn-secondary:hover{background:#F0D6D2}
+.btn-ghost{background:transparent;color:var(--plum);border:1px solid var(--petal)}
+.btn-danger{background:transparent;color:var(--rose);border:1px solid #E7BFC4}
+.btn-sm{height:36px;padding:0 12px;font-size:14px;border-radius:11px}
+.btn-block{width:100%}
+.btn-link{background:transparent;color:var(--plum);height:30px;padding:0 4px;border-radius:8px;font-size:14px}
+.btn[disabled],.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed;transform:none}
+.btn svg{width:18px;height:18px}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.btnrow .btn{flex:1 1 auto}
+.field{display:block;margin-bottom:12px}
+.field span.lbl,label.lbl{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:5px}
+.input,select.input,textarea.input{width:100%;height:46px;border:1px solid var(--petal);border-radius:12px;background:#fff;padding:0 12px;font-size:16px;color:var(--ink)}
+textarea.input{height:auto;min-height:150px;padding:12px;line-height:1.5;resize:vertical}
+.input:focus-visible{outline:3px solid var(--plum);outline-offset:1px}
+.check{display:flex;align-items:center;gap:10px;margin:4px 0 12px;font-size:15px}
+.check input{width:20px;height:20px;accent-color:var(--plum)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.list{margin:0;padding:0;list-style:none}
+.li{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--soft)}
+.li:first-child{border-top:0;padding-top:0}
+.li:last-child{padding-bottom:0}
+.li .grow{flex:1;min-width:0}
+.li .t{font-weight:600;font-size:15px}
+.li .s{color:var(--muted);font-size:13.5px;margin-top:1px}
+.li .s.plum{color:var(--plum)}
+.slip{width:9px;height:9px;border-radius:50%;background:var(--rose);display:inline-block;margin-left:6px;vertical-align:middle}
+.steps{margin:0;padding:0;list-style:none}
+.step{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--soft);align-items:flex-start}
+.step:first-child{border-top:0;padding-top:0}
+.step:last-child{padding-bottom:0}
+.step .mark{width:28px;height:28px;border-radius:50%;border:2px solid var(--petal);display:inline-flex;align-items:center;justify-content:center;flex:0 0 28px;margin-top:1px;color:#fff;font-size:14px}
+.step.done .mark{background:var(--moss);border-color:var(--moss)}
+.step.skipped .mark{background:var(--soft);border-color:var(--petal);color:var(--muted)}
+.step.now .mark{border-color:var(--marigold);background:var(--marigold);color:var(--ink)}
+.step.missed .mark{border-color:var(--rose);color:var(--rose)}
+.step .grow{flex:1;min-width:0}
+.step .t{font-weight:600}
+.step.done .t{color:var(--moss)}
+.step .s{color:var(--muted);font-size:13.5px}
+.step .acts{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.sheet-head-title{font-family:var(--serif);font-size:24px;color:var(--plum);margin:0;line-height:1.1}
+.tones{display:flex;gap:8px;margin:0 0 10px}
+.tone{height:34px;padding:0 14px;border-radius:999px;border:1px solid var(--petal);background:#fff;color:var(--plum);font-weight:600;font-size:14px}
+.tone[aria-pressed="true"]{background:var(--plum);color:#fff;border-color:var(--plum)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.filters .tone{height:32px;font-size:13.5px}
+.big{font-family:var(--serif);font-size:30px;color:var(--plum);line-height:1}
+.kv{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.money{font-weight:600;color:var(--ink);white-space:nowrap}
+.empty{text-align:center;padding:32px 16px;color:var(--muted)}
+.empty .big{font-size:24px;margin-bottom:6px}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.nav{flex:0 0 auto;display:flex;border-top:1px solid var(--petal);background:var(--cream);padding:6px 6px calc(8px + env(safe-area-inset-bottom))}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0 2px;border-radius:12px;color:var(--muted);font-size:11.5px;font-weight:600}
+.tab svg{width:24px;height:24px}
+.tab[aria-current="page"]{color:var(--plum)}
+.tab[aria-current="page"] svg{stroke:var(--plum)}
+.tab .badge{position:absolute}
+.sheet-root{position:absolute;inset:0;z-index:30;display:none}
+.sheet-root.open{display:block}
+.sheet-backdrop{position:absolute;inset:0;background:rgba(35,22,31,.45)}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-height:92%;background:var(--cream);border-radius:28px 28px 0 0;display:flex;flex-direction:column;box-shadow:0 -10px 40px rgba(35,22,31,.2);animation:up .22s ease-out}
+.sheet.tall{height:92%}
+@keyframes up{from{transform:translateY(40px)}to{transform:none}}
+.sheet-head{flex:0 0 auto;padding:10px 20px 6px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.handle{width:40px;height:5px;border-radius:3px;background:var(--petal);margin:8px auto 0}
+.sheet-body{flex:1 1 auto;overflow-y:auto;overflow-x:hidden;padding:8px 20px 28px}
+.close{width:36px;height:36px;border-radius:50%;background:var(--blush);color:var(--plum);display:inline-flex;align-items:center;justify-content:center;flex:0 0 36px}
+.close svg{width:18px;height:18px}
+.toasts{position:absolute;left:0;right:0;bottom:84px;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;z-index:40}
+.toast{background:var(--ink);color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;font-weight:600;box-shadow:0 8px 24px rgba(35,22,31,.25);animation:fade .25s ease-out}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.table-wrap{overflow-x:auto;margin:0 -4px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--soft);vertical-align:top}
+th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.foot{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px;margin:24px 0 8px}
+.hint{color:var(--muted);font-size:13.5px;margin:6px 0 0}
+.status{font-weight:600;color:var(--plum)}
+.note-x{width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--muted);display:inline-flex;align-items:center;justify-content:center;flex:0 0 30px}
+.note-x svg{width:14px;height:14px}
+.mark-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.price{color:var(--muted);font-size:13.5px}
+.inline-form{background:var(--soft);border-radius:14px;padding:12px;margin-top:10px}
+.quiet{color:var(--muted);font-size:14px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+}
+</style>
+</head>
+<body>
+<div class="backdrop">
+<main class="shell" id="shell" aria-label="Keep">
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 28 28" width="28" height="28" role="img" aria-label="Keep mark"><circle cx="14" cy="16" r="9" fill="none" stroke="#4A2545" stroke-width="2.6"/><circle cx="14" cy="7" r="2.6" fill="#4A2545"/><path d="M12.2 5.4L9.5 2.4M15.8 5.4L18.5 2.4" stroke="#4A2545" stroke-width="2.2" stroke-linecap="round"/><circle cx="14" cy="16" r="3" fill="#E89B2E"/></svg>
+      <span class="brand-name">Keep</span>
+    </div>
+    <div id="ctx"></div>
+  </header>
+  <div id="view" tabindex="-1"></div>
+  <nav class="nav" id="nav" aria-label="Sections"></nav>
+  <div class="sheet-root" id="sheet-root"></div>
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+</main>
+</div>
+<noscript><p style="padding:20px">Keep needs JavaScript to run.</p></noscript>
+<script>
+'use strict';
+/* ============================================================
+   Keep. Playground build. One file, no server, no network.
+   State lives in localStorage under labs.keep.v1.
+   ============================================================ */
+const KEY = 'labs.keep.v1';
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const WEEKDAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const STEPS = [
+  { k:'plan',  label:'Plan it',  hint:'Pick a gift or make the plan.' },
+  { k:'get',   label:'Get it',   hint:'Order it, ship it, or buy the card.' },
+  { k:'write', label:'Write it', hint:'Draft the message and pick the time.' },
+  { k:'send',  label:'Send it',  hint:'The message is ready. Send it and mark it sent.' }
+];
+const COLORS = { sage:'#4E7A57', sky:'#3D6E9C', clay:'#A85E3F', lilac:'#7A5C9B', sand:'#A47A26', teal:'#357A75', rose:'#A24F62', slate:'#55636F' };
+const COLOR_KEYS = Object.keys(COLORS);
+const CADENCES = [
+  { v:14,  label:'Every two weeks', phrase:'every two weeks' },
+  { v:30,  label:'Monthly',         phrase:'monthly' },
+  { v:90,  label:'Quarterly',       phrase:'quarterly' },
+  { v:180, label:'Twice a year',    phrase:'twice a year' }
+];
+const CHANNELS = [ ['text','Text'], ['call','Call'], ['card','Card'], ['visit','Visit'] ];
+const PRONOUNS = [ ['she','She'], ['he','He'], ['they','They'] ];
+const RELATIONSHIPS = ['Mom','Dad','Sister','Brother','Partner','Close friend','Friend','College roommate','Mentor','Neighbors','Godson','Goddaughter','Niece','Nephew','Work friend','Former boss','Cousin','Aunt','Uncle','Grandparent','Other'];
+const TABS = [
+  { id:'upnext',   label:'Up next',  icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="12" cy="15.5" r="1.8" fill="currentColor" stroke="none"/></svg>' },
+  { id:'people',   label:'People',   icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3.5"/><path d="M2.5 20c.6-3.6 3.3-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><circle cx="17" cy="9.5" r="2.6"/><path d="M16.3 14.6c2.8.2 4.7 1.9 5.2 5.4"/></svg>' },
+  { id:'gifts',    label:'Gifts',    icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="4" rx="1"/><path d="M5 13v7h14v-7M12 9v11M12 9c-2.5 0-5-1.2-5-3.2S9.5 3 12 9c2.5-6 5-5.2 5-3.2S14.5 9 12 9z"/></svg>' },
+  { id:'slipping', label:'Slipping', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10M7 21h10M8 3c0 5 4 6 4 9s-4 4-4 9M16 3c0 5-4 6-4 9s4 4 4 9"/></svg>' },
+  { id:'settings', label:'Settings', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2.5"/><circle cx="10" cy="17" r="2.5"/></svg>' }
+];
+const SVG_X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+const SVG_PLUS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>';
+const SVG_CHECK = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+const MONOGRAM = '<svg viewBox="0 0 512 512" width="20" height="20" role="img" aria-label="Ellington Enterprises"><rect x="42.67" y="42.67" width="42.67" height="426.67" fill="#0F2744"/><rect x="42.67" y="42.67" width="192" height="42.67" fill="#0F2744"/><rect x="42.67" y="234.67" width="192" height="42.67" fill="#B4471F"/><rect x="42.67" y="426.67" width="192" height="42.67" fill="#0F2744"/><rect x="426.67" y="42.67" width="42.67" height="426.67" fill="#0F2744"/><rect x="277.33" y="42.67" width="192" height="42.67" fill="#0F2744"/><rect x="277.33" y="234.67" width="192" height="42.67" fill="#B4471F"/><rect x="277.33" y="426.67" width="192" height="42.67" fill="#0F2744"/></svg>';
+
+/* ---------- small helpers ---------- */
+const $ = (sel, root) => (root || document).querySelector(sel);
+const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function uid(){ return Math.random().toString(36).slice(2, 9) + Date.now().toString(36).slice(-3); }
+function pad(n){ return String(n).padStart(2, '0'); }
+function money(n){ return '$' + Math.round(Number(n) || 0).toLocaleString('en-US'); }
+function fmtPhone(digits){
+  let d = String(digits || '').replace(/[^\d]/g, '');
+  if (d.length === 11 && d[0] === '1') d = d.slice(1);
+  if (d.length === 10) return d.slice(0, 3) + ' ' + d.slice(3, 6) + ' ' + d.slice(6);
+  return d.replace(/(\d{3})(?=\d)/g, '$1 ');
+}
+function plural(n, one, many){ return n === 1 ? one : (many || one + 's'); }
+
+/* ---------- dates ---------- */
+function today(){ const d = new Date(); d.setHours(0,0,0,0); return d; }
+function iso(d){ return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+function fromISO(s){ const p = String(s).split('-').map(Number); return new Date(p[0], (p[1] || 1) - 1, p[2] || 1); }
+function addDays(d, n){ const x = new Date(d); x.setDate(x.getDate() + n); return x; }
+function daysBetween(a, b){ return Math.round((b - a) / 86400000); }
+function daysInMonth(y, m){ return new Date(y, m, 0).getDate(); }
+function ordinal(n){ const s = ['th','st','nd','rd'], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); }
+/* The one date formatter. "October 21st, 2026". withYear false drops the year. */
+function fmtDate(d, withYear){ if (withYear === undefined) withYear = true; return MONTHS[d.getMonth()] + ' ' + ordinal(d.getDate()) + (withYear ? ', ' + d.getFullYear() : ''); }
+function fmtDay(d){ return WEEKDAYS[d.getDay()] + ', ' + fmtDate(d, false); }
+function nextOccurrence(month, day, from){
+  let y = from.getFullYear();
+  let d = new Date(y, month - 1, Math.min(day, daysInMonth(y, month)));
+  if (d < from) { y += 1; d = new Date(y, month - 1, Math.min(day, daysInMonth(y, month))); }
+  return d;
+}
+function daysText(n){ if (n === 0) return 'Today'; if (n === 1) return 'Tomorrow'; if (n < 0) return (-n) + ' days ago'; return 'In ' + n + ' days'; }
+function agoText(isoDate){ if (!isoDate) return 'No contact logged yet'; const n = daysBetween(fromISO(isoDate), today()); if (n <= 0) return 'Last talked today'; if (n === 1) return 'Last talked yesterday'; return 'Last talked ' + n + ' days ago'; }
+
+/* ---------- state ---------- */
+let S = null;
+const ui = { sheets: [], giftFilter: 'all', scroll: {}, resetArmed: false, removeArmed: null, importPreview: null, pageLoadedAt: Date.now() };
+
+function blank(){ return { version: 1, tab: 'upnext', profile: { name: '' }, leads: { plan: 14, get: 5, write: 1, send: 0 }, notify: false, people: [], holidays: [], done: {}, snoozed: {}, picks: {} }; }
+function normalize(st){
+  const b = blank();
+  const out = Object.assign(b, st || {});
+  out.profile = Object.assign({ name: '' }, out.profile || {});
+  out.leads = Object.assign({ plan: 14, get: 5, write: 1, send: 0 }, out.leads || {});
+  ['done','snoozed','picks'].forEach(k => { if (!out[k] || typeof out[k] !== 'object') out[k] = {}; });
+  if (!Array.isArray(out.people)) out.people = [];
+  if (!Array.isArray(out.holidays)) out.holidays = [];
+  out.people = out.people.map(p => person(p));
+  if (!TABS.some(t => t.id === out.tab)) out.tab = 'upnext';
+  return out;
+}
+function person(o){
+  const p = Object.assign({ id: uid(), name: '', relationship: 'Friend', pronoun: 'they', color: 'sage', phone: '', birthday: null, anniversary: null, occasions: [], notes: [], gifts: [], giftHistory: [], cadence: 30, lastContact: null, channel: 'text' }, o || {});
+  ['occasions','notes','gifts','giftHistory'].forEach(k => { if (!Array.isArray(p[k])) p[k] = []; });
+  return p;
+}
+function load(){
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (raw) { S = normalize(JSON.parse(raw)); return; }
+  } catch (e) { /* storage blocked or corrupt, fall through to seed */ }
+  S = seed();
+  save();
+}
+function save(){
+  try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* in memory only */ }
+}
+
+/* ---------- seed. Dates are relative to today so the demo works any day. ---------- */
+function seed(){
+  const t = today();
+  const rel = n => { const d = addDays(t, n); return { month: d.getMonth() + 1, day: d.getDate() }; };
+  const ago = n => iso(addDays(t, -n));
+  const at = n => addDays(t, -n).toISOString();
+  const note = (text, n) => ({ id: uid(), text, at: at(n) });
+  const gift = (id, title, price, status) => ({ id, title, price, status });
+  const hist = (year, title, occasion) => ({ year, title, occasion });
+
+  const mom = rel(8), marcus = rel(3), anniv = rel(21), party = rel(12), theo = rel(18), firstDay = rel(2);
+  const st = blank();
+  st.people = [
+    person({ id:'p1', name:'Diane Whitfield', relationship:'Mom', pronoun:'she', color:'clay', phone:'5555550141',
+      birthday:{ month:mom.month, day:mom.day, year:1958 }, cadence:14, lastContact:ago(4), channel:'call',
+      notes:[ note('Wants to visit Savannah in the spring', 3), note('Reading the new Ann Patchett novel', 20), note('Garden club meets on Thursdays', 60) ],
+      gifts:[ gift('g1a','Garden kneeler with handles', 45, 'idea'), gift('g1b','Framed photo of the four of us', 60, 'idea') ],
+      giftHistory:[ hist(2025,'Cashmere scarf','Birthday'), hist(2024,'Spa day','Birthday') ] }),
+    person({ id:'p2', name:'Walter Whitfield', relationship:'Dad', pronoun:'he', color:'slate', phone:'5555550142',
+      birthday:{ month:2, day:11, year:1955 }, cadence:14, lastContact:ago(4), channel:'call',
+      notes:[ note('Loves jazz on vinyl', 10), note('Restoring the old Mustang', 45) ],
+      gifts:[ gift('g2a','Coltrane reissue on vinyl', 35, 'idea') ],
+      giftHistory:[ hist(2025,'Leather wallet','Birthday') ] }),
+    person({ id:'p3', name:'Jasmine Whitfield', relationship:'Sister', pronoun:'she', color:'lilac', phone:'5555550143',
+      birthday:{ month:6, day:3, year:1992 }, cadence:14, lastContact:ago(6), channel:'text',
+      occasions:[ { id:'o3', title:'First day at the new job', month:firstDay.month, day:firstDay.day, year:addDays(t,2).getFullYear(), repeats:'once' } ],
+      notes:[ note('Starting as pastry lead at Harlow and Finch', 5), note('Adopted a cat named Pickles', 40) ],
+      gifts:[ gift('g3a','Apron with her name stitched', 28, 'bought') ],
+      giftHistory:[ hist(2025,'Concert tickets','Birthday') ] }),
+    person({ id:'p4', name:'Marcus Bell', relationship:'Close friend', pronoun:'he', color:'sky', phone:'5555550144',
+      birthday:{ month:marcus.month, day:marcus.day, year:1985 }, cadence:14, lastContact:ago(9), channel:'text',
+      notes:[ note('Loves Dodgers and dark chocolate', 2), note('Training for the Long Beach half', 30), note('New place in Silver Lake', 90) ],
+      gifts:[ gift('g4a','Dodgers cap, the grey one', 38, 'bought'), gift('g4b','Dark chocolate tasting box', 24, 'idea') ],
+      giftHistory:[ hist(2025,'Dodgers tickets','Birthday'), hist(2024,'Whiskey stones','Birthday') ] }),
+    person({ id:'p5', name:'Nina Okafor', relationship:'Close friend', pronoun:'she', color:'rose', phone:'5555550145',
+      birthday:{ month:1, day:19, year:1986 }, cadence:30, lastContact:ago(47), channel:'text',
+      notes:[ note('Ava started soccer this fall', 50), note('Kids: Ava 9 and Leo 6', 120) ],
+      gifts:[ gift('g5a','Weekend bag', 85, 'idea') ],
+      giftHistory:[ hist(2025,'Candle set','Birthday') ] }),
+    person({ id:'p6', name:'Devon Price', relationship:'College roommate', pronoun:'he', color:'teal', phone:'',
+      birthday:{ month:3, day:27, year:1986 }, cadence:90, lastContact:ago(130), channel:'call',
+      notes:[ note('Moved to Denver in June', 135), note('Brewing his own beer now', 200) ],
+      gifts:[ gift('g6a','Craft beer glasses', 32, 'idea') ],
+      giftHistory:[ hist(2025,'Book on trail running','Birthday') ] }),
+    person({ id:'p7', name:'Dr. Helen Marsh', relationship:'Mentor', pronoun:'she', color:'sage', phone:'5555550147',
+      birthday:{ month:5, day:8, year:null }, cadence:90, lastContact:ago(20), channel:'card',
+      notes:[ note('Retiring in the spring', 25), note('Loves good stationery', 80) ],
+      gifts:[ gift('g7a','Fountain pen', 95, 'idea') ],
+      giftHistory:[ hist(2025,'Orchid','Birthday') ] }),
+    person({ id:'p8', name:'Rosa and Tomas Alvarez', relationship:'Neighbors', pronoun:'they', color:'sand', phone:'5555550148',
+      anniversary:{ month:anniv.month, day:anniv.day, year:2014 }, cadence:30, lastContact:ago(11), channel:'visit',
+      notes:[ note('Their dog is Biscuit', 15), note('Tomas grills every Sunday', 70) ],
+      gifts:[ gift('g8a','Grill tool set', 70, 'idea') ],
+      giftHistory:[ hist(2025,'Bottle of Rioja','Anniversary') ] }),
+    person({ id:'p9', name:'Theo Nakamura', relationship:'Godson', pronoun:'he', color:'teal', phone:'5555550149',
+      birthday:{ month:theo.month, day:theo.day, year:2018 }, cadence:30, lastContact:ago(15), channel:'visit',
+      occasions:[ { id:'o9', title:'Birthday party at the park', month:party.month, day:party.day, year:addDays(t,12).getFullYear(), repeats:'once' } ],
+      notes:[ note('Dinosaurs and Lego, in that order', 15), note('Parents: Kenji and Mara', 300) ],
+      gifts:[ gift('g9a','Lego dinosaur set', 55, 'bought'), gift('g9b','Dinosaur encyclopedia', 22, 'idea') ],
+      giftHistory:[ hist(2025,'Remote control car','Birthday') ] }),
+    person({ id:'p10', name:'Sam Delgado', relationship:'Work friend', pronoun:'they', color:'slate', phone:'5555550150',
+      birthday:{ month:12, day:9, year:1990 }, cadence:30, lastContact:ago(8), channel:'text',
+      notes:[ note('Just back from Lisbon', 6), note('Coffee snob, pour over only', 100) ],
+      gifts:[ gift('g10a','Single origin coffee subscription', 30, 'idea') ],
+      giftHistory:[ hist(2025,'Desk plant','Birthday') ] }),
+    person({ id:'p11', name:'Grace Lindqvist', relationship:'Former boss', pronoun:'she', color:'lilac', phone:'5555550151',
+      birthday:{ month:8, day:22, year:1968 }, cadence:180, lastContact:ago(200), channel:'card',
+      notes:[ note('Elias started college this fall', 60), note('Now consulting from Portland', 240) ],
+      gifts:[ gift('g11a','Portland food tour for two', 110, 'idea') ],
+      giftHistory:[ hist(2025,'Holiday card','Birthday') ] }),
+    person({ id:'p12', name:'Priya Raman', relationship:'Cousin', pronoun:'she', color:'rose', phone:'5555550152',
+      birthday:{ month:6, day:30, year:1994 }, cadence:30, lastContact:ago(12), channel:'text',
+      notes:[ note('Just started at the bakery on Grand', 9), note('Engaged to Noor', 150) ],
+      gifts:[ gift('g12a','Good chef knife', 65, 'idea') ],
+      giftHistory:[ hist(2025,'Cookbook','Birthday') ] })
+  ];
+  st.holidays = [ { id:'thanksgiving', title:'Thanksgiving', month:11, day:26, year:2026, plan:'Call Mom and Dad', personIds:['p1','p2'] } ];
+  /* Marcus is three days out with the plan and the gift done. Jasmine's first day is two days out, same. */
+  const y3 = addDays(t, 3).getFullYear(), y2 = addDays(t, 2).getFullYear();
+  st.done['p4:bday:' + y3 + ':plan'] = true;
+  st.done['p4:bday:' + y3 + ':get'] = true;
+  st.done['p3:o3:' + y2 + ':plan'] = true;
+  st.done['p3:o3:' + y2 + ':get'] = true;
+  st.picks['p4:bday:' + y3] = 'g4a';
+  st.picks['p3:o3:' + y2] = 'g3a';
+  st.picks['p9:bday:' + addDays(t, 18).getFullYear()] = 'g9a';
+  return st;
+}
+
+/* ---------- people helpers ---------- */
+function byId(id){ return S.people.find(p => p.id === id); }
+function initials(name){
+  const n = String(name || '').replace(/^Dr\.?\s+/i, '').trim();
+  if (/\sand\s/i.test(n)) { const parts = n.split(/\sand\s/i); return (parts[0].trim()[0] || '') + (parts[1].trim()[0] || ''); }
+  return (n[0] || '?').toUpperCase();
+}
+function firstName(p){
+  if (p.relationship === 'Mom' || p.relationship === 'Dad') return p.relationship;
+  const n = p.name.trim();
+  if (/^Dr\.?\s/i.test(n)) { const w = n.split(/\s+/); return 'Dr. ' + w[w.length - 1]; }
+  if (/\sand\s/i.test(n)) { const parts = n.split(/\sand\s/i); return parts[0].trim().split(/\s+/)[0] + ' and ' + parts[1].trim().split(/\s+/)[0]; }
+  return n.split(/\s+/)[0];
+}
+function isCouple(p){ return /\sand\s/i.test(p.name) || p.relationship === 'Neighbors'; }
+function pron(p){ return p.pronoun || 'they'; }
+function Pron(p){ const x = pron(p); return x[0].toUpperCase() + x.slice(1); }
+function cadenceOf(p){ return CADENCES.find(c => c.v === Number(p.cadence)) || CADENCES[1]; }
+function newestNotes(p){ return p.notes.slice().sort((a, b) => String(b.at).localeCompare(String(a.at))); }
+function avatarHTML(p, size){
+  const cls = 'avatar' + (size ? ' avatar-' + size : '');
+  return '<span class="' + cls + '" style="background:' + (COLORS[p.color] || COLORS.sage) + '" aria-hidden="true">' + esc(initials(p.name)) + '</span>';
+}
+function avatarsHTML(people){
+  if (people.length === 1) return avatarHTML(people[0]);
+  return '<span class="avatars" aria-hidden="true">' + avatarHTML(people[0], 'sm') + avatarHTML(people[1] || people[0], 'sm') + '</span>';
+}
+function slippingDays(p){
+  if (!p.lastContact) return 0;
+  return daysBetween(fromISO(p.lastContact), today()) - Number(p.cadence);
+}
+function isSlipping(p){ return slippingDays(p) > 0; }
+
+/* ---------- occasions and items ---------- */
+/* An item is one dated occurrence inside the window from 7 days ago to 60 days out. */
+function buildItems(){
+  const t = today(), from = addDays(t, -7), items = [];
+  const push = o => {
+    o.days = daysBetween(t, o.date);
+    if (o.days < -7 || o.days > 60) return;
+    o.year = o.date.getFullYear();
+    o.key = o.pid + ':' + o.occId + ':' + o.year;
+    items.push(o);
+  };
+  S.people.forEach(p => {
+    if (p.birthday) {
+      const date = nextOccurrence(p.birthday.month, p.birthday.day, from);
+      push({ kind:'birthday', pid:p.id, occId:'bday', people:[p], person:p, date, age: p.birthday.year ? date.getFullYear() - p.birthday.year : null });
+    }
+    if (p.anniversary) {
+      const date = nextOccurrence(p.anniversary.month, p.anniversary.day, from);
+      push({ kind:'anniversary', pid:p.id, occId:'anniv', people:[p], person:p, date, years: p.anniversary.year ? date.getFullYear() - p.anniversary.year : null });
+    }
+    p.occasions.forEach(o => {
+      const date = o.repeats === 'once' ? new Date(o.year, o.month - 1, o.day) : nextOccurrence(o.month, o.day, from);
+      push({ kind:'custom', pid:p.id, occId:o.id, people:[p], person:p, date, title:o.title, once: o.repeats === 'once' });
+    });
+  });
+  S.holidays.forEach(h => {
+    const people = h.personIds.map(byId).filter(Boolean);
+    if (!people.length) return;
+    push({ kind:'holiday', pid:'h:' + h.id, occId:h.id, people, person:people[0], date:new Date(h.year, h.month - 1, h.day), title:h.title, plan:h.plan, once:true });
+  });
+  const rank = { birthday:0, anniversary:1, holiday:2, custom:3 };
+  items.sort((a, b) => (a.days - b.days) || (rank[a.kind] - rank[b.kind]) || a.person.name.localeCompare(b.person.name));
+  return items;
+}
+function itemByKey(key){ return buildItems().find(i => i.key === key); }
+function isSent(item){ return S.done[item.key + ':send'] === true; }
+function upcoming(){ return buildItems().filter(i => i.days >= 0 && !isSent(i)); }
+function missed(){ return buildItems().filter(i => i.days < 0 && !isSent(i)); }
+function occLabel(item){
+  if (item.kind === 'birthday') return item.age != null ? 'Birthday, turns ' + item.age : 'Birthday';
+  if (item.kind === 'anniversary') return item.years != null ? 'Anniversary, ' + item.years + ' years' : 'Anniversary';
+  return item.title;
+}
+function namesOf(item){ return item.people.length === 1 ? item.person.name : item.people.map(firstName).join(' and '); }
+
+/* The ladder. Window = the step with the smallest lead that is still at or past today.
+   Current = the first open step from the window on. Steps before the window that were
+   never done are missed. Beyond the first lead the item is still coming up. */
+function ladderFor(item){
+  const d = item.days;
+  const steps = STEPS.map(s => Object.assign({}, s, { lead: Number(S.leads[s.k]) || 0 }));
+  let w = -1;
+  steps.forEach((s, i) => { if (s.lead >= d) w = i; });
+  const todayIso = iso(today());
+  const out = steps.map((s, i) => {
+    const key = item.key + ':' + s.k;
+    const dv = S.done[key];
+    let state;
+    if (dv === 'skipped') state = 'skipped';
+    else if (dv) state = 'done';
+    else if (w < 0) state = 'upcoming';
+    else if (i < w) state = 'missed';
+    else state = 'open';
+    const snoozedUntil = S.snoozed[key];
+    const snoozed = !!snoozedUntil && snoozedUntil > todayIso;
+    return Object.assign({}, s, { key, state, snoozed, firesIn: d - s.lead });
+  });
+  let current = null;
+  if (w >= 0) { for (let i = w; i < out.length; i++) { if (out[i].state === 'open') { current = out[i]; break; } } }
+  return { steps: out, window: w, current, complete: w >= 0 && !current };
+}
+function chipFor(item){
+  const L = ladderFor(item);
+  if (L.window < 0) return { cls:'chip-coming', text:'Coming up' };
+  if (L.complete) return { cls:'chip-done', text:'Done' };
+  if (L.current.snoozed) return { cls:'chip-snoozed', text:'Snoozed' };
+  return { cls:'chip-' + L.current.k, text:L.current.label };
+}
+/* When a person is added inside the ladder, the steps that already passed are skipped. */
+function skipPassedSteps(pid){
+  buildItems().filter(i => i.pid === pid && i.days >= 0).forEach(item => {
+    STEPS.forEach(s => {
+      const lead = Number(S.leads[s.k]) || 0;
+      const key = item.key + ':' + s.k;
+      if (lead > item.days && !S.done[key]) S.done[key] = 'skipped';
+    });
+  });
+}
+function dueToday(){
+  const todayIso = iso(today());
+  return upcoming().map(item => {
+    const L = ladderFor(item);
+    if (!L.current || L.current.snoozed || L.current.lead < item.days) return null;
+    return { item, step: L.current };
+  }).filter(Boolean);
+}
+
+/* ---------- the writing. Rule based, labelled Playground in the UI. ---------- */
+/* One specific line pulled from the newest note that matches a rule, else gift history. */
+function specific(p, mode){
+  const reason = mode === 'reason';
+  const notes = newestNotes(p);
+  for (const n of notes) {
+    const t = n.text.trim();
+    let m;
+    if ((m = t.match(/^loves?\s+(.+?)\.?$/i))) {
+      const items = m[1].split(/,\s*|\s+and\s+/).map(x => x.trim()).filter(Boolean);
+      const last = items[items.length - 1];
+      return reason ? Pron(p) + ' loves ' + m[1] + '. Send a photo or a link.' : 'Hope there is ' + last + ' involved.';
+    }
+    if ((m = t.match(/^kids?:\s*([A-Z][a-z]+)/i))) {
+      return reason ? 'Ask how ' + m[1] + ' is doing.' : 'Tell ' + m[1] + ' I said hi.';
+    }
+    if ((m = t.match(/just started\s+(?:at|as)?\s*(.+?)\.?$/i))) {
+      return reason ? Pron(p) + ' just started at ' + m[1].replace(/^at\s+/i, '') + '.' : 'How is it going at ' + m[1].replace(/^at\s+/i, '') + '?';
+    }
+    if ((m = t.match(/^starting\s+(?:as\s+)?(.+?)\s+at\s+(.+?)\.?$/i))) {
+      return reason ? Pron(p) + ' is starting as ' + m[1] + ' at ' + m[2] + '. Ask how it feels.' : 'Good luck as ' + m[1] + ' at ' + m[2] + '.';
+    }
+    if ((m = t.match(/\b([A-Z][a-z]+)\s+started\s+(.+?)(\s+this\s+\w+)?\.?$/))) {
+      return reason ? 'Ask how ' + m[1] + "'s " + m[2] + ' is going.' : 'How is ' + m[1] + "'s " + m[2] + ' going?';
+    }
+    if ((m = t.match(/moved to\s+([A-Z][\w ]*?)(?:\s+in\s+\w+)?\.?$/i))) {
+      return reason ? Pron(p) + ' moved to ' + m[1] + '. Ask how it is going.' : 'How is ' + m[1] + ' treating you?';
+    }
+    if ((m = t.match(/training for\s+(?:the\s+)?(.+?)\.?$/i))) {
+      return reason ? 'Ask about the ' + m[1] + ' training.' : 'How is the ' + m[1] + ' training going?';
+    }
+    if ((m = t.match(/(?:dog|cat|pup|puppy)\s+(?:is|named|called)\s+([A-Z][a-z]+)/i))) {
+      return reason ? 'Ask about ' + m[1] + '.' : 'Give ' + m[1] + ' a scratch from me.';
+    }
+    if ((m = t.match(/back from\s+(.+?)\.?$/i))) {
+      return reason ? 'Ask about ' + m[1] + '.' : 'I want to hear all about ' + m[1] + '.';
+    }
+    if ((m = t.match(/retiring\s+(.+?)\.?$/i))) {
+      return reason ? 'Ask about the retirement plans.' : 'Retirement ' + m[1] + ' is going to suit you.';
+    }
+    if ((m = t.match(/engaged to\s+([A-Z][a-z]+)/i))) {
+      return reason ? 'Ask about ' + m[1] + ' and the wedding plans.' : 'Say hi to ' + m[1] + ' for me.';
+    }
+    if ((m = t.match(/^(?:parents?|partner|husband|wife):\s*([A-Z][a-z]+)/i))) {
+      return reason ? 'Check in with ' + m[1] + ' too.' : 'Say hi to ' + m[1] + ' for me.';
+    }
+    if ((m = t.match(/(?:restoring|building|renovating|working on)\s+(.+?)\.?$/i))) {
+      return reason ? 'Ask how ' + m[1] + ' is coming along.' : 'How is ' + m[1] + ' coming along?';
+    }
+  }
+  if (p.giftHistory.length) {
+    const h = p.giftHistory.slice().sort((a, b) => b.year - a.year)[0];
+    return reason ? 'Last gift was the ' + h.title.toLowerCase() + '. Ask if it is still in use.' : 'Still thinking about last year\u2019s ' + h.title.toLowerCase() + '.';
+  }
+  if (notes.length) return reason ? 'Ask about this: ' + notes[0].text + '.' : notes[0].text + '. Tell me more about that.';
+  return reason ? 'It has been a while. Say hi.' : 'It has been too long.';
+}
+/* Template by relationship group, occasion kind and tone. The specific line stays the same across tones. */
+function draftMessage(p, item, tone){
+  tone = tone || 'warm';
+  const first = firstName(p);
+  const line = specific(p, 'line');
+  const couple = isCouple(p) || (item && item.people && item.people.length > 1);
+  const kind = item ? item.kind : 'justbecause';
+  const family = ['Mom','Dad','Sister','Brother','Cousin','Aunt','Uncle','Grandparent','Partner','Godson','Goddaughter','Niece','Nephew'].includes(p.relationship);
+  const formal = ['Mentor','Former boss'].includes(p.relationship);
+  const who = couple && item && item.people && item.people.length > 1 ? item.people.map(firstName).join(' and ') : first;
+  /* opener names the person, rest carries the thought, the specific line and the close */
+  let opener, rest;
+  if (kind === 'birthday') {
+    const age = item.age;
+    opener = 'Happy birthday, ' + who + '.';
+    if (tone === 'funny') {
+      const ageBit = age != null ? (age < 13 ? age + ' already. Where did the time go.' : age + ' and still getting carded, I assume.') : 'Another lap around the sun and you still look like the before photo.';
+      rest = ageBit + ' ' + line + ' Eat the cake first.';
+    } else if (tone === 'short') {
+      rest = line;
+    } else {
+      const ageBit = age != null ? (age < 13 ? numberWord(age) + ' is a big one.' : age + ' suits you.') : 'I hope today is a good one.';
+      rest = ageBit + ' ' + line + (formal ? ' Thank you for everything you taught me.' : family ? ' So glad you are mine.' : ' Grateful for another year of you.') + ' Talk soon.';
+    }
+  } else if (kind === 'anniversary') {
+    const yrs = item.years != null ? item.years + ' years' : 'Another year';
+    opener = 'Happy anniversary, ' + who + '.';
+    if (tone === 'funny') rest = yrs + ' and you still like each other. Impressive. ' + line + ' Enjoy the night.';
+    else if (tone === 'short') rest = yrs + '. ' + line;
+    else rest = yrs + ' is something to be proud of. ' + line + ' Dinner is on me soon.';
+  } else if (kind === 'holiday') {
+    opener = 'Happy ' + item.title + ', ' + who + '.';
+    if (tone === 'funny') rest = 'Save me a plate and at least one argument. ' + line + ' Calling you this afternoon.';
+    else if (tone === 'short') rest = line;
+    else rest = 'Grateful for you today and every day. ' + line + ' Calling you this afternoon.';
+  } else if (kind === 'custom') {
+    const t = item.title.toLowerCase();
+    if (tone === 'funny') { opener = 'Big day, ' + who + '.'; rest = capital(t) + ' is here and I expect a full report. ' + line + ' Go show them.'; }
+    else if (tone === 'short') { opener = 'Good luck today, ' + who + '.'; rest = line; }
+    else { opener = 'Thinking of you today, ' + who + '.'; rest = capital(t) + ' is a big deal and you are ready for it. ' + line + ' Tell me everything after.'; }
+  } else {
+    if (tone === 'funny') { opener = who + '.'; rest = 'Checking you are still alive. ' + line + ' Prove it with a reply.'; }
+    else if (tone === 'short') { opener = 'Hi ' + who + '.'; rest = line + ' Miss you.'; }
+    else { opener = 'Hi ' + who + '.'; rest = 'You have been on my mind. ' + line + ' Free for a call this week?'; }
+  }
+  if (p.channel === 'card') {
+    const me = (S.profile.name || '').trim();
+    const open2 = kind === 'justbecause' ? '' : opener.replace(/, [^.]+\.$/, '.') + ' ';
+    return 'Dear ' + who + ',\n\n' + open2 + rest + '\n\nWith love,\n' + (me || 'me');
+  }
+  return opener + ' ' + rest;
+}
+function numberWord(n){ const w = ['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve']; return w[n] || String(n); }
+function capital(s){ return s ? s[0].toUpperCase() + s.slice(1) : s; }
+
+/* ---------- rendering ---------- */
+let rendering = false, renderQueued = false;
+function render(){
+  /* Replacing the view can blur a field, which fires change, which asks to render again. Never nest. */
+  if (rendering) { renderQueued = true; return; }
+  rendering = true;
+  try {
+    const activeId = document.activeElement && document.activeElement.id;
+    renderCtx();
+    renderNav();
+    renderView();
+    renderSheet();
+    if (activeId) { const el = document.getElementById(activeId); if (el && el !== document.activeElement) { try { el.focus({ preventScroll: true }); } catch (e) {} } }
+  } finally {
+    rendering = false;
+    if (renderQueued) { renderQueued = false; render(); }
+  }
+}
+function renderCtx(){
+  const c = $('#ctx');
+  if (S.tab === 'settings') { c.innerHTML = ''; return; }
+  c.innerHTML = '<button class="ctx" data-action="add-person" aria-label="Add a person">' + SVG_PLUS + '<span>Add</span></button>';
+}
+function renderNav(){
+  const slip = S.people.filter(isSlipping).length;
+  $('#nav').innerHTML = TABS.map(t => '<button class="tab" data-action="tab" data-tab="' + t.id + '"' + (S.tab === t.id ? ' aria-current="page"' : '') + '>' + t.icon + '<span>' + esc(t.label) + (t.id === 'slipping' && slip ? ' <span class="sr">, ' + slip + ' people</span>' : '') + '</span></button>').join('');
+}
+function renderView(){
+  const v = $('#view');
+  const fn = { upnext: viewUpNext, people: viewPeople, gifts: viewGifts, slipping: viewSlipping, settings: viewSettings }[S.tab] || viewUpNext;
+  v.innerHTML = '<section class="view" aria-labelledby="view-title">' + fn() + '</section>';
+  v.scrollTop = ui.scroll[S.tab] || 0;
+}
+
+/* Up next */
+function groupLabel(item){
+  const d = item.days, t = today();
+  if (d === 0) return 'Today';
+  if (d <= 7) return 'This week';
+  if (d <= 14) return 'Next week';
+  const m = item.date.getMonth();
+  return (m === t.getMonth() && item.date.getFullYear() === t.getFullYear()) ? 'Later in ' + MONTHS[m] : 'In ' + MONTHS[m];
+}
+function itemHTML(item, missedItem){
+  const chip = missedItem ? { cls:'chip-missed', text:'Missed' } : chipFor(item);
+  return '<button class="item' + (item.days === 0 ? ' today' : '') + '" data-action="open-occasion" data-key="' + esc(item.key) + '" data-days="' + item.days + '" data-pid="' + esc(item.pid) + '">' +
+    avatarsHTML(item.people) +
+    '<span class="item-body"><span class="item-name">' + esc(namesOf(item)) + '</span><span class="item-occ" style="display:block">' + esc(occLabel(item)) + '</span><span class="item-date" style="display:block">' + esc(fmtDay(item.date)) + '</span></span>' +
+    '<span class="side"><span class="chip ' + chip.cls + '" data-chip>' + esc(chip.text) + '</span><span class="when">' + esc(daysText(item.days)) + '</span></span></button>';
+}
+function viewUpNext(){
+  const items = upcoming(), late = missed();
+  let html = '<h1 class="h1" id="view-title">Up next</h1><p class="sub">' + esc(fmtDay(today())) + '. ' + (items.length ? items.length + ' ' + plural(items.length, 'occasion') + ' in the next 60 days.' : 'Nothing in the next 60 days.') + '</p>';
+  if (!items.length && !late.length) {
+    html += '<div class="card empty"><div class="big">A quiet stretch</div><p>Add a person and their birthday to fill this up.</p><div class="btnrow"><button class="btn btn-primary" data-action="add-person">Add a person</button></div></div>';
+    return html;
+  }
+  let g = null;
+  items.forEach(item => {
+    const lbl = groupLabel(item);
+    if (lbl !== g) { g = lbl; html += '<h2 class="group">' + (lbl === 'Today' ? '<span class="dot"></span>' : '') + esc(lbl) + '</h2>'; }
+    html += itemHTML(item);
+  });
+  if (late.length) {
+    html += '<h2 class="group">Recently missed</h2>';
+    late.forEach(item => { html += itemHTML(item, true); });
+  }
+  return html;
+}
+
+/* People */
+function nextForPerson(p){
+  const items = upcoming().filter(i => i.pid === p.id || (i.people && i.people.some(x => x.id === p.id)));
+  if (items.length) { const i = items[0]; return occLabel(i).split(',')[0] + ' ' + daysText(i.days).toLowerCase(); }
+  /* nothing inside 60 days: name the next yearly occasion anyway */
+  const t = today(), cands = [];
+  if (p.birthday) cands.push({ label: 'Birthday', date: nextOccurrence(p.birthday.month, p.birthday.day, addDays(t, 1)) });
+  if (p.anniversary) cands.push({ label: 'Anniversary', date: nextOccurrence(p.anniversary.month, p.anniversary.day, addDays(t, 1)) });
+  p.occasions.filter(o => o.repeats === 'yearly').forEach(o => cands.push({ label: o.title, date: nextOccurrence(o.month, o.day, addDays(t, 1)) }));
+  if (!cands.length) return 'No occasions yet';
+  cands.sort((a, b) => a.date - b.date);
+  return cands[0].label + ' on ' + fmtDate(cands[0].date, false);
+}
+function viewPeople(){
+  const list = S.people.slice().sort((a, b) => a.name.localeCompare(b.name));
+  let html = '<h1 class="h1" id="view-title">People</h1><p class="sub">' + list.length + ' ' + plural(list.length, 'person', 'people') + '. A red dot means you are past your cadence.</p>';
+  if (!list.length) return html + '<div class="card empty"><div class="big">Nobody yet</div><p>Tap Add to bring in the first person.</p></div>';
+  html += '<div class="card"><ul class="list">' + list.map(p =>
+    '<li class="li"><button class="row grow" data-action="open-person" data-pid="' + esc(p.id) + '" style="width:100%">' + avatarHTML(p) +
+    '<span class="grow"><span class="t" style="display:block">' + esc(p.name) + (isSlipping(p) ? '<span class="slip" title="Past your cadence"></span><span class="sr"> slipping</span>' : '') + '</span>' +
+    '<span class="s" style="display:block">' + esc(p.relationship) + '. ' + esc(nextForPerson(p)) + '</span></span></button></li>'
+  ).join('') + '</ul></div>';
+  return html;
+}
+
+/* Gifts */
+function pickedGift(item){ const gid = S.picks[item.key]; if (!gid) return null; for (const p of item.people) { const g = p.gifts.find(x => x.id === gid); if (g) return { gift: g, person: p }; } return null; }
+function statusChip(st){ const m = { idea:'Idea', bought:'Bought', given:'Given' }; return '<span class="chip chip-' + st + '">' + m[st] + '</span>'; }
+function nextGiftAction(g){ return g.status === 'idea' ? 'Mark bought' : g.status === 'bought' ? 'Mark given' : ''; }
+function priceBand(n){ n = Number(n) || 0; return n < 25 ? 'under' : n <= 75 ? 'mid' : 'over'; }
+function viewGifts(){
+  const items = upcoming();
+  let total = 0, picked = 0;
+  items.forEach(i => { const pg = pickedGift(i); if (pg) { total += Number(pg.gift.price) || 0; picked++; } });
+  let html = '<h1 class="h1" id="view-title">Gifts</h1><p class="sub">What to give the people coming up, and what you gave last time.</p>';
+  html += '<div class="card"><div class="kv"><div><div class="h3">This season</div><div class="big">' + money(total) + '</div></div><div style="text-align:right" class="quiet">' + picked + ' of ' + items.length + ' ' + plural(items.length, 'occasion') + '<br>have a gift picked</div></div></div>';
+  if (items.length) {
+    html += '<div class="card"><ul class="list">' + items.map(i => {
+      const pg = pickedGift(i);
+      return '<li class="li">' + avatarsHTML(i.people) + '<span class="grow"><span class="t" style="display:block">' + esc(namesOf(i)) + '</span><span class="s" style="display:block">' + esc(occLabel(i)) + '. ' + esc(fmtDate(i.date, false)) + '</span>' +
+        (pg ? '<span class="s plum" style="display:block;margin-top:4px">' + esc(pg.gift.title) + ' <span class="price">' + money(pg.gift.price) + '</span></span>' : '') + '</span>' +
+        (pg ? '<span style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">' + statusChip(pg.gift.status) + (nextGiftAction(pg.gift) ? '<button class="btn btn-secondary btn-sm" data-action="gift-advance" data-pid="' + esc(pg.person.id) + '" data-gid="' + esc(pg.gift.id) + '">' + nextGiftAction(pg.gift) + '</button>' : '') + '</span>'
+            : '<button class="btn btn-primary btn-sm" data-action="pick-gift" data-key="' + esc(i.key) + '">Pick</button>') + '</li>';
+    }).join('') + '</ul></div>';
+  } else {
+    html += '<div class="card empty"><p>No occasions in the next 60 days. Add a person to start a season.</p></div>';
+  }
+  /* Ideas bank */
+  const ideas = [];
+  S.people.forEach(p => p.gifts.filter(g => g.status !== 'given').forEach(g => ideas.push({ g, p })));
+  const f = ui.giftFilter;
+  const shown = ideas.filter(x => f === 'all' || priceBand(x.g.price) === f).sort((a, b) => (Number(a.g.price) || 0) - (Number(b.g.price) || 0));
+  const filt = [['all','All'],['under','Under $25'],['mid','$25 to $75'],['over','Over $75']];
+  html += '<h2 class="h2">Ideas bank</h2><div class="filters" role="group" aria-label="Filter by price">' + filt.map(x => '<button class="tone" data-action="filter" data-filter="' + x[0] + '" aria-pressed="' + (f === x[0]) + '">' + x[1] + '</button>').join('') + '</div>';
+  html += shown.length ? '<div class="card"><ul class="list">' + shown.map(x =>
+    '<li class="li" data-idea="' + esc(x.g.id) + '"><span class="grow"><span class="t" style="display:block">' + esc(x.g.title) + '</span><span class="s" style="display:block">' + esc(x.p.name) + '. ' + money(x.g.price) + '</span></span>' + statusChip(x.g.status) +
+    '<button class="btn btn-secondary btn-sm" data-action="gift-advance" data-pid="' + esc(x.p.id) + '" data-gid="' + esc(x.g.id) + '">' + nextGiftAction(x.g) + '</button></li>').join('') + '</ul></div>'
+    : '<div class="card empty"><p>No ideas in this band. Add one from a person\u2019s page.</p></div>';
+  /* Do not repeat */
+  const soon = {};
+  items.forEach(i => i.people.forEach(p => { soon[p.id] = p; }));
+  const repeat = Object.values(soon).filter(p => p.giftHistory.length).sort((a, b) => a.name.localeCompare(b.name));
+  html += '<h2 class="h2">Do not repeat</h2>';
+  html += repeat.length ? '<div class="card" data-donotrepeat><p class="quiet" style="margin-bottom:10px">What you already gave the people coming up.</p><ul class="list">' + repeat.map(p =>
+    '<li class="li">' + avatarHTML(p) + '<span class="grow"><span class="t" style="display:block">' + esc(p.name) + '</span><span class="s" style="display:block">' + esc(p.giftHistory.slice().sort((a, b) => b.year - a.year).map(h => h.title + ' (' + h.year + ')').join(', ')) + '</span></span></li>').join('') + '</ul></div>'
+    : '<div class="card empty"><p>No gift history yet for the people coming up. Mark a gift given to start one.</p></div>';
+  return html;
+}
+
+/* Slipping */
+function viewSlipping(){
+  const list = S.people.filter(isSlipping).sort((a, b) => slippingDays(b) - slippingDays(a));
+  let html = '<h1 class="h1" id="view-title">Slipping</h1><p class="sub">People you have not talked to as often as you meant to.</p>';
+  if (!list.length) return html + '<div class="card empty"><div class="big">Nobody is slipping. Keep it up.</div><p>Everyone is inside the cadence you set.</p></div>';
+  html += list.map(p => {
+    const ago = daysBetween(fromISO(p.lastContact), today());
+    return '<div class="card" data-slip="' + esc(p.id) + '"><div class="row">' + avatarHTML(p) + '<div class="grow"><div class="t" style="font-weight:600">' + esc(p.name) + '</div><div class="quiet">' + esc(p.relationship) + '</div></div></div>' +
+      '<p style="margin-top:12px">Last talked: ' + ago + ' days ago. You like to talk ' + esc(cadenceOf(p).phrase) + '.</p>' +
+      '<p class="quiet"><span class="pg">Playground</span> Reason to reach out: ' + esc(specific(p, 'reason')) + '</p>' +
+      '<div class="btnrow"><button class="btn btn-primary" data-action="talked" data-pid="' + esc(p.id) + '">We talked</button><button class="btn btn-secondary" data-action="draft-note" data-pid="' + esc(p.id) + '">Draft a note</button></div></div>';
+  }).join('');
+  return html;
+}
+
+/* Settings */
+function viewSettings(){
+  const perm = ('Notification' in window) ? Notification.permission : 'unsupported';
+  let status = 'Off';
+  if (perm === 'unsupported') status = 'This browser cannot show notifications';
+  else if (perm === 'denied') status = 'Blocked in the browser settings';
+  else if (perm === 'granted' && S.notify) status = 'On for this device';
+  let html = '<h1 class="h1" id="view-title">Settings</h1><p class="sub">Your name, the reminder ladder, and your data.</p>';
+  html += '<div class="card"><label class="field"><span class="lbl">Your name, for cards and sign offs</span><input class="input" id="profile-name" data-change="profile-name" value="' + esc(S.profile.name) + '" placeholder="Your first name" autocomplete="given-name"></label></div>';
+  html += '<div class="card"><div class="h3">Reminder ladder</div><p class="quiet" style="margin-bottom:12px">Days before each occasion. Changing a number changes every reminder at once.</p><div class="two">' +
+    STEPS.map(s => '<label class="field"><span class="lbl">' + s.label + '</span><input class="input" type="number" min="0" max="120" inputmode="numeric" id="lead-' + s.k + '" data-change="lead" data-lead="' + s.k + '" value="' + esc(S.leads[s.k]) + '"></label>').join('') + '</div></div>';
+  html += '<div class="card"><div class="h3">Reminders on this device</div><p class="quiet">Works while Keep is open. The real app sends reminders to your phone.</p><p>Status: <span class="status" id="notify-status">' + esc(status) + '</span></p><div class="btnrow">' +
+    (perm === 'granted' && S.notify ? '<button class="btn btn-secondary" data-action="notify-off">Turn off</button>' : '<button class="btn btn-primary" data-action="notify-on"' + (perm === 'unsupported' || perm === 'denied' ? ' disabled' : '') + '>Turn on reminders on this device</button>') + '</div></div>';
+  html += '<div class="card"><div class="h3">Import contacts</div><p class="quiet">Choose a .vcf file from your phone or address book. Keep reads names, birthdays, anniversaries and phone numbers.</p><label class="field" style="margin-top:10px"><span class="lbl">Contacts file</span><input class="input" type="file" accept=".vcf,text/vcard,text/x-vcard" id="vcf-file" data-change="vcf" style="padding-top:9px"></label></div>';
+  html += '<div class="card"><div class="h3">Calendar and backup</div><p class="quiet">The calendar file repeats birthdays and anniversaries every year and adds an alert at your first lead time.</p><div class="btnrow"><button class="btn btn-primary" data-action="export-ics">Download calendar (.ics)</button></div><div class="btnrow"><button class="btn btn-secondary" data-action="export-json">Export JSON</button></div><label class="field" style="margin-top:12px"><span class="lbl">Import JSON backup</span><input class="input" type="file" accept=".json,application/json" id="json-file" data-change="json" style="padding-top:9px"></label></div>';
+  html += '<div class="card"><div class="h3">Start over</div><p class="quiet">Puts the 12 demo people back and clears your changes.</p><div class="btnrow"><button class="btn ' + (ui.resetArmed ? 'btn-danger' : 'btn-ghost') + '" data-action="reset-seed">' + (ui.resetArmed ? 'Tap again to confirm' : 'Reset to seed') + '</button></div></div>';
+  html += '<div class="card"><div class="h3">How this playground works</div><p>Runs on this device only. Nothing leaves the browser.</p><p>The drafts and the reasons to reach out come from simple rules, marked <span class="pg">Playground</span>.</p><p>The real app adds accounts, sync, reminders on your phone and writing that reads your notes.</p></div>';
+  html += '<div class="foot">' + MONOGRAM + '<span>A Labs app from Ellington Enterprises LLC</span></div>';
+  return html;
+}
+
+/* ---------- sheets ---------- */
+function openSheet(sh){ ui.sheets.push(sh); render(); const b = $('#sheet-root .close'); if (b) b.focus(); }
+function closeSheet(){ ui.sheets.pop(); ui.removeArmed = null; render(); }
+function topSheet(){ return ui.sheets[ui.sheets.length - 1]; }
+function renderSheet(){
+  const root = $('#sheet-root');
+  const sh = topSheet();
+  if (!sh) { root.className = 'sheet-root'; root.innerHTML = ''; return; }
+  const fns = { occasion: sheetOccasion, person: sheetPerson, 'add-person': sheetAddPerson, pick: sheetPick, note: sheetNote, import: sheetImport };
+  const r = fns[sh.type](sh);
+  if (!r) { ui.sheets.pop(); renderSheet(); return; }
+  root.className = 'sheet-root open';
+  root.innerHTML = '<div class="sheet-backdrop" data-action="close-sheet"></div><div class="sheet' + (r.tall ? ' tall' : '') + '" role="dialog" aria-modal="true" aria-labelledby="sheet-title"><div class="handle"></div><div class="sheet-head"><h2 class="sheet-head-title" id="sheet-title">' + r.title + '</h2><button class="close" data-action="close-sheet" aria-label="Close">' + SVG_X + '</button></div><div class="sheet-body">' + r.body + '</div></div>';
+}
+function tonesHTML(tone){ return '<div class="tones" role="group" aria-label="Tone">' + [['warm','Warm'],['funny','Funny'],['short','Short']].map(x => '<button class="tone" data-action="tone" data-tone="' + x[0] + '" aria-pressed="' + (tone === x[0]) + '">' + x[1] + '</button>').join('') + '</div>'; }
+
+/* Occasion sheet */
+function sheetOccasion(sh){
+  const item = itemByKey(sh.key);
+  if (!item) return null;
+  const L = ladderFor(item);
+  const p = item.person;
+  let body = '<div class="row" style="margin-bottom:14px">' + avatarsHTML(item.people) + '<div class="grow"><div style="font-weight:600;font-size:17px">' + esc(occLabel(item)) + (item.kind === 'holiday' && item.plan ? '. ' + esc(item.plan) : '') + '</div><div class="quiet">' + esc(fmtDay(item.date)) + ', ' + item.date.getFullYear() + '. ' + esc(daysText(item.days)) + '.</div></div></div>';
+  /* ladder */
+  body += '<div class="card"><div class="h3">The ladder</div><ul class="steps">' + L.steps.map((s, i) => {
+    const isCur = L.current && L.current.k === s.k;
+    let cls = s.state, stateText = '';
+    if (s.state === 'done') stateText = 'Done';
+    else if (s.state === 'skipped') stateText = 'Skipped. Added with little time left.';
+    else if (s.state === 'missed') stateText = 'Missed';
+    else if (isCur) { cls = 'now'; stateText = s.snoozed ? 'Snoozed until tomorrow' : (s.firesIn > 0 ? 'Up now. The reminder lands in ' + s.firesIn + ' ' + plural(s.firesIn, 'day') + '.' : 'Due now'); }
+    else if (s.state === 'open') stateText = s.firesIn > 0 ? 'In ' + s.firesIn + ' ' + plural(s.firesIn, 'day') : 'Next';
+    else stateText = s.firesIn > 0 ? 'In ' + s.firesIn + ' ' + plural(s.firesIn, 'day') : 'Soon';
+    const mark = s.state === 'done' ? SVG_CHECK : s.state === 'skipped' ? '<span aria-hidden="true">&middot;</span>' : (isCur ? '<span aria-hidden="true">' + (i + 1) + '</span>' : '<span aria-hidden="true" style="color:var(--muted)">' + (i + 1) + '</span>');
+    let acts = '';
+    if (isCur && !s.snoozed) acts = '<button class="btn btn-primary btn-sm" data-action="step-done" data-key="' + esc(s.key) + '">Done</button>' + (s.k !== 'send' ? '<button class="btn btn-ghost btn-sm" data-action="step-snooze" data-key="' + esc(s.key) + '">Snooze a day</button>' : '');
+    else if (isCur && s.snoozed) acts = '<button class="btn btn-ghost btn-sm" data-action="step-unsnooze" data-key="' + esc(s.key) + '">Bring it back</button>';
+    else if (s.state === 'done' || s.state === 'skipped') acts = '<button class="btn btn-link" data-action="step-undo" data-key="' + esc(s.key) + '">' + (s.state === 'done' ? 'Undo' : 'Reopen') + '</button>';
+    else if (s.state === 'missed') acts = '<button class="btn btn-ghost btn-sm" data-action="step-done" data-key="' + esc(s.key) + '">Mark done anyway</button>';
+    return '<li class="step ' + cls + '" data-step="' + s.k + '" data-state="' + (isCur ? 'now' : s.state) + '"><span class="mark">' + mark + '</span><span class="grow"><span class="t" style="display:block">' + s.label + '</span><span class="s" style="display:block">' + esc(s.hint) + ' ' + esc(stateText) + '</span>' + (acts ? '<span class="acts">' + acts + '</span>' : '') + '</span></li>';
+  }).join('') + '</ul></div>';
+  /* gift */
+  if (item.kind !== 'holiday') {
+    const pg = pickedGift(item);
+    body += '<div class="card"><div class="h3">Gift for this year</div>' + (pg ?
+      '<div class="row"><span class="grow"><span style="font-weight:600;display:block">' + esc(pg.gift.title) + '</span><span class="price">' + money(pg.gift.price) + '</span></span>' + statusChip(pg.gift.status) + '</div><div class="btnrow">' + (nextGiftAction(pg.gift) ? '<button class="btn btn-secondary btn-sm" data-action="gift-advance" data-pid="' + esc(pg.person.id) + '" data-gid="' + esc(pg.gift.id) + '">' + nextGiftAction(pg.gift) + '</button>' : '') + '<button class="btn btn-ghost btn-sm" data-action="pick-gift" data-key="' + esc(item.key) + '">Change</button></div>'
+      : '<p class="quiet">Nothing picked yet.</p><div class="btnrow"><button class="btn btn-primary" data-action="pick-gift" data-key="' + esc(item.key) + '">Pick a gift</button></div>') + '</div>';
+  } else {
+    body += '<div class="card"><div class="h3">The plan</div><p>' + esc(item.plan || 'Reach out to everyone on this day.') + '</p><p class="quiet">' + item.people.map(x => esc(x.name)).join(' and ') + '.</p></div>';
+  }
+  /* message */
+  body += '<div class="card"><div class="row" style="justify-content:space-between"><div class="h3" style="margin:0">Your message</div><span class="pg">Playground</span></div>';
+  if (!sh.draftOpen) {
+    body += '<p class="quiet" style="margin:8px 0 0">Keep writes a first draft from your notes about ' + esc(firstName(p)) + '.</p><div class="btnrow"><button class="btn btn-primary btn-block" data-action="draft-open">Draft the message</button></div>';
+  } else {
+    body += '<div style="margin-top:10px">' + tonesHTML(sh.tone) + '<label class="field"><span class="lbl">Edit before you send</span><textarea class="input" id="draft-text" data-input="draft" aria-label="Your message">' + esc(sh.draftText) + '</textarea></label>' +
+      '<div class="btnrow"><button class="btn btn-secondary" data-action="copy-draft">Copy</button><button class="btn btn-primary" data-action="mark-sent" data-key="' + esc(item.key) + '">Mark sent</button></div></div>';
+  }
+  body += '</div>';
+  /* contact */
+  const phone = (p.phone || '').replace(/[^\d+]/g, '');
+  body += '<div class="btnrow" style="margin-top:4px">' + (phone ?
+    '<a class="btn btn-ghost" href="tel:' + esc(phone) + '">Call</a><a class="btn btn-ghost" href="sms:' + esc(phone) + '">Text</a>'
+    : '<button class="btn btn-ghost" disabled aria-disabled="true">Call. No number on file</button><button class="btn btn-ghost" disabled aria-disabled="true">Text. No number on file</button>') + '</div>';
+  body += '<div class="btnrow"><button class="btn btn-ghost btn-block" data-action="open-person" data-pid="' + esc(p.id) + '">Open ' + esc(firstName(p)) + '\u2019s page</button></div>';
+  return { title: esc(namesOf(item)), body, tall: true };
+}
+
+/* Pick a gift sheet */
+function sheetPick(sh){
+  const item = itemByKey(sh.key);
+  if (!item) return null;
+  const p = item.person;
+  const ideas = p.gifts.filter(g => g.status !== 'given');
+  let body = '<p class="quiet">For ' + esc(occLabel(item).toLowerCase()) + ', ' + esc(fmtDate(item.date, false)) + '.</p>';
+  body += ideas.length ? '<div class="card"><ul class="list">' + ideas.map(g => '<li class="li"><span class="grow"><span class="t" style="display:block">' + esc(g.title) + '</span><span class="s">' + money(g.price) + '</span></span>' + statusChip(g.status) + '<button class="btn btn-primary btn-sm" data-action="choose-gift" data-key="' + esc(item.key) + '" data-gid="' + esc(g.id) + '">' + (S.picks[item.key] === g.id ? 'Picked' : 'Choose') + '</button></li>').join('') + '</ul></div>'
+    : '<div class="card empty"><p>No ideas yet for ' + esc(firstName(p)) + '. Add one below.</p></div>';
+  body += '<form class="card" data-form="pick-add" data-key="' + esc(item.key) + '"><div class="h3">New idea</div><label class="field"><span class="lbl">What</span><input class="input" name="title" required placeholder="A good idea"></label><label class="field"><span class="lbl">Rough price in dollars</span><input class="input" name="price" type="number" min="0" inputmode="numeric" placeholder="40"></label><button class="btn btn-secondary btn-block" type="submit">Add and pick it</button></form>';
+  return { title: 'Pick a gift', body };
+}
+
+/* Just because note sheet */
+function sheetNote(sh){
+  const p = byId(sh.pid);
+  if (!p) return null;
+  let body = '<p class="quiet"><span class="pg">Playground</span> A note for no reason, from your notes about ' + esc(firstName(p)) + '.</p>' + tonesHTML(sh.tone) +
+    '<label class="field"><span class="lbl">Edit before you send</span><textarea class="input" id="draft-text" data-input="draft" aria-label="Your note">' + esc(sh.draftText) + '</textarea></label>' +
+    '<div class="btnrow"><button class="btn btn-secondary" data-action="copy-draft">Copy</button><button class="btn btn-primary" data-action="note-sent" data-pid="' + esc(p.id) + '">Mark sent</button></div>';
+  const phone = (p.phone || '').replace(/[^\d+]/g, '');
+  body += '<div class="btnrow">' + (phone ? '<a class="btn btn-ghost" href="tel:' + esc(phone) + '">Call</a><a class="btn btn-ghost" href="sms:' + esc(phone) + '">Text</a>' : '<button class="btn btn-ghost" disabled aria-disabled="true">No number on file</button>') + '</div>';
+  return { title: 'A note to ' + esc(firstName(p)), body };
+}
+
+/* Add person sheet */
+function options(list, sel){ return list.map(x => { const v = Array.isArray(x) ? x[0] : x, l = Array.isArray(x) ? x[1] : x; return '<option value="' + esc(v) + '"' + (String(v) === String(sel) ? ' selected' : '') + '>' + esc(l) + '</option>'; }).join(''); }
+function sheetAddPerson(){
+  const body = '<form data-form="add-person">' +
+    '<label class="field"><span class="lbl">Name</span><input class="input" name="name" required placeholder="Full name" autocomplete="off"></label>' +
+    '<div class="two"><label class="field"><span class="lbl">Relationship</span><select class="input" name="relationship">' + options(RELATIONSHIPS, 'Friend') + '</select></label>' +
+    '<label class="field"><span class="lbl">Pronoun</span><select class="input" name="pronoun">' + options(PRONOUNS, 'they') + '</select></label></div>' +
+    '<label class="field"><span class="lbl">Birthday</span><input class="input" type="date" name="birthday"></label>' +
+    '<label class="check"><input type="checkbox" name="knowYear" checked> I know the year</label>' +
+    '<div class="two"><label class="field"><span class="lbl">Preferred channel</span><select class="input" name="channel">' + options(CHANNELS, 'text') + '</select></label>' +
+    '<label class="field"><span class="lbl">Stay in touch</span><select class="input" name="cadence">' + options(CADENCES.map(c => [c.v, c.label]), 30) + '</select></label></div>' +
+    '<label class="field"><span class="lbl">Phone, optional</span><input class="input" name="phone" type="tel" inputmode="tel" placeholder="Digits only"></label>' +
+    '<button class="btn btn-primary btn-block" type="submit">Add to Keep</button></form>';
+  return { title: 'Add a person', body };
+}
+
+/* Person detail sheet */
+function occRows(p, sh){
+  const rows = [];
+  if (p.birthday) rows.push({ id:'bday', title:'Birthday', month:p.birthday.month, day:p.birthday.day, year:p.birthday.year, repeats:'yearly', fixed:true });
+  if (p.anniversary) rows.push({ id:'anniv', title:'Anniversary', month:p.anniversary.month, day:p.anniversary.day, year:p.anniversary.year, repeats:'yearly', fixed:true });
+  p.occasions.forEach(o => rows.push(Object.assign({}, o)));
+  return rows.map(o => {
+    const dateText = MONTHS[o.month - 1] + ' ' + ordinal(o.day) + (o.year && o.repeats === 'yearly' && o.fixed ? ' (' + o.year + ')' : o.repeats === 'once' ? ', ' + o.year : '');
+    if (sh.editOcc === o.id) {
+      const y = o.year || 2000;
+      const val = y + '-' + pad(o.month) + '-' + pad(o.day);
+      return '<li class="li" style="display:block"><form class="inline-form" data-form="edit-occasion" data-pid="' + esc(p.id) + '" data-occ="' + esc(o.id) + '">' +
+        (o.fixed ? '<div class="h3">' + esc(o.title) + '</div>' : '<label class="field"><span class="lbl">Title</span><input class="input" name="title" required value="' + esc(o.title) + '"></label>') +
+        '<label class="field"><span class="lbl">Date</span><input class="input" type="date" name="date" required value="' + val + '"></label>' +
+        (o.fixed ? '<label class="check"><input type="checkbox" name="knowYear"' + (o.year ? ' checked' : '') + '> I know the year</label>' : '<label class="field"><span class="lbl">Repeats</span><select class="input" name="repeats">' + options([['yearly','Every year'],['once','Just once']], o.repeats) + '</select></label>') +
+        '<div class="btnrow"><button class="btn btn-primary btn-sm" type="submit">Save</button><button class="btn btn-ghost btn-sm" type="button" data-action="occ-cancel">Cancel</button></div></form></li>';
+    }
+    return '<li class="li"><span class="grow"><span class="t" style="display:block">' + esc(o.title) + '</span><span class="s" style="display:block">' + esc(dateText) + (o.repeats === 'once' ? '. Once' : '. Every year') + '</span></span><button class="btn btn-ghost btn-sm" data-action="occ-edit" data-pid="' + esc(p.id) + '" data-occ="' + esc(o.id) + '">Edit</button><button class="btn btn-ghost btn-sm" data-action="occ-remove" data-pid="' + esc(p.id) + '" data-occ="' + esc(o.id) + '">Remove</button></li>';
+  }).join('');
+}
+function sheetPerson(sh){
+  const p = byId(sh.pid);
+  if (!p) return null;
+  const slip = slippingDays(p);
+  let body = '<div class="row" style="margin-bottom:14px">' + avatarHTML(p, 'lg') + '<div class="grow"><div style="font-weight:600;font-size:17px">' + esc(p.relationship) + '</div><div class="quiet">' + esc(nextForPerson(p)) + '</div></div></div>';
+  /* last contact */
+  body += '<div class="card"><div class="row"><div class="grow"><div class="h3" style="margin:0">' + esc(agoText(p.lastContact)) + '</div><div class="quiet">You like to talk ' + esc(cadenceOf(p).phrase) + '.' + (slip > 0 ? ' <span style="color:var(--rose);font-weight:600">' + slip + ' ' + plural(slip, 'day') + ' past.</span>' : '') + '</div></div><button class="btn btn-primary btn-sm" data-action="talked" data-pid="' + esc(p.id) + '">We talked today</button></div></div>';
+  /* occasions */
+  const rows = occRows(p, sh);
+  body += '<div class="card"><div class="h3">Occasions</div>' + (rows ? '<ul class="list">' + rows + '</ul>' : '<p class="quiet">No occasions yet. Add a birthday below.</p>') +
+    '<form class="inline-form" data-form="add-occasion" data-pid="' + esc(p.id) + '"><div class="h3">Add an occasion</div><div class="two"><label class="field"><span class="lbl">Type</span><select class="input" name="type" id="occ-type-' + esc(p.id) + '">' + options([['custom','Custom'],['birthday','Birthday'],['anniversary','Anniversary']], 'custom') + '</select></label><label class="field"><span class="lbl">Repeats</span><select class="input" name="repeats">' + options([['yearly','Every year'],['once','Just once']], 'once') + '</select></label></div>' +
+    '<label class="field"><span class="lbl">Title, for a custom occasion</span><input class="input" name="title" placeholder="First day at the new job"></label><label class="field"><span class="lbl">Date</span><input class="input" type="date" name="date" required></label><label class="check"><input type="checkbox" name="knowYear" checked> I know the year</label><button class="btn btn-secondary btn-block" type="submit">Add occasion</button></form></div>';
+  /* notes */
+  const notes = newestNotes(p);
+  body += '<div class="card"><div class="h3">Notes</div><form class="row" data-form="add-note" data-pid="' + esc(p.id) + '" style="margin-bottom:10px"><label class="grow sr" for="note-' + esc(p.id) + '">Add a note</label><input class="input grow" id="note-' + esc(p.id) + '" name="text" required placeholder="Kids: Ava 9 and Leo 6"><button class="btn btn-secondary" type="submit" style="height:46px">Add</button></form>' +
+    (notes.length ? '<ul class="list">' + notes.map(n => '<li class="li"><span class="grow"><span style="display:block">' + esc(n.text) + '</span><span class="s">' + esc(fmtDate(new Date(n.at))) + '</span></span><button class="note-x" data-action="remove-note" data-pid="' + esc(p.id) + '" data-nid="' + esc(n.id) + '" aria-label="Remove note">' + SVG_X + '</button></li>').join('') + '</ul>' : '<p class="quiet">No notes yet. Add one line about what matters to ' + esc(firstName(p)) + '.</p>') + '</div>';
+  /* gifts */
+  const ideas = p.gifts.filter(g => g.status !== 'given');
+  const histSorted = p.giftHistory.slice().sort((a, b) => b.year - a.year);
+  body += '<div class="card"><div class="h3">Gift ideas</div>' + (ideas.length ? '<ul class="list" style="margin-bottom:12px">' + ideas.map(g => '<li class="li" data-idea="' + esc(g.id) + '"><span class="grow"><span class="t" style="display:block">' + esc(g.title) + '</span><span class="s">' + money(g.price) + '</span></span>' + statusChip(g.status) + '<button class="btn btn-secondary btn-sm" data-action="gift-advance" data-pid="' + esc(p.id) + '" data-gid="' + esc(g.id) + '">' + nextGiftAction(g) + '</button><button class="note-x" data-action="gift-remove" data-pid="' + esc(p.id) + '" data-gid="' + esc(g.id) + '" aria-label="Remove idea">' + SVG_X + '</button></li>').join('') + '</ul>' : '<p class="quiet">No ideas yet.</p>') +
+    '<form class="inline-form" data-form="add-gift" data-pid="' + esc(p.id) + '"><div class="two"><label class="field"><span class="lbl">Idea</span><input class="input" name="title" required placeholder="Something they would love"></label><label class="field"><span class="lbl">Price in dollars</span><input class="input" name="price" type="number" min="0" inputmode="numeric" placeholder="40"></label></div><button class="btn btn-secondary btn-block" type="submit">Add idea</button></form>' +
+    '<div class="h3" style="margin-top:16px">Gift history</div>' + (histSorted.length ? '<ul class="list" data-history>' + histSorted.map(h => '<li class="li"><span class="grow"><span class="t" style="display:block">' + esc(h.title) + '</span><span class="s">' + esc(h.occasion || 'Gift') + ', ' + h.year + '</span></span></li>').join('') + '</ul>' : '<p class="quiet">Nothing given yet. Mark an idea given to start the record.</p>') + '</div>';
+  /* details */
+  body += '<form class="card" data-form="person-details" data-pid="' + esc(p.id) + '"><div class="h3">Details</div>' +
+    '<label class="field"><span class="lbl">Name</span><input class="input" name="name" required value="' + esc(p.name) + '"></label>' +
+    '<div class="two"><label class="field"><span class="lbl">Relationship</span><select class="input" name="relationship">' + options(RELATIONSHIPS.includes(p.relationship) ? RELATIONSHIPS : RELATIONSHIPS.concat([p.relationship]), p.relationship) + '</select></label><label class="field"><span class="lbl">Pronoun</span><select class="input" name="pronoun">' + options(PRONOUNS, p.pronoun) + '</select></label></div>' +
+    '<div class="two"><label class="field"><span class="lbl">Preferred channel</span><select class="input" name="channel">' + options(CHANNELS, p.channel) + '</select></label><label class="field"><span class="lbl">Stay in touch</span><select class="input" name="cadence">' + options(CADENCES.map(c => [c.v, c.label]), p.cadence) + '</select></label></div>' +
+    '<label class="field"><span class="lbl">Phone, optional</span><input class="input" name="phone" type="tel" inputmode="tel" value="' + esc(p.phone || '') + '" placeholder="Digits only"></label>' +
+    '<label class="field"><span class="lbl">Avatar colour</span><select class="input" name="color">' + options(COLOR_KEYS.map(k => [k, capital(k)]), p.color) + '</select></label>' +
+    '<button class="btn btn-primary btn-block" type="submit">Save details</button></form>';
+  body += '<div class="btnrow"><button class="btn ' + (ui.removeArmed === p.id ? 'btn-danger' : 'btn-ghost') + ' btn-block" data-action="remove-person" data-pid="' + esc(p.id) + '">' + (ui.removeArmed === p.id ? 'Tap again to remove ' + esc(firstName(p)) : 'Remove this person') + '</button></div>';
+  return { title: esc(p.name), body, tall: true };
+}
+
+/* Import preview sheet */
+function sheetImport(sh){
+  const rows = sh.rows;
+  if (!rows.length) return { title: 'Nothing found', body: '<p>That file had no contacts Keep could read. Try a .vcf export from your phone.</p>' };
+  const fmtD = d => d ? MONTHS[d.month - 1] + ' ' + ordinal(d.day) + (d.year ? ', ' + d.year : '') : '';
+  const sel = rows.filter(r => r.checked).length;
+  let body = '<p class="quiet">' + rows.length + ' ' + plural(rows.length, 'contact') + ' found. Pick who to add.</p><div class="table-wrap"><table><thead><tr><th><span class="sr">Add</span></th><th>Name</th><th>Birthday</th><th>Anniversary</th></tr></thead><tbody>' +
+    rows.map((r, i) => '<tr data-import-row><td><input type="checkbox" data-change="import-check" data-i="' + i + '"' + (r.checked ? ' checked' : '') + ' aria-label="Add ' + esc(r.name) + '"></td><td>' + esc(r.name) + (r.phone ? '<div class="s quiet" style="font-size:12px">' + esc(fmtPhone(r.phone)) + '</div>' : '') + '</td><td data-bday>' + esc(fmtD(r.bday)) + '</td><td>' + esc(fmtD(r.anniv)) + '</td></tr>').join('') + '</tbody></table></div>';
+  body += '<div class="btnrow"><button class="btn btn-primary" data-action="import-add-all">Add all ' + rows.length + '</button><button class="btn btn-secondary" data-action="import-add-selected"' + (sel ? '' : ' disabled') + '>Add selected (' + sel + ')</button></div>';
+  return { title: 'Contacts found', body };
+}
+
+/* ---------- vcf ---------- */
+function parseVcfDate(v){
+  v = String(v || '').trim();
+  let m;
+  if ((m = v.match(/^--(\d{2})-?(\d{2})/))) return { month: +m[1], day: +m[2], year: null };
+  if ((m = v.match(/^(\d{4})-(\d{2})-(\d{2})/))) return { year: +m[1] === 1604 ? null : +m[1], month: +m[2], day: +m[3] };
+  if ((m = v.match(/^(\d{4})(\d{2})(\d{2})/))) return { year: +m[1] === 1604 ? null : +m[1], month: +m[2], day: +m[3] };
+  return null;
+}
+function parseVcf(text){
+  const lines = String(text).replace(/\r\n?/g, '\n').split('\n');
+  const un = [];
+  lines.forEach(l => { if (/^[ \t]/.test(l) && un.length) un[un.length - 1] += l.slice(1); else un.push(l); });
+  const cards = []; let cur = null;
+  un.forEach(l => {
+    const u = l.trim();
+    if (/^BEGIN:VCARD/i.test(u)) { cur = { fn: '', n: '', bday: null, anniv: null, tel: '' }; return; }
+    if (/^END:VCARD/i.test(u)) { if (cur) cards.push(cur); cur = null; return; }
+    if (!cur) return;
+    const idx = u.indexOf(':'); if (idx < 0) return;
+    const left = u.slice(0, idx), val = u.slice(idx + 1);
+    const name = left.split(';')[0].replace(/^item\d+\./i, '').toUpperCase();
+    if (name === 'FN') cur.fn = val.trim();
+    else if (name === 'N') { const parts = val.split(';'); cur.n = [parts[1], parts[0]].filter(Boolean).join(' ').trim(); }
+    else if (name === 'BDAY') cur.bday = parseVcfDate(val);
+    else if (name === 'X-ANNIVERSARY' || name === 'ANNIVERSARY') cur.anniv = parseVcfDate(val);
+    else if (name === 'TEL' && !cur.tel) cur.tel = val.replace(/[^\d+]/g, '');
+  });
+  return cards.map(c => ({ name: c.fn || c.n, bday: c.bday, anniv: c.anniv, phone: c.tel, checked: true })).filter(c => c.name);
+}
+function addImported(rows){
+  let n = 0;
+  rows.forEach((r, i) => {
+    const p = person({ name: r.name, relationship: 'Friend', color: COLOR_KEYS[(S.people.length + i) % COLOR_KEYS.length], phone: r.phone || '', birthday: r.bday, anniversary: r.anniv, cadence: 90, lastContact: null });
+    S.people.push(p); skipPassedSteps(p.id); n++;
+  });
+  save();
+  return n;
+}
+
+/* ---------- ics ---------- */
+function icsEscape(s){ return String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n'); }
+function icsFold(line){ const out = []; let s = line; while (s.length > 73) { out.push(s.slice(0, 73)); s = ' ' + s.slice(73); } out.push(s); return out.join('\r\n'); }
+function buildIcs(){
+  const t = today();
+  const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  const lead = Number(S.leads.plan) || 0;
+  const L = [];
+  const ev = (uidPart, date, summary, desc, yearly) => {
+    L.push('BEGIN:VEVENT', 'UID:' + uidPart + '@labs.keep', 'DTSTAMP:' + stamp, 'DTSTART;VALUE=DATE:' + iso(date).replace(/-/g, ''));
+    if (yearly) L.push('RRULE:FREQ=YEARLY');
+    L.push('SUMMARY:' + icsEscape(summary), 'DESCRIPTION:' + icsEscape(desc), 'TRANSP:TRANSPARENT');
+    L.push('BEGIN:VALARM', 'TRIGGER:-P' + lead + 'D', 'ACTION:DISPLAY', 'DESCRIPTION:' + icsEscape('Plan it. ' + summary), 'END:VALARM', 'END:VEVENT');
+  };
+  L.push('BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Ellington Labs//Keep//EN', 'CALSCALE:GREGORIAN', 'X-WR-CALNAME:Keep');
+  S.people.forEach(p => {
+    if (p.birthday) ev('keep-' + p.id + '-bday', nextOccurrence(p.birthday.month, p.birthday.day, t), p.name + '\u2019s birthday', (p.birthday.year ? 'Born ' + p.birthday.year + '. ' : '') + 'From Keep.', true);
+    if (p.anniversary) ev('keep-' + p.id + '-anniv', nextOccurrence(p.anniversary.month, p.anniversary.day, t), p.name + ' anniversary', (p.anniversary.year ? 'Since ' + p.anniversary.year + '. ' : '') + 'From Keep.', true);
+    p.occasions.forEach(o => {
+      const date = o.repeats === 'once' ? new Date(o.year, o.month - 1, o.day) : nextOccurrence(o.month, o.day, t);
+      ev('keep-' + p.id + '-' + o.id, date, p.name + ': ' + o.title, 'From Keep.', o.repeats !== 'once');
+    });
+  });
+  S.holidays.forEach(h => ev('keep-h-' + h.id, new Date(h.year, h.month - 1, h.day), h.title + (h.plan ? '. ' + h.plan : ''), 'From Keep.', false));
+  L.push('END:VCALENDAR');
+  return L.map(icsFold).join('\r\n') + '\r\n';
+}
+function download(name, text, type){
+  try {
+    const blob = new Blob([text], { type: type || 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = name; document.body.appendChild(a); a.click();
+    setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1000);
+  } catch (e) { toast('Could not start the download'); }
+}
+
+/* ---------- toasts and notifications ---------- */
+function toast(msg){
+  const t = $('#toasts'); t.innerHTML = '';
+  const el = document.createElement('div'); el.className = 'toast'; el.textContent = msg; t.appendChild(el);
+  setTimeout(() => { el.remove(); }, 2200);
+}
+function maybeNotify(){
+  try {
+    if (!S.notify || !('Notification' in window) || Notification.permission !== 'granted') return;
+    dueToday().forEach(r => {
+      new Notification('Keep: ' + r.step.label + ' for ' + namesOf(r.item), { body: occLabel(r.item) + '. ' + daysText(r.item.days) + '.' });
+    });
+  } catch (e) { /* notifications unavailable */ }
+}
+async function copyText(text){
+  try { await navigator.clipboard.writeText(text); return true; } catch (e) {}
+  try {
+    const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'absolute'; ta.style.left = '-9999px';
+    document.body.appendChild(ta); ta.select(); const ok = document.execCommand('copy'); ta.remove(); return ok;
+  } catch (e) { return false; }
+}
+
+/* ---------- actions ---------- */
+function markTalked(pid){ const p = byId(pid); if (!p) return; p.lastContact = iso(today()); save(); }
+function advanceGift(pid, gid){
+  const p = byId(pid); if (!p) return;
+  const g = p.gifts.find(x => x.id === gid); if (!g) return;
+  if (g.status === 'idea') { g.status = 'bought'; toast('Marked bought'); }
+  else if (g.status === 'bought') {
+    g.status = 'given';
+    let year = today().getFullYear(), occasion = 'Gift';
+    Object.keys(S.picks).forEach(k => { if (S.picks[k] === gid) { const parts = k.split(':'); year = Number(parts[2]) || year; occasion = parts[1] === 'bday' ? 'Birthday' : parts[1] === 'anniv' ? 'Anniversary' : (p.occasions.find(o => o.id === parts[1]) || {}).title || 'Gift'; } });
+    p.giftHistory.push({ year, title: g.title, occasion });
+    toast('Given. Added to history');
+  }
+  save();
+}
+const actions = {
+  tab(el){ ui.scroll[S.tab] = $('#view').scrollTop; S.tab = el.dataset.tab; ui.resetArmed = false; save(); render(); },
+  'add-person'(){ openSheet({ type: 'add-person' }); },
+  'open-occasion'(el){ openSheet({ type: 'occasion', key: el.dataset.key, tone: 'warm', draftOpen: false, draftText: '' }); },
+  'open-person'(el){ ui.sheets = []; openSheet({ type: 'person', pid: el.dataset.pid }); },
+  'close-sheet'(){ closeSheet(); },
+  'step-done'(el){ S.done[el.dataset.key] = true; delete S.snoozed[el.dataset.key]; save(); toast('Done'); render(); },
+  'step-undo'(el){ delete S.done[el.dataset.key]; save(); render(); },
+  'step-snooze'(el){ S.snoozed[el.dataset.key] = iso(addDays(today(), 1)); save(); toast('Snoozed until tomorrow'); render(); },
+  'step-unsnooze'(el){ delete S.snoozed[el.dataset.key]; save(); render(); },
+  'pick-gift'(el){ openSheet({ type: 'pick', key: el.dataset.key }); },
+  'choose-gift'(el){ S.picks[el.dataset.key] = el.dataset.gid; save(); toast('Gift picked'); closeSheet(); },
+  'gift-advance'(el){ advanceGift(el.dataset.pid, el.dataset.gid); render(); },
+  'gift-remove'(el){ const p = byId(el.dataset.pid); if (!p) return; p.gifts = p.gifts.filter(g => g.id !== el.dataset.gid); Object.keys(S.picks).forEach(k => { if (S.picks[k] === el.dataset.gid) delete S.picks[k]; }); save(); toast('Removed'); render(); },
+  'draft-open'(){ const sh = topSheet(); const item = itemByKey(sh.key); if (!item) return; sh.draftOpen = true; sh.draftText = draftMessage(item.person, item, sh.tone); render(); const ta = $('#draft-text'); if (ta) ta.scrollIntoView({ block: 'center' }); },
+  tone(el){ const sh = topSheet(); sh.tone = el.dataset.tone; if (sh.type === 'occasion') { const item = itemByKey(sh.key); if (item) sh.draftText = draftMessage(item.person, item, sh.tone); } else if (sh.type === 'note') { sh.draftText = draftMessage(byId(sh.pid), null, sh.tone); } render(); },
+  async 'copy-draft'(){ const ta = $('#draft-text'); const ok = await copyText(ta ? ta.value : (topSheet() || {}).draftText || ''); toast(ok ? 'Copied' : 'Select the text and copy it'); },
+  'mark-sent'(el){
+    const item = itemByKey(el.dataset.key); if (!item) return;
+    STEPS.forEach(s => { const k = item.key + ':' + s.k; if (S.done[k] !== 'skipped') S.done[k] = true; });
+    item.people.forEach(p => { p.lastContact = iso(today()); });
+    save(); ui.sheets = []; toast('Sent. Last contact updated'); render();
+  },
+  'note-sent'(el){ markTalked(el.dataset.pid); ui.sheets = []; toast('Sent. Last contact updated'); render(); },
+  talked(el){ markTalked(el.dataset.pid); toast('Last contact set to today'); render(); },
+  'draft-note'(el){ const p = byId(el.dataset.pid); if (!p) return; openSheet({ type: 'note', pid: p.id, tone: 'warm', draftText: draftMessage(p, null, 'warm') }); },
+  filter(el){ ui.giftFilter = el.dataset.filter; render(); },
+  'remove-note'(el){ const p = byId(el.dataset.pid); if (!p) return; p.notes = p.notes.filter(n => n.id !== el.dataset.nid); save(); render(); },
+  'occ-edit'(el){ topSheet().editOcc = el.dataset.occ; render(); },
+  'occ-cancel'(){ topSheet().editOcc = null; render(); },
+  'occ-remove'(el){
+    const p = byId(el.dataset.pid); if (!p) return;
+    const id = el.dataset.occ;
+    if (id === 'bday') p.birthday = null; else if (id === 'anniv') p.anniversary = null; else p.occasions = p.occasions.filter(o => o.id !== id);
+    save(); toast('Removed'); render();
+  },
+  'remove-person'(el){
+    const pid = el.dataset.pid;
+    if (ui.removeArmed !== pid) { ui.removeArmed = pid; render(); return; }
+    S.people = S.people.filter(p => p.id !== pid);
+    S.holidays.forEach(h => { h.personIds = h.personIds.filter(x => x !== pid); });
+    ui.removeArmed = null; save(); ui.sheets = []; toast('Removed'); render();
+  },
+  'notify-on'(){
+    if (!('Notification' in window)) return;
+    try {
+      Notification.requestPermission().then(p => { S.notify = p === 'granted'; save(); render(); toast(p === 'granted' ? 'Reminders on' : 'Reminders stay off'); if (p === 'granted') maybeNotify(); });
+    } catch (e) { toast('This browser cannot ask'); }
+  },
+  'notify-off'(){ S.notify = false; save(); toast('Reminders off'); render(); },
+  'export-ics'(){ download('keep.ics', buildIcs(), 'text/calendar'); toast('Calendar downloaded'); },
+  'export-json'(){ download('keep-backup.json', JSON.stringify(S, null, 2), 'application/json'); toast('Backup downloaded'); },
+  'reset-seed'(){
+    if (!ui.resetArmed) { ui.resetArmed = true; render(); setTimeout(() => { if (ui.resetArmed) { ui.resetArmed = false; render(); } }, 4000); return; }
+    const tab = S.tab; S = seed(); S.tab = tab; ui.resetArmed = false; ui.sheets = []; save(); toast('Seed restored'); render();
+  },
+  'import-add-all'(){ const sh = topSheet(); const n = addImported(sh.rows); ui.sheets = []; S.tab = 'people'; save(); toast('Added ' + n + ' ' + plural(n, 'person', 'people')); render(); },
+  'import-add-selected'(){ const sh = topSheet(); const n = addImported(sh.rows.filter(r => r.checked)); ui.sheets = []; S.tab = 'people'; save(); toast('Added ' + n + ' ' + plural(n, 'person', 'people')); render(); }
+};
+const forms = {
+  'add-person'(f){
+    const d = new FormData(f);
+    const name = String(d.get('name') || '').trim(); if (!name) return;
+    const bday = String(d.get('birthday') || '');
+    let birthday = null;
+    if (bday) { const x = fromISO(bday); birthday = { month: x.getMonth() + 1, day: x.getDate(), year: d.get('knowYear') ? x.getFullYear() : null }; }
+    const p = person({ name, relationship: d.get('relationship') || 'Friend', pronoun: d.get('pronoun') || 'they', color: COLOR_KEYS[S.people.length % COLOR_KEYS.length], birthday, channel: d.get('channel') || 'text', cadence: Number(d.get('cadence')) || 30, phone: String(d.get('phone') || '').replace(/[^\d+]/g, ''), lastContact: iso(today()) });
+    S.people.push(p); skipPassedSteps(p.id); save(); ui.sheets = []; toast('Added ' + firstName(p)); render();
+  },
+  'person-details'(f){
+    const p = byId(f.dataset.pid); if (!p) return;
+    const d = new FormData(f);
+    p.name = String(d.get('name') || p.name).trim() || p.name; p.relationship = d.get('relationship') || p.relationship; p.pronoun = d.get('pronoun') || p.pronoun; p.channel = d.get('channel') || p.channel; p.cadence = Number(d.get('cadence')) || p.cadence; p.phone = String(d.get('phone') || '').replace(/[^\d+]/g, ''); p.color = d.get('color') || p.color;
+    save(); toast('Saved'); render();
+  },
+  'add-note'(f){ const p = byId(f.dataset.pid); if (!p) return; const text = String(new FormData(f).get('text') || '').trim(); if (!text) return; p.notes.push({ id: uid(), text, at: new Date().toISOString() }); save(); toast('Note added'); render(); },
+  'add-gift'(f){ const p = byId(f.dataset.pid); if (!p) return; const d = new FormData(f); const title = String(d.get('title') || '').trim(); if (!title) return; p.gifts.push({ id: uid(), title, price: Number(d.get('price')) || 0, status: 'idea' }); save(); toast('Idea added'); render(); },
+  'pick-add'(f){ const item = itemByKey(f.dataset.key); if (!item) return; const d = new FormData(f); const title = String(d.get('title') || '').trim(); if (!title) return; const g = { id: uid(), title, price: Number(d.get('price')) || 0, status: 'idea' }; item.person.gifts.push(g); S.picks[item.key] = g.id; save(); toast('Gift picked'); closeSheet(); },
+  'add-occasion'(f){
+    const p = byId(f.dataset.pid); if (!p) return;
+    const d = new FormData(f); const date = String(d.get('date') || ''); if (!date) return;
+    const x = fromISO(date); const type = d.get('type'); const knowYear = !!d.get('knowYear');
+    if (type === 'birthday') p.birthday = { month: x.getMonth() + 1, day: x.getDate(), year: knowYear ? x.getFullYear() : null };
+    else if (type === 'anniversary') p.anniversary = { month: x.getMonth() + 1, day: x.getDate(), year: knowYear ? x.getFullYear() : null };
+    else { const title = String(d.get('title') || '').trim() || 'Special day'; p.occasions.push({ id: uid(), title, month: x.getMonth() + 1, day: x.getDate(), year: x.getFullYear(), repeats: d.get('repeats') === 'yearly' ? 'yearly' : 'once' }); }
+    skipPassedSteps(p.id); save(); toast('Occasion added'); render();
+  },
+  'edit-occasion'(f){
+    const p = byId(f.dataset.pid); if (!p) return;
+    const d = new FormData(f); const date = String(d.get('date') || ''); if (!date) return;
+    const x = fromISO(date); const id = f.dataset.occ;
+    if (id === 'bday') p.birthday = { month: x.getMonth() + 1, day: x.getDate(), year: d.get('knowYear') ? x.getFullYear() : null };
+    else if (id === 'anniv') p.anniversary = { month: x.getMonth() + 1, day: x.getDate(), year: d.get('knowYear') ? x.getFullYear() : null };
+    else { const o = p.occasions.find(z => z.id === id); if (o) { o.title = String(d.get('title') || o.title).trim() || o.title; o.month = x.getMonth() + 1; o.day = x.getDate(); o.year = x.getFullYear(); o.repeats = d.get('repeats') === 'yearly' ? 'yearly' : 'once'; } }
+    topSheet().editOcc = null; save(); toast('Saved'); render();
+  }
+};
+function setLead(k, v){
+  v = Math.max(0, Math.min(120, Math.round(Number(v) || 0)));
+  const order = ['plan','get','write','send'];
+  const i = order.indexOf(k);
+  S.leads[k] = v;
+  for (let j = i - 1; j >= 0; j--) S.leads[order[j]] = Math.max(S.leads[order[j]], v);
+  for (let j = i + 1; j < order.length; j++) S.leads[order[j]] = Math.min(S.leads[order[j]], v);
+}
+const changes = {
+  'profile-name'(el){ S.profile.name = el.value.trim(); save(); },
+  lead(el){ const before = JSON.stringify(S.leads); setLead(el.dataset.lead, el.value); if (JSON.stringify(S.leads) === before) return; save(); toast('Ladder updated'); render(); },
+  vcf(el){
+    const f = el.files && el.files[0]; if (!f) return;
+    const r = new FileReader();
+    r.onload = () => { const rows = parseVcf(String(r.result || '')); openSheet({ type: 'import', rows }); };
+    r.onerror = () => toast('Could not read that file');
+    r.readAsText(f);
+    el.value = '';
+  },
+  json(el){
+    const f = el.files && el.files[0]; if (!f) return;
+    const r = new FileReader();
+    r.onload = () => {
+      try {
+        const parsed = JSON.parse(String(r.result || ''));
+        if (!parsed || !Array.isArray(parsed.people)) throw new Error('shape');
+        S = normalize(parsed); save(); toast('Backup restored'); render();
+      } catch (e) { toast('That file is not a Keep backup'); }
+    };
+    r.onerror = () => toast('Could not read that file');
+    r.readAsText(f);
+    el.value = '';
+  },
+  'import-check'(el){ const sh = topSheet(); if (sh && sh.rows) { sh.rows[Number(el.dataset.i)].checked = el.checked; render(); } }
+};
+
+/* ---------- wiring ---------- */
+const shell = $('#shell');
+shell.addEventListener('click', ev => {
+  const el = ev.target.closest('[data-action]');
+  if (!el || !shell.contains(el)) return;
+  if (el.tagName === 'A') return;
+  const fn = actions[el.dataset.action];
+  if (fn) { ev.preventDefault(); fn(el, ev); }
+});
+shell.addEventListener('submit', ev => {
+  const f = ev.target.closest('[data-form]');
+  if (!f) return;
+  ev.preventDefault();
+  const fn = forms[f.dataset.form];
+  if (fn) fn(f);
+});
+shell.addEventListener('change', ev => {
+  const el = ev.target.closest('[data-change]');
+  if (!el) return;
+  const fn = changes[el.dataset.change];
+  if (fn) fn(el);
+});
+shell.addEventListener('input', ev => {
+  const el = ev.target.closest('[data-input]');
+  if (!el) return;
+  if (el.dataset.input === 'draft') { const sh = topSheet(); if (sh) sh.draftText = el.value; }
+});
+document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && ui.sheets.length) closeSheet(); });
+
+load();
+render();
+maybeNotify();
+/* Exposed for the playground test harness. */
+window.Keep = { get state(){ return S; }, buildItems, ladderFor, draftMessage, parseVcf, buildIcs, fmtDate, seed };
+</script>
+</body>
+</html>
