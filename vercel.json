@@ -1,6 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": false,
+  "redirects": [
+    { "source": "/labs", "destination": "https://ellingtonenterprises.co/labs", "permanent": true },
+    { "source": "/labs/", "destination": "https://ellingtonenterprises.co/labs", "permanent": true },
+    { "source": "/labs/:app", "destination": "https://ellingtonenterprises.co/labs/:app", "permanent": true },
+    { "source": "/labs/:app/", "destination": "https://ellingtonenterprises.co/labs/:app", "permanent": true }
+  ],
   "headers": [
     { "source": "/(.*)", "headers": [ { "key": "X-Content-Type-Options", "value": "nosniff" } ] }
   ]
